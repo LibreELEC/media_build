@@ -1701,4 +1701,19 @@ static inline bool ktime_before(const ktime_t cmp1, const ktime_t cmp2)
 }
 #endif
 
+#ifdef NEED_OF_NODE_FULL_NAME
+#ifdef CONFIG_OF
+static inline const char *of_node_full_name(const struct device_node *np)
+{
+	return np ? np->full_name : "<no-node>";
+}
+#else
+static inline const char* of_node_full_name(const struct device_node *np)
+{
+	return "<no-node>";
+}
+#endif
+#endif
+
+
 #endif /*  _COMPAT_H */

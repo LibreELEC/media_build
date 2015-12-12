@@ -675,6 +675,7 @@ sub check_other_dependencies()
 	check_files_for_func("kvfree", "NEED_KVFREE", "include/linux/mm.h");
 	check_files_for_func("ktime_before", "NEED_KTIME_BEFORE", "include/linux/ktime.h");
 	check_files_for_func("ktime_compare", "NEED_KTIME_COMPARE", "include/linux/ktime.h");
+	check_files_for_func("of_node_full_name", "NEED_OF_NODE_FULL_NAME", "include/linux/of.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");
