@@ -84,6 +84,7 @@ add v3.0_ida2bit.patch
 
 [2.6.38]
 add v2.6.38_use_getkeycode_new_setkeycode_new.patch
+add v2.6.38_config_of_for_of_node.patch
 
 [2.6.37]
 add v2.6.37_dont_use_alloc_ordered_workqueue.patch
