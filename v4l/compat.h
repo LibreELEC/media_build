@@ -1683,4 +1683,11 @@ static inline unsigned long *frame_vector_pfns(struct frame_vector *vec)
 
 #endif
 
+#ifdef NEED_KTIME_BEFORE
+static inline bool ktime_before(const ktime_t cmp1, const ktime_t cmp2)
+{
+	return ktime_compare(cmp1, cmp2) < 0;
+}
+#endif
+
 #endif /*  _COMPAT_H */
