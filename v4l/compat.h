@@ -1625,6 +1625,7 @@ static inline void eth_zero_addr(u8 *addr)
 
 #ifdef NEED_KVFREE
 #include <linux/mm.h>
+#include <linux/vmalloc.h>
 static inline void kvfree(const void *addr)
 {
 	if (is_vmalloc_addr(addr))
