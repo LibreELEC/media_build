@@ -230,6 +230,7 @@ ifneq ($(DIR),)
 	-e '	if (/^VERSION\s*=\s*(\d+)/){ $$version=$$1; }' \
 	-e '	elsif (/^PATCHLEVEL\s*=\s*(\d+)/){ $$level=$$1; }' \
 	-e '	elsif (/^SUBLEVEL\s*=\s*(\d+)/){ $$sublevel=$$1; }' \
+	-e '	elsif (/^EXTRAVERSION\s*=\s*(\d+)\n/){ $$extra=".$$1"; }' \
 	-e '	elsif (/^EXTRAVERSION\s*=\s*(\S+)\n/){ $$extra=$$1; }' \
 	-e '    elsif (/^KERNELSRC\s*:=\s*(\S.*)\n/ || /^MAKEARGS\s*:=\s*-C\s*(\S.*)\n/)' \
 	-e '        { $$o=$$d; $$d=$$1; goto S; }' \
