@@ -1702,6 +1702,13 @@ static inline bool ktime_before(const ktime_t cmp1, const ktime_t cmp2)
 }
 #endif
 
+#ifdef NEED_KTIME_GET_NS
+static inline u64 ktime_get_ns(void)
+{
+        return ktime_to_ns(ktime_get());
+}
+#endif
+
 #ifdef NEED_OF_NODE_FULL_NAME
 #ifdef CONFIG_OF
 static inline const char *of_node_full_name(const struct device_node *np)
