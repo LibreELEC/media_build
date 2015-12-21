@@ -1723,5 +1723,42 @@ static inline const char* of_node_full_name(const struct device_node *np)
 #endif
 #endif
 
+#ifdef NEED_DIV64_U64_REM
+#include <asm/div64.h>
+
+#if BITS_PER_LONG == 64
+static inline u64 div64_u64_rem(u64 dividend, u64 divisor, u64 *remainder)
+{
+	*remainder = dividend % divisor;
+	return dividend / divisor;
+}
+#elif BITS_PER_LONG == 32
+static inline u64 div64_u64_rem(u64 dividend, u64 divisor, u64 *remainder)
+{
+	u32 high = divisor >> 32;
+	u64 quot;
+
+	if (high == 0) {
+		u32 rem32;
+		quot = div_u64_rem(dividend, divisor, &rem32);
+		*remainder = rem32;
+	} else {
+		int n = 1 + fls(high);
+		quot = div_u64(dividend >> n, divisor >> n);
+
+		if (quot != 0)
+			quot--;
+
+		*remainder = dividend - quot * divisor;
+		if (*remainder >= divisor) {
+			quot++;
+			*remainder -= divisor;
+		}
+	}
+
+	return quot;
+}
+#endif
+#endif
 
 #endif /*  _COMPAT_H */
