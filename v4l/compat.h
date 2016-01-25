@@ -9,6 +9,7 @@
 #include <linux/compiler.h>
 #include <linux/input.h>
 #include <linux/init.h>
+#include <linux/idr.h>
 #include "config-compat.h"
 #include "../linux/kernel_version.h"
 
