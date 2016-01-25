@@ -1761,4 +1761,20 @@ static inline u64 div64_u64_rem(u64 dividend, u64 divisor, u64 *remainder)
 #endif
 #endif
 
+#ifdef NEED_LED_SET_BRIGHTNESS
+#include <linux/leds.h>
+static inline int led_set_brightness_sync(struct led_classdev *led_cdev,
+					  enum led_brightness value)
+{
+	int ret = 0;
+
+	led_cdev->brightness = min(value, led_cdev->max_brightness);
+
+	if (!(led_cdev->flags & LED_SUSPENDED))
+		ret = led_cdev->brightness_set_sync(led_cdev,
+						    led_cdev->brightness);
+	return ret;
+}
+#endif
+
 #endif /*  _COMPAT_H */
