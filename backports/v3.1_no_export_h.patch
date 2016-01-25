@@ -1,5 +1,5 @@
 diff --git a/drivers/media/common/saa7146/saa7146_hlp.c b/drivers/media/common/saa7146/saa7146_hlp.c
-index be746d1..02ac2d0 100644
+index 6ebcbc6..b193ab3 100644
 --- a/drivers/media/common/saa7146/saa7146_hlp.c
 +++ b/drivers/media/common/saa7146/saa7146_hlp.c
 @@ -1,7 +1,6 @@
@@ -23,7 +23,7 @@ index bfe831c..d1aa20e 100644
  
  #include "smsendian.h"
 diff --git a/drivers/media/media-device.c b/drivers/media/media-device.c
-index d5a7a13..5cd17ee 100644
+index 4d1c13d..e78c3bb 100644
 --- a/drivers/media/media-device.c
 +++ b/drivers/media/media-device.c
 @@ -21,7 +21,6 @@
@@ -31,11 +31,11 @@ index d5a7a13..5cd17ee 100644
  
  #include <linux/compat.h>
 -#include <linux/export.h>
+ #include <linux/idr.h>
  #include <linux/ioctl.h>
  #include <linux/media.h>
- #include <linux/types.h>
 diff --git a/drivers/media/radio/wl128x/fmdrv_v4l2.c b/drivers/media/radio/wl128x/fmdrv_v4l2.c
-index b55012c..8346c1e 100644
+index fb42f0f..1af88eb 100644
 --- a/drivers/media/radio/wl128x/fmdrv_v4l2.c
 +++ b/drivers/media/radio/wl128x/fmdrv_v4l2.c
 @@ -28,7 +28,6 @@
@@ -47,7 +47,7 @@ index b55012c..8346c1e 100644
  #include "fmdrv.h"
  #include "fmdrv_v4l2.h"
 diff --git a/drivers/media/rc/rc-ir-raw.c b/drivers/media/rc/rc-ir-raw.c
-index 5c42750..7131728 100644
+index c69807f..e96bd0d 100644
 --- a/drivers/media/rc/rc-ir-raw.c
 +++ b/drivers/media/rc/rc-ir-raw.c
 @@ -12,7 +12,6 @@
@@ -71,7 +71,7 @@ index a38f58c..af3a659 100644
  #include "hdpvr.h"
  
 diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
-index 60dcc0f..477c640 100644
+index c9d5537..cb087d8 100644
 --- a/drivers/media/v4l2-core/v4l2-ctrls.c
 +++ b/drivers/media/v4l2-core/v4l2-ctrls.c
 @@ -20,7 +20,6 @@
@@ -83,7 +83,7 @@ index 60dcc0f..477c640 100644
  #include <media/v4l2-device.h>
  #include <media/v4l2-ctrls.h>
 diff --git a/drivers/media/v4l2-core/v4l2-event.c b/drivers/media/v4l2-core/v4l2-event.c
-index 86dcb54..0eed837 100644
+index 8d3171c..23962cf 100644
 --- a/drivers/media/v4l2-core/v4l2-event.c
 +++ b/drivers/media/v4l2-core/v4l2-event.c
 @@ -28,7 +28,6 @@
@@ -95,7 +95,7 @@ index 86dcb54..0eed837 100644
  static unsigned sev_pos(const struct v4l2_subscribed_event *sev, unsigned idx)
  {
 diff --git a/drivers/media/v4l2-core/v4l2-fh.c b/drivers/media/v4l2-core/v4l2-fh.c
-index e57c002..2e87183 100644
+index c97067a..e55d9ac 100644
 --- a/drivers/media/v4l2-core/v4l2-fh.c
 +++ b/drivers/media/v4l2-core/v4l2-fh.c
 @@ -24,7 +24,6 @@
@@ -107,7 +107,7 @@ index e57c002..2e87183 100644
  #include <media/v4l2-fh.h>
  #include <media/v4l2-event.h>
 diff --git a/drivers/media/v4l2-core/v4l2-subdev.c b/drivers/media/v4l2-core/v4l2-subdev.c
-index 996c248..3e80c90 100644
+index d630838..1877c7a 100644
 --- a/drivers/media/v4l2-core/v4l2-subdev.c
 +++ b/drivers/media/v4l2-core/v4l2-subdev.c
 @@ -24,7 +24,6 @@
@@ -119,7 +119,7 @@ index 996c248..3e80c90 100644
  #include <media/v4l2-ctrls.h>
  #include <media/v4l2-device.h>
 diff --git a/include/media/v4l2-clk.h b/include/media/v4l2-clk.h
-index 0b36cc1..94e7875 100644
+index 2b94662..d3ed440 100644
 --- a/include/media/v4l2-clk.h
 +++ b/include/media/v4l2-clk.h
 @@ -15,7 +15,6 @@
