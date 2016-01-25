@@ -1779,4 +1779,9 @@ static inline int led_set_brightness_sync(struct led_classdev *led_cdev,
 #endif
 #endif
 
+#ifdef NEED_GENMASK_ULL
+#define GENMASK_ULL(h, l) \
+	(((~0ULL) << (l)) & (~0ULL >> (BITS_PER_LONG_LONG - 1 - (h))))
+#endif
+
 #endif /*  _COMPAT_H */
