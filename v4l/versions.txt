@@ -13,6 +13,10 @@ VIDEO_SMIAPP
 # needs of_property_read_u64_array
 VIDEO_MT9V032
 
+[3.18.0]
+# needs LED brightness support
+V4L2_FLASH_LED_CLASS
+
 [3.17.0]
 # needs GPIOD_OUT_LOW
 VIDEO_ADV7604
