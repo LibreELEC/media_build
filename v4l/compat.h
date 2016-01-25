@@ -1786,4 +1786,8 @@ static inline int led_set_brightness_sync(struct led_classdev *led_cdev,
 	(((~0ULL) << (l)) & (~0ULL >> (BITS_PER_LONG_LONG - 1 - (h))))
 #endif
 
+#ifdef NEED_IDA_SIMPLE_REMOVE
+#define ida_simple_remove ida_remove
+#endif
+
 #endif /*  _COMPAT_H */
