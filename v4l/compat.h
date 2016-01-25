@@ -1762,7 +1762,7 @@ static inline u64 div64_u64_rem(u64 dividend, u64 divisor, u64 *remainder)
 #endif
 #endif
 
-#ifdef CONFIG_V4L2_FLASH_LED_CLASS
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 0, 0)
 #ifdef NEED_LED_SET_BRIGHTNESS
 #include <linux/leds.h>
 static inline int led_set_brightness_sync(struct led_classdev *led_cdev,
