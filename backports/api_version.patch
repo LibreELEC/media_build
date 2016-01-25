@@ -1,21 +1,21 @@
 diff --git a/drivers/media/usb/uvc/uvc_driver.c b/drivers/media/usb/uvc/uvc_driver.c
-index f8135f4..9df68b6 100644
+index 4e7148815a78..8c12e4317aa4 100644
 --- a/drivers/media/usb/uvc/uvc_driver.c
 +++ b/drivers/media/usb/uvc/uvc_driver.c
-@@ -1901,7 +1901,7 @@ static int uvc_probe(struct usb_interface *intf,
+@@ -1916,7 +1916,7 @@ static int uvc_probe(struct usb_interface *intf,
  			sizeof(dev->mdev.serial));
  	strcpy(dev->mdev.bus_info, udev->devpath);
  	dev->mdev.hw_revision = le16_to_cpu(udev->descriptor.bcdDevice);
 -	dev->mdev.driver_version = LINUX_VERSION_CODE;
 +	dev->mdev.driver_version = V4L2_VERSION;
- 	if (media_device_register(&dev->mdev) < 0)
- 		goto error;
+ 	media_device_init(&dev->mdev);
  
+ 	dev->vdev.mdev = &dev->mdev;
 diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index e0bafda..6225391 100644
+index 8a018c6dd16a..0078cd079dc2 100644
 --- a/drivers/media/v4l2-core/v4l2-ioctl.c
 +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1009,7 +1009,7 @@ static int v4l_querycap(const struct v4l2_ioctl_ops *ops,
+@@ -1021,7 +1021,7 @@ static int v4l_querycap(const struct v4l2_ioctl_ops *ops,
  	struct v4l2_capability *cap = (struct v4l2_capability *)arg;
  	int ret;
  
