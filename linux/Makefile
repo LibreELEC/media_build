@@ -69,7 +69,7 @@ TARFILES += firmware/ttusb-budget/dspbootcode.bin.ihex
 
 DATE := `git --git-dir $(DIR)/.git log -n1 '--pretty=format:%h %ai' |perl -ne 'print "$$2-$$1" if (m/([\da-f]+)\s+(\S+)/)'`
 #TODAY_TAR := linux-media-${DATE}.tar
-TODAY_TAR := linux-media.tar
+TODAY_TAR := linux-media-LATEST.tar
 TODAY_TAR_MD5 := ${TODAY_TAR}.bz2.md5
 LATEST_TAR := https://bitbucket.org/CrazyCat/media_build/downloads/linux-media-LATEST.tar.bz2
 LATEST_TAR_MD5 := https://bitbucket.org/CrazyCat/media_build/downloads/linux-media-LATEST.tar.bz2.md5

@@ -3,7 +3,7 @@ echo "V4L drivers archive..."
 cd linux
 make unapply-patches
 make todaytar DIR=.
-mv -f linux-media.tar.* ..
+mv -f linux-media-LATEST.tar.* ..
 
 echo "V4L firmwares archive..."
 cd ../v4l/firmware
