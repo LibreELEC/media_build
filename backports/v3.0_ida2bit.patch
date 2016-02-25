@@ -1,5 +1,5 @@
 diff --git a/drivers/media/rc/rc-main.c b/drivers/media/rc/rc-main.c
-index c808165..b8a8eff 100644
+index dcf20d9..f45f264 100644
 --- a/drivers/media/rc/rc-main.c
 +++ b/drivers/media/rc/rc-main.c
 @@ -18,11 +18,14 @@
@@ -28,7 +28,7 @@ index c808165..b8a8eff 100644
  static struct rc_map_list *seek_rc_map(const char *name)
  {
  	struct rc_map_list *map = NULL;
-@@ -1340,9 +1340,13 @@ int rc_register_device(struct rc_dev *dev)
+@@ -1424,9 +1424,13 @@ int rc_register_device(struct rc_dev *dev)
  	if (dev->close)
  		dev->input_dev->close = ir_close;
  
@@ -45,16 +45,16 @@ index c808165..b8a8eff 100644
  
  	dev->minor = minor;
  	dev_set_name(&dev->dev, "rc%u", dev->minor);
-@@ -1459,7 +1463,7 @@ out_dev:
+@@ -1520,7 +1524,7 @@ out_table:
+ out_dev:
  	device_del(&dev->dev);
  out_unlock:
- 	mutex_unlock(&dev->lock);
 -	ida_simple_remove(&rc_ida, minor);
 +	clear_bit(dev->minor, ir_core_dev_number);
  	return rc;
  }
  EXPORT_SYMBOL_GPL(rc_register_device);
-@@ -1483,7 +1487,7 @@ void rc_unregister_device(struct rc_dev *dev)
+@@ -1544,7 +1548,7 @@ void rc_unregister_device(struct rc_dev *dev)
  
  	device_del(&dev->dev);
  
