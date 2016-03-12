@@ -36,6 +36,10 @@ RC_ST
 # needs gpio/consumer.h
 RADIO_SI4713
 
+[3.12.0]
+# BIN_ATTR_RW was changed
+IR_NUVOTON
+
 [3.11.0]
 # needs freezable_schedule_hrtimeout_range
 DVB_PT3
@@ -186,7 +190,6 @@ VIDEO_SH_MOBILE_CEU
 VIDEO_PXA27x
 VIDEO_TLG2300
 # Relies on some changes at PnP API
-IR_NUVOTON
 IR_ENE
 IR_WINBOND_CIR
 IR_ITE_CIR

@@ -129,3 +129,15 @@ index 3ef6e3d..2f8426f 100644
 -#include <linux/atomic.h>
  #include <linux/list.h>
  #include <linux/mutex.h>
+diff --git a/drivers/media/rc/rc-main.c b/drivers/media/rc/rc-main.c
+index 4e9bbe7..1998369 100644
+--- a/drivers/media/rc/rc-main.c
++++ b/drivers/media/rc/rc-main.c
+@@ -13,7 +13,6 @@
+  */
+ 
+ #include <media/rc-core.h>
+-#include <linux/atomic.h>
+ #include <linux/spinlock.h>
+ #include <linux/delay.h>
+ #include <linux/input.h>
