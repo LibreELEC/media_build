@@ -28,6 +28,7 @@ add drx39xxj.patch
 
 [4.5.255]
 add v4.5_gpiochip_data_pointer.patch
+add v4.5_get_user_pages.patch
 
 [4.4.255]
 add v4.4_gpio_chip_parent.patch
