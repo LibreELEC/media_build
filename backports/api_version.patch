@@ -2,10 +2,10 @@ diff --git a/drivers/media/media-device.c b/drivers/media/media-device.c
 index 6e43c95629ea..54d60c03e824 100644
 --- a/drivers/media/media-device.c
 +++ b/drivers/media/media-device.c
-@@ -866 +866 @@ void media_device_pci_init(struct media_device *mdev,
+@@ -846 +846 @@ void media_device_pci_init(struct media_device *mdev,
 -	mdev->driver_version = LINUX_VERSION_CODE;
 +	mdev->driver_version = V4L2_VERSION;
-@@ -895 +895 @@ void __media_device_usb_init(struct media_device *mdev,
+@@ -875 +875 @@ void __media_device_usb_init(struct media_device *mdev,
 -	mdev->driver_version = LINUX_VERSION_CODE;
 +	mdev->driver_version = V4L2_VERSION;
 diff --git a/drivers/media/usb/uvc/uvc_driver.c b/drivers/media/usb/uvc/uvc_driver.c
