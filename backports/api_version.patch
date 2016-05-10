@@ -1,24 +1,48 @@
 diff --git a/drivers/media/media-device.c b/drivers/media/media-device.c
-index 6e43c95629ea..54d60c03e824 100644
+index a1cd50f..ffafe66 100644
 --- a/drivers/media/media-device.c
 +++ b/drivers/media/media-device.c
-@@ -866 +866 @@ void media_device_pci_init(struct media_device *mdev,
+@@ -843,7 +843,7 @@ void media_device_pci_init(struct media_device *mdev,
+ 	mdev->hw_revision = (pci_dev->subsystem_vendor << 16)
+ 			    | pci_dev->subsystem_device;
+ 
 -	mdev->driver_version = LINUX_VERSION_CODE;
 +	mdev->driver_version = V4L2_VERSION;
-@@ -895 +895 @@ void __media_device_usb_init(struct media_device *mdev,
+ 
+ 	media_device_init(mdev);
+ }
+@@ -872,7 +872,7 @@ void __media_device_usb_init(struct media_device *mdev,
+ 		strlcpy(mdev->serial, udev->serial, sizeof(mdev->serial));
+ 	usb_make_path(udev, mdev->bus_info, sizeof(mdev->bus_info));
+ 	mdev->hw_revision = le16_to_cpu(udev->descriptor.bcdDevice);
 -	mdev->driver_version = LINUX_VERSION_CODE;
 +	mdev->driver_version = V4L2_VERSION;
+ 
+ 	media_device_init(mdev);
+ }
 diff --git a/drivers/media/usb/uvc/uvc_driver.c b/drivers/media/usb/uvc/uvc_driver.c
-index 451e84e962e2..34fdf1f015ba 100644
+index 451e84e9..34fdf1f 100644
 --- a/drivers/media/usb/uvc/uvc_driver.c
 +++ b/drivers/media/usb/uvc/uvc_driver.c
-@@ -1939 +1939 @@ static int uvc_probe(struct usb_interface *intf,
+@@ -1936,7 +1936,7 @@ static int uvc_probe(struct usb_interface *intf,
+ 			sizeof(dev->mdev.serial));
+ 	strcpy(dev->mdev.bus_info, udev->devpath);
+ 	dev->mdev.hw_revision = le16_to_cpu(udev->descriptor.bcdDevice);
 -	dev->mdev.driver_version = LINUX_VERSION_CODE;
 +	dev->mdev.driver_version = V4L2_VERSION;
+ 	media_device_init(&dev->mdev);
+ 
+ 	dev->vdev.mdev = &dev->mdev;
 diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index 6bf5a3ecd126..9a1597ab3ac2 100644
+index 28e5be2..f664943 100644
 --- a/drivers/media/v4l2-core/v4l2-ioctl.c
 +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1026 +1026 @@ static int v4l_querycap(const struct v4l2_ioctl_ops *ops,
+@@ -1023,7 +1023,7 @@ static int v4l_querycap(const struct v4l2_ioctl_ops *ops,
+ 	struct video_device *vfd = video_devdata(file);
+ 	int ret;
+ 
 -	cap->version = LINUX_VERSION_CODE;
 +	cap->version = V4L2_VERSION;
+ 	cap->device_caps = vfd->device_caps;
+ 	cap->capabilities = vfd->device_caps | V4L2_CAP_DEVICE_CAPS;
+ 
