@@ -26,6 +26,9 @@ add pr_fmt.patch
 add debug.patch
 add drx39xxj.patch
 
+[4.6.255]
+add v4.6_i2c_mux.patch
+
 [4.5.255]
 add v4.5_gpiochip_data_pointer.patch
 add v4.5_get_user_pages.patch
