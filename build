@@ -509,7 +509,7 @@ print "* Start building *\n";
 print "******************\n";
 
 system ("make allyesconfig") == 0 or die "can't select all drivers";
-system ("make") == 0 or die "build failed";
+system ("make -j4") == 0 or die "build failed";
 
 print "**********************************************************\n";
 print "* Compilation finished. Use 'make install' to install them\n";
