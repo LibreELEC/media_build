@@ -1830,4 +1830,11 @@ static inline int led_set_brightness_sync(struct led_classdev *led_cdev,
 #define KEY_DATA			0x275
 #endif
 
+#ifdef NEED_KTIME_MS_DELTA
+static inline s64 ktime_ms_delta(const ktime_t later, const ktime_t earlier)
+{
+	return ktime_to_ms(ktime_sub(later, earlier));
+}
+#endif
+
 #endif /*  _COMPAT_H */

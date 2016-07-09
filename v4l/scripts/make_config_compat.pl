@@ -675,6 +675,7 @@ sub check_other_dependencies()
 	check_files_for_func("kvfree", "NEED_KVFREE", "include/linux/mm.h");
 	check_files_for_func("ktime_before", "NEED_KTIME_BEFORE", "include/linux/ktime.h");
 	check_files_for_func("ktime_compare", "NEED_KTIME_COMPARE", "include/linux/ktime.h");
+	check_files_for_func("ktime_ms_delta", "NEED_KTIME_MS_DELTA", "include/linux/ktime.h");
 	check_files_for_func("of_node_full_name", "NEED_OF_NODE_FULL_NAME", "include/linux/of.h");
 	check_files_for_func("ktime_get_ns", "NEED_KTIME_GET_NS", "include/linux/timekeeping.h");
 	check_files_for_func("div64_u64_rem", "NEED_DIV64_U64_REM", "include/linux/math64.h");
