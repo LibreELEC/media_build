@@ -55,6 +55,8 @@ TARFILES += include/uapi/linux/smiapp.h
 TARFILES += include/uapi/linux/v4l2-subdev.h
 TARFILES += include/uapi/linux/v4l2-common.h
 TARFILES += include/uapi/linux/v4l2-mediabus.h
+TARFILES += include/linux/cec.h
+TARFILES += include/linux/cec-funcs.h
 
 # Other random files
 TARFILES += include/linux/fixp-arith.h
