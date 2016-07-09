@@ -8,7 +8,6 @@
 #include <linux/version.h>
 #include <linux/compiler.h>
 #include <linux/input.h>
-#include <linux/sizes.h>
 #include <linux/init.h>
 #include <linux/idr.h>
 #include "config-compat.h"
@@ -19,6 +18,10 @@
 
 #ifndef uninitialized_var
 #define uninitialized_var(x) x = x
+#endif
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0)
+#include <linux/sizes.h>
 #endif
 
 /* In v2.6.19-rc6-118-g52bad64 struct work_struct was was changed to be only for
