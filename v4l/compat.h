@@ -8,6 +8,7 @@
 #include <linux/version.h>
 #include <linux/compiler.h>
 #include <linux/input.h>
+#include <linux/sizes.h>
 #include <linux/init.h>
 #include <linux/idr.h>
 #include "config-compat.h"
