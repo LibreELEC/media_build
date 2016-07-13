@@ -1845,4 +1845,6 @@ static inline s64 ktime_ms_delta(const ktime_t later, const ktime_t earlier)
 #define smp_store_release(p, a) (*p) = (a)
 #endif
 
+#define SERIO_PULSE8_CEC     0x40
+
 #endif /*  _COMPAT_H */
