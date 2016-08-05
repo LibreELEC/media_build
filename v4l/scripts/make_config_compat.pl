@@ -684,6 +684,7 @@ sub check_other_dependencies()
 	check_files_for_func("ida_simple_remove", "NEED_IDA_SIMPLE_REMOVE", "include/linux/idr.h");
 	check_files_for_func("ktime_get_boottime", "NEED_KTIME_GET_BOOTTIME", "include/linux/hrtimer.h", "include/linux/timekeeping.h");
 	check_files_for_func("BUS_CEC", "NEED_BUS_CEC", "include/uapi/linux/input.h");
+	check_files_for_func("smp_load_acquire", "NEED_SMP_LOAD_ACQUIRE", "include/asm-generic/barrier.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");
