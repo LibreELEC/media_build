@@ -102,6 +102,7 @@ MEDIA_TUNER_E4000
 VIDEO_S5K4ECGX
 # needs EPROBE_DEFER
 IR_GPIO_CIR
+VIDEO_AD5820
 # needs of_property_read_bool
 VIDEO_ADV7343
 # needs devm_regmap_init_i2c
