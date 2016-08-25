@@ -66,7 +66,7 @@ index b7892f3..3df66d1 100644
  		return -ENOMEM;
  
 diff --git a/drivers/media/v4l2-core/videobuf2-dma-contig.c b/drivers/media/v4l2-core/videobuf2-dma-contig.c
-index 59fa204..fe50a04 100644
+index fb6a177..e50ef6a 100644
 --- a/drivers/media/v4l2-core/videobuf2-dma-contig.c
 +++ b/drivers/media/v4l2-core/videobuf2-dma-contig.c
 @@ -27,7 +27,7 @@ struct vb2_dc_buf {
@@ -93,7 +93,7 @@ index 59fa204..fe50a04 100644
  			  unsigned long size, enum dma_data_direction dma_dir,
  			  gfp_t gfp_flags)
  {
-@@ -146,16 +146,16 @@ static void *vb2_dc_alloc(struct device *dev, unsigned long attrs,
+@@ -149,16 +149,16 @@ static void *vb2_dc_alloc(struct device *dev, unsigned long attrs,
  		return ERR_PTR(-ENOMEM);
  
  	if (attrs)
@@ -113,7 +113,7 @@ index 59fa204..fe50a04 100644
  		buf->vaddr = buf->cookie;
  
  	/* Prevent the device from being released while the buffer is used */
-@@ -189,7 +189,7 @@ static int vb2_dc_mmap(void *buf_priv, struct vm_area_struct *vma)
+@@ -192,7 +192,7 @@ static int vb2_dc_mmap(void *buf_priv, struct vm_area_struct *vma)
  	vma->vm_pgoff = 0;
  
  	ret = dma_mmap_attrs(buf->dev, vma, buf->cookie,
@@ -122,7 +122,7 @@ index 59fa204..fe50a04 100644
  
  	if (ret) {
  		pr_err("Remapping memory failed, error: %d\n", ret);
-@@ -372,7 +372,7 @@ static struct sg_table *vb2_dc_get_base_sgt(struct vb2_dc_buf *buf)
+@@ -375,7 +375,7 @@ static struct sg_table *vb2_dc_get_base_sgt(struct vb2_dc_buf *buf)
  	}
  
  	ret = dma_get_sgtable_attrs(buf->dev, sgt, buf->cookie, buf->dma_addr,
@@ -131,7 +131,7 @@ index 59fa204..fe50a04 100644
  	if (ret < 0) {
  		dev_err(buf->dev, "failed to get scatterlist from DMA API\n");
  		kfree(sgt);
-@@ -421,12 +421,15 @@ static void vb2_dc_put_userptr(void *buf_priv)
+@@ -424,12 +424,15 @@ static void vb2_dc_put_userptr(void *buf_priv)
  	struct page **pages;
  
  	if (sgt) {
@@ -148,7 +148,7 @@ index 59fa204..fe50a04 100644
  		pages = frame_vector_pages(buf->vec);
  		/* sgt should exist only if vector contains pages... */
  		BUG_ON(IS_ERR(pages));
-@@ -481,6 +484,9 @@ static void *vb2_dc_get_userptr(struct device *dev, unsigned long vaddr,
+@@ -484,6 +487,9 @@ static void *vb2_dc_get_userptr(struct device *dev, unsigned long vaddr,
  	struct sg_table *sgt;
  	unsigned long contig_size;
  	unsigned long dma_align = dma_get_cache_alignment();
@@ -158,7 +158,7 @@ index 59fa204..fe50a04 100644
  
  	/* Only cache aligned DMA transfers are reliable */
  	if (!IS_ALIGNED(vaddr | size, dma_align)) {
-@@ -542,7 +548,7 @@ static void *vb2_dc_get_userptr(struct device *dev, unsigned long vaddr,
+@@ -548,7 +554,7 @@ static void *vb2_dc_get_userptr(struct device *dev, unsigned long vaddr,
  	 * prepare() memop is called.
  	 */
  	sgt->nents = dma_map_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
@@ -167,7 +167,7 @@ index 59fa204..fe50a04 100644
  	if (sgt->nents <= 0) {
  		pr_err("failed to map scatterlist\n");
  		ret = -EIO;
-@@ -566,7 +572,7 @@ out:
+@@ -572,7 +578,7 @@ out:
  
  fail_map_sg:
  	dma_unmap_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
@@ -177,7 +177,7 @@ index 59fa204..fe50a04 100644
  fail_sgt_init:
  	sg_free_table(sgt);
 diff --git a/drivers/media/v4l2-core/videobuf2-dma-sg.c b/drivers/media/v4l2-core/videobuf2-dma-sg.c
-index bd82d70..a39db8a 100644
+index ecff8f4..64a386d 100644
 --- a/drivers/media/v4l2-core/videobuf2-dma-sg.c
 +++ b/drivers/media/v4l2-core/videobuf2-dma-sg.c
 @@ -95,7 +95,7 @@ static int vb2_dma_sg_alloc_compacted(struct vb2_dma_sg_buf *buf,
@@ -197,9 +197,9 @@ index bd82d70..a39db8a 100644
 +
 +	dma_set_attr(DMA_ATTR_SKIP_CPU_SYNC, &attrs);
  
- 	if (WARN_ON(dev == NULL))
- 		return NULL;
-@@ -141,7 +144,7 @@ static void *vb2_dma_sg_alloc(struct device *dev, unsigned long dma_attrs,
+ 	if (WARN_ON(!dev))
+ 		return ERR_PTR(-EINVAL);
+@@ -142,7 +145,7 @@ static void *vb2_dma_sg_alloc(struct device *dev, unsigned long dma_attrs,
  	 * prepare() memop is called.
  	 */
  	sgt->nents = dma_map_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
@@ -208,7 +208,7 @@ index bd82d70..a39db8a 100644
  	if (!sgt->nents)
  		goto fail_map;
  
-@@ -176,10 +179,13 @@ static void vb2_dma_sg_put(void *buf_priv)
+@@ -177,10 +180,13 @@ static void vb2_dma_sg_put(void *buf_priv)
  	int i = buf->num_pages;
  
  	if (atomic_dec_and_test(&buf->refcount)) {
@@ -223,18 +223,21 @@ index bd82d70..a39db8a 100644
  		if (buf->vaddr)
  			vm_unmap_ram(buf->vaddr, buf->num_pages);
  		sg_free_table(buf->dma_sgt);
-@@ -222,8 +228,10 @@ static void *vb2_dma_sg_get_userptr(struct device *dev, unsigned long vaddr,
+@@ -223,11 +229,13 @@ static void *vb2_dma_sg_get_userptr(struct device *dev, unsigned long vaddr,
  {
  	struct vb2_dma_sg_buf *buf;
  	struct sg_table *sgt;
 +	DEFINE_DMA_ATTRS(attrs);
  	struct frame_vector *vec;
  
+ 	if (WARN_ON(!dev))
+ 		return ERR_PTR(-EINVAL);
+ 
 +	dma_set_attr(DMA_ATTR_SKIP_CPU_SYNC, &attrs);
  	buf = kzalloc(sizeof *buf, GFP_KERNEL);
  	if (!buf)
- 		return NULL;
-@@ -254,7 +262,7 @@ static void *vb2_dma_sg_get_userptr(struct device *dev, unsigned long vaddr,
+ 		return ERR_PTR(-ENOMEM);
+@@ -258,7 +266,7 @@ static void *vb2_dma_sg_get_userptr(struct device *dev, unsigned long vaddr,
  	 * prepare() memop is called.
  	 */
  	sgt->nents = dma_map_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
@@ -243,7 +246,7 @@ index bd82d70..a39db8a 100644
  	if (!sgt->nents)
  		goto userptr_fail_map;
  
-@@ -278,11 +286,14 @@ static void vb2_dma_sg_put_userptr(void *buf_priv)
+@@ -282,11 +290,14 @@ static void vb2_dma_sg_put_userptr(void *buf_priv)
  	struct vb2_dma_sg_buf *buf = buf_priv;
  	struct sg_table *sgt = &buf->sg_table;
  	int i = buf->num_pages;
@@ -260,7 +263,7 @@ index bd82d70..a39db8a 100644
  		vm_unmap_ram(buf->vaddr, buf->num_pages);
  	sg_free_table(buf->dma_sgt);
 diff --git a/drivers/media/v4l2-core/videobuf2-vmalloc.c b/drivers/media/v4l2-core/videobuf2-vmalloc.c
-index c2820a6..7e8a07e 100644
+index ab3227b..4fdfefd 100644
 --- a/drivers/media/v4l2-core/videobuf2-vmalloc.c
 +++ b/drivers/media/v4l2-core/videobuf2-vmalloc.c
 @@ -33,7 +33,7 @@ struct vb2_vmalloc_buf {
@@ -273,7 +276,7 @@ index c2820a6..7e8a07e 100644
  			       gfp_t gfp_flags)
  {
 diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index a4a9a55..946340c 100644
+index b6546db..991c5e9 100644
 --- a/include/media/videobuf2-core.h
 +++ b/include/media/videobuf2-core.h
 @@ -98,7 +98,7 @@ struct vb2_threadio_data;
