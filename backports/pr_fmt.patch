@@ -478,32 +478,6 @@ index 812fb3a..8241eb4 100644
  #define pr_fmt(fmt) "%s:%d " fmt, __func__, __LINE__
  
  #include <linux/delay.h>
-diff --git a/drivers/media/platform/s5p-tv/hdmi_drv.c b/drivers/media/platform/s5p-tv/hdmi_drv.c
-index 7994075..c916ca5 100644
---- a/drivers/media/platform/s5p-tv/hdmi_drv.c
-+++ b/drivers/media/platform/s5p-tv/hdmi_drv.c
-@@ -10,7 +10,7 @@
-  * by the Free Software Foundiation. either version 2 of the License,
-  * or (at your option) any later version
-  */
--
-+#undef pr_fmt
- #define pr_fmt(fmt) "s5p-tv (hdmi_drv): " fmt
- 
- #ifdef CONFIG_VIDEO_SAMSUNG_S5P_HDMI_DEBUG
-diff --git a/drivers/media/platform/s5p-tv/mixer_video.c b/drivers/media/platform/s5p-tv/mixer_video.c
-index 751f3b6..5873c45 100644
---- a/drivers/media/platform/s5p-tv/mixer_video.c
-+++ b/drivers/media/platform/s5p-tv/mixer_video.c
-@@ -10,7 +10,7 @@
-  * by the Free Software Foundation. either version 2 of the License,
-  * or (at your option) any later version
-  */
--
-+#undef pr_fmt
- #define pr_fmt(fmt) "s5p-tv (mixer): " fmt
- 
- #include "mixer.h"
 diff --git a/drivers/media/rc/ene_ir.c b/drivers/media/rc/ene_ir.c
 index 8d77e1c..e2b0a6c 100644
 --- a/drivers/media/rc/ene_ir.c
