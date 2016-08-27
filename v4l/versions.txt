@@ -37,6 +37,7 @@ RC_ST
 [3.13.0]
 # needs gpio/consumer.h
 RADIO_SI4713
+VIDEO_ADV7180
 
 [3.12.0]
 # BIN_ATTR_RW was changed
@@ -141,7 +142,6 @@ SOC_CAMERA_TW9910
 SOC_CAMERA_PLATFORM
 # Needs of_match_ptr
 VIDEO_THS8200
-VIDEO_ADV7180
 
 [3.0.0]
 # fw_iso_context_queue_flush
