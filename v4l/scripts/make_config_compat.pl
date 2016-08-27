@@ -685,6 +685,7 @@ sub check_other_dependencies()
 	check_files_for_func("ktime_get_boottime", "NEED_KTIME_GET_BOOTTIME", "include/linux/hrtimer.h", "include/linux/timekeeping.h");
 	check_files_for_func("BUS_CEC", "NEED_BUS_CEC", "include/uapi/linux/input.h");
 	check_files_for_func("smp_load_acquire", "NEED_SMP_LOAD_ACQUIRE", "include/asm-generic/barrier.h");
+	check_files_for_func("dev_err_once", "NEED_DEV_ERR_ONCE", "include/linux/device.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");
