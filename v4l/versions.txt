@@ -37,6 +37,7 @@ RC_ST
 [3.13.0]
 # needs gpio/consumer.h
 RADIO_SI4713
+VIDEO_ADV7180
 
 [3.12.0]
 # BIN_ATTR_RW was changed
@@ -102,6 +103,7 @@ MEDIA_TUNER_E4000
 VIDEO_S5K4ECGX
 # needs EPROBE_DEFER
 IR_GPIO_CIR
+VIDEO_AD5820
 # needs of_property_read_bool
 VIDEO_ADV7343
 # needs devm_regmap_init_i2c
@@ -140,7 +142,6 @@ SOC_CAMERA_TW9910
 SOC_CAMERA_PLATFORM
 # Needs of_match_ptr
 VIDEO_THS8200
-VIDEO_ADV7180
 
 [3.0.0]
 # fw_iso_context_queue_flush

@@ -1593,6 +1593,10 @@ static inline long get_user_pages_unlocked(struct task_struct *tsk, struct mm_st
 #define pr_warn_once pr_warn
 #endif
 
+#ifdef NEED_DEV_ERR_ONCE
+#define dev_err_once dev_err
+#endif
+
 #ifdef NEED_DIV_ROUND_CLOSEST_ULL
 #define DIV_ROUND_CLOSEST_ULL(x, divisor)(		\
 {							\
