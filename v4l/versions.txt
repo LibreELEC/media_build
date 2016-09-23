@@ -1,6 +1,10 @@
 # Use this for stuff for drivers that don't compile
 [9.255.255]
 
+[4.6.0]
+# needs regmap_write_bits
+DVB_CXD2820R
+
 [4.2.0]
 # needs led_trigger_remove
 V4L2_FLASH_LED_CLASS
