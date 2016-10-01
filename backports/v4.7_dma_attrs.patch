@@ -276,19 +276,19 @@ index ab3227b..4fdfefd 100644
  			       gfp_t gfp_flags)
  {
 diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index b6546db..991c5e9 100644
+index 9a144f2..c5e3113 100644
 --- a/include/media/videobuf2-core.h
 +++ b/include/media/videobuf2-core.h
-@@ -98,7 +98,7 @@ struct vb2_threadio_data;
-  *    #) Required ops for DMABUF types: attach_dmabuf, detach_dmabuf, map_dmabuf, unmap_dmabuf.
+@@ -113,7 +113,7 @@ struct vb2_threadio_data;
+  *       map_dmabuf, unmap_dmabuf.
   */
  struct vb2_mem_ops {
 -	void		*(*alloc)(struct device *dev, unsigned long attrs,
 +	void		*(*alloc)(struct device *dev, const struct dma_attrs *attrs,
- 				  unsigned long size, enum dma_data_direction dma_dir,
+ 				  unsigned long size,
+ 				  enum dma_data_direction dma_dir,
  				  gfp_t gfp_flags);
- 	void		(*put)(void *buf_priv);
-@@ -408,7 +408,7 @@ struct vb2_buf_ops {
+@@ -426,7 +426,7 @@ struct vb2_buf_ops {
   * @io_modes:	supported io methods (see vb2_io_modes enum)
   * @dev:	device to use for the default allocation context if the driver
   *		doesn't fill in the @alloc_devs array.
@@ -297,7 +297,7 @@ index b6546db..991c5e9 100644
   * @fileio_read_once:		report EOF after reading the first buffer
   * @fileio_write_immediately:	queue buffer after each write() call
   * @allow_zero_bytesused:	allow bytesused == 0 to be passed to the driver
-@@ -476,7 +476,7 @@ struct vb2_queue {
+@@ -494,7 +494,7 @@ struct vb2_queue {
  	unsigned int			type;
  	unsigned int			io_modes;
  	struct device			*dev;
