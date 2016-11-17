@@ -1450,3 +1450,15 @@ index 0f6830f..0865cd3 100644
  #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
  
  #include <linux/workqueue.h>
+diff --git a/drivers/media/dvb-frontends/gp8psk-fe.c b/drivers/media/dvb-frontends/gp8psk-fe.c
+index be19afe..474cb62 100644
+--- a/drivers/media/dvb-frontends/gp8psk-fe.c
++++ b/drivers/media/dvb-frontends/gp8psk-fe.c
+@@ -15,6 +15,7 @@
+  * see Documentation/dvb/README.dvb-usb for more information
+  */
+ 
++#undef pr_fmt
+ #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+ 
+ #include "gp8psk-fe.h"
