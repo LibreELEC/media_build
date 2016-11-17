@@ -26,6 +26,9 @@ add pr_fmt.patch
 add debug.patch
 add drx39xxj.patch
 
+[4.8.255]
+add v4.8_user_pages_flag.patch
+
 [4.7.255]
 add v4.7_dma_attrs.patch
 
