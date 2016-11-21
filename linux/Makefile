@@ -173,6 +173,7 @@ unapply_patches unapply-patches:
 		echo patch -s -f -R -p1 -i ../backports/$$i; \
 		patch -s -f -R -p1 -i ../backports/$$i || break; \
 	done; \
+	rm -f mm/frame_vector.c; \
 	rm -f .patches_applied; fi
 
 download:
