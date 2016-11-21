@@ -151,6 +151,7 @@ apply_patches apply-patches:
 	fi; \
 	echo "Applying patches for kernel $$dir"; \
 	touch .patches_applied; \
+	rm -f mm/frame_vector.c; \
 	for i in $$PATCHES; do \
 		echo patch -s -f -N -p1 -i ../backports/$$i; \
 		patch -s -f -N -p1 -i ../backports/$$i --dry-run || exit 1; \
