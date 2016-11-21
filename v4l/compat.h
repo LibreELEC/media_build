@@ -1861,4 +1861,11 @@ static inline s64 ktime_ms_delta(const ktime_t later, const ktime_t earlier)
 #define kthread_flush_worker flush_kthread_worker
 #endif
 
+#ifdef NEED_PRINT_HEX_DUMP_DEBUG
+#define print_hex_dump_debug(prefix_str, prefix_type, rowsize,          \
+			     groupsize, buf, len, ascii)                \
+	print_hex_dump(KERN_DEBUG, prefix_str, prefix_type, rowsize,    \
+		       groupsize, buf, len, ascii)
+#endif
+
 #endif /*  _COMPAT_H */
