@@ -17,7 +17,7 @@ VIDEO_SMIAPP
 # needs of_property_read_u64_array
 VIDEO_MT9V032
 # needs debugfs_create_devm_seqfile
-MEDIA_CEC
+MEDIA_CEC_SUPPORT
 
 [3.18.0]
 # needs LED brightness support
