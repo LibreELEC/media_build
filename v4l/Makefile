@@ -258,7 +258,7 @@ links::
 	@echo creating symbolic links...
 	@find ../linux/drivers/media -name '*.[ch]' -type f -print0 | xargs -0n 255 ln -sf --target-directory=.
 	@find ../linux/sound -name '*.[ch]' -type f -print0 | xargs -0n 255 ln -sf --target-directory=.
-	@find ../linux/mm -name '*.[ch]' -type f -print0 | xargs -0n 255 ln -sf --target-directory=.
+	@if [ -f ../linux/mm/frame_vector.c ]; then find ../linux/mm -name '*.[ch]' -type f -print0 | xargs -0n 255 ln -sf --target-directory=. ; fi
 	@find ../linux/drivers/staging -name '*.[ch]' -type f -print0 | xargs -0n 255 ln -sf --target-directory=.
 	@find ../linux/drivers/misc -name '*.[ch]' -type f -print0 | xargs -0n 255 ln -sf --target-directory=.
 
