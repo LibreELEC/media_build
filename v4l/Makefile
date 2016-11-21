@@ -91,9 +91,15 @@ ifneq ($(filter $(no-makefile-media-targets), $(MAKECMDGOALS)),)
 	endif
 endif
 
+makefile-mm := 1
+ifeq ($(wildcard ../linux/mm/frame_vector.c),)
+	makefile-mm := 0
+endif
+
 # If version not yet detected, we can't create/have these files yet
 ifeq ($(KERNELRELEASE),)
 	makefile-media := 0
+	makefile-mm := 0
 	dot-config := 0
 endif
 
@@ -104,6 +110,8 @@ endif
 ifeq ($(makefile-media),1)
 -include $(obj)/Makefile.media
 -include $(obj)/Makefile.sound
+endif
+ifeq ($(makefile-mm),1)
 -include $(obj)/Makefile.mm
 endif
 
