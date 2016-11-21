@@ -223,7 +223,7 @@ index e69d338..7a0562e 100644
   */
  
 +#undef pr_fmt
- #define pr_fmt(fmt) "dvb_bt8xx: " fmt
+ #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
  
  #include <linux/bitops.h>
 diff --git a/drivers/media/pci/cx25821/cx25821-alsa.c b/drivers/media/pci/cx25821/cx25821-alsa.c
@@ -1438,18 +1438,6 @@ index 1545d89..db95852 100644
  #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
  
  #include <linux/init.h>
-diff --git a/drivers/media/usb/em28xx/em28xx.h b/drivers/media/usb/em28xx/em28xx.h
-index 0f6830f..0865cd3 100644
---- a/drivers/media/usb/em28xx/em28xx.h
-+++ b/drivers/media/usb/em28xx/em28xx.h
-@@ -29,6 +29,7 @@
- #define EM28XX_VERSION "0.2.2"
- #define DRIVER_DESC    "Empia em28xx device driver"
- 
-+#undef pr_fmt
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
- 
- #include <linux/workqueue.h>
 diff --git a/drivers/media/dvb-frontends/gp8psk-fe.c b/drivers/media/dvb-frontends/gp8psk-fe.c
 index be19afe..474cb62 100644
 --- a/drivers/media/dvb-frontends/gp8psk-fe.c
