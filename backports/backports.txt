@@ -45,6 +45,7 @@ add v4.4_gpio_chip_parent.patch
 
 [4.2.255]
 add v4.2_atomic64.patch
+add v4.2_frame_vector.patch
 
 [4.1.255]
 add v4.1_pat_enabled.patch
