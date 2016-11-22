@@ -1318,10 +1318,10 @@ index b080fde..baa93b9 100644
  #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
  
  #include <linux/errno.h>
-diff --git a/drivers/staging/media/lirc/lirc_serial.c b/drivers/staging/media/lirc/lirc_serial.c
+diff --git a/drivers/media/rc/serial_ir.c b/drivers/media/rc/serial_ir.c
 index b798b31..e3a3fee 100644
---- a/drivers/staging/media/lirc/lirc_serial.c
-+++ b/drivers/staging/media/lirc/lirc_serial.c
+--- a/drivers/media/rc/serial_ir.c
++++ b/drivers/media/rc/serial_ir.c
 @@ -48,6 +48,7 @@
   * Steve Davies <steve@daviesfam.org>  July 2001
   */
