@@ -1868,4 +1868,9 @@ static inline s64 ktime_ms_delta(const ktime_t later, const ktime_t earlier)
 		       groupsize, buf, len, ascii)
 #endif
 
+#ifdef NEED_MIN3
+#define min3(x, y, z) min((typeof(x))min(x, y), z)
+#define max3(x, y, z) max((typeof(x))max(x, y), z)
+#endif
+
 #endif /*  _COMPAT_H */
