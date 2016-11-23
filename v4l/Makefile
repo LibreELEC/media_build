@@ -210,8 +210,14 @@ all:: default
 
 #################################################
 # installation invocation rules
-
-modules_install install:: mm-install media-install firmware_install
+INSTALLDEPS :=
+ifeq ($(makefile-mm),1)
+INSTALLDEPS += mm-install
+endif
+ifeq ($(makefile-media),1)
+INSTALLDEPS += media-install
+endif
+modules_install install:: $(INSTALLDEPS) firmware_install
 
 remove rminstall:: media-rminstall
 
