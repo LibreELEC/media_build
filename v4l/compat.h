@@ -1056,6 +1056,15 @@ static inline size_t memweight(const void *ptr, size_t bytes)
 #define usb_endpoint_maxp(epd) __le16_to_cpu((epd)->wMaxPacketSize)
 #endif
 
+#ifdef NEED_USB_ENDPOINT_MAXP_MULT
+#define USB_EP_MAXP_MULT_SHIFT  11
+#define USB_EP_MAXP_MULT_MASK   (3 << USB_EP_MAXP_MULT_SHIFT)
+#define USB_EP_MAXP_MULT(m) \
+	        (((m) & USB_EP_MAXP_MULT_MASK) >> USB_EP_MAXP_MULT_SHIFT)
+
+#define usb_endpoint_maxp_mult(epd) (USB_EP_MAXP_MULT(usb_endpoint_maxp(epd)) + 1)
+#endif
+
 #ifdef NEED_PRINTK_RATELIMITED
 #define printk_ratelimited printk
 #endif
