@@ -36,6 +36,7 @@ add v4.8_user_pages_flag.patch
 
 [4.7.255]
 add v4.7_dma_attrs.patch
+add v4.7_pci_alloc_irq_vectors.patch
 
 [4.6.255]
 add v4.6_i2c_mux.patch
