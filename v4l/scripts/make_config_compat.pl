@@ -689,6 +689,7 @@ sub check_other_dependencies()
 	check_files_for_func("kthread_init_worker", "NEED_KTHREAD_INIT_WORKER", "include/linux/kthread.h");
 	check_files_for_func("print_hex_dump_debug", "NEED_PRINT_HEX_DUMP_DEBUG", "include/linux/printk.h");
 	check_files_for_func("min3", "NEED_MIN3", "include/linux/kernel.h");
+	check_files_for_func("rcu_pointer_handoff", "NEED_RCU_POINTER_HANDOFF", "include/linux/rcupdate.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");

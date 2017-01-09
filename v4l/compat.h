@@ -1882,4 +1882,8 @@ static inline s64 ktime_ms_delta(const ktime_t later, const ktime_t earlier)
 #define max3(x, y, z) max((typeof(x))max(x, y), z)
 #endif
 
+#ifdef NEED_RCU_POINTER_HANDOFF
+#define rcu_pointer_handoff(p) (p)
+#endif
+
 #endif /*  _COMPAT_H */
