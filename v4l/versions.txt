@@ -74,6 +74,8 @@ VIDEO_RCAR_VIN
 VIDEO_TI_SC
 VIDEO_TI_CSC
 IR_IMG
+# needs spi_sync_transfer
+IR_SPI
 
 [3.8.0]
 # needs regmap lock/unlock ops
