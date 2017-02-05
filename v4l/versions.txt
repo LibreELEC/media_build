@@ -1,6 +1,15 @@
 # Use this for stuff for drivers that don't compile
 [9.255.255]
 
+[4.7.0]
+# needs i2c_mux_alloc
+VIDEO_CX231XX
+DVB_LGDT3306A
+DVB_SI2168
+DVB_RTL2830
+DVB_RTL2832
+DVB_M88DS3103
+
 [4.6.0]
 # needs regmap_write_bits
 DVB_CXD2820R
@@ -68,10 +77,7 @@ IR_IMG
 
 [3.8.0]
 # needs regmap lock/unlock ops
-DVB_RTL2830
-DVB_RTL2832
 DVB_TS2020
-DVB_M88DS3103
 
 [3.7.0]
 # i2c_add_mux_adapter prototype change
@@ -240,8 +246,6 @@ SMS_SDIO_DRV
 VIDEO_SAA7164
 
 [2.6.23]
-# Needs field intf_assoc in struct usb_host_config
-VIDEO_CX231XX
 # writel/readl headers moved
 DVB_MANTIS
 MANTIS_CORE
