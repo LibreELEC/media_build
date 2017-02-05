@@ -85,6 +85,8 @@ DVB_TS2020
 # i2c_add_mux_adapter prototype change
 # Needs PLATFORM_DEVID_AUTO
 DVB_USB_RTL28XXU
+DVB_USB_AF9035
+DVB_USB_ZD1301
 # needs pcie_capability_clear_and_set_word
 DVB_NETUP_UNIDVB
 
