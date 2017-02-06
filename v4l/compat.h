@@ -1909,4 +1909,6 @@ static inline s64 ktime_ms_delta(const ktime_t later, const ktime_t earlier)
 })
 #endif
 
+#define of_node_cmp(s1, s2)          strcasecmp((s1), (s2))
+
 #endif /*  _COMPAT_H */
