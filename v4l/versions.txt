@@ -43,6 +43,7 @@ VIDEO_TC358743
 VIDEO_ADP1653
 VIDEO_TVP5150
 VIDEO_ADV7180
+VIDEO_ET8EK8
 
 [3.15.0]
 # needs reset_control_get_optional
