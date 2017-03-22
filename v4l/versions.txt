@@ -3,12 +3,7 @@
 
 [4.7.0]
 # needs i2c_mux_alloc
-#VIDEO_CX231XX
 DVB_LGDT3306A
-#DVB_SI2168
-#DVB_RTL2830
-#DVB_RTL2832
-#DVB_M88DS3103
 
 [4.4.0]
 # needs regmap_write_bits
@@ -80,7 +75,10 @@ IR_SPI
 
 [3.8.0]
 # needs regmap lock/unlock ops
+DVB_M88DS3103
 DVB_TS2020
+DVB_RTL2830
+DVB_RTL2832
 
 [3.7.0]
 # i2c_add_mux_adapter prototype change
