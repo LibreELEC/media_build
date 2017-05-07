@@ -52,6 +52,10 @@ VIDEO_OV7670
 # needs reset_control_get_optional
 RC_ST
 
+[3.14.0]
+# needs pci_enable_msi_range
+VIDEO_COBALT
+
 [3.13.0]
 # needs gpio/consumer.h
 RADIO_SI4713
