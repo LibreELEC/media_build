@@ -1,5 +1,6 @@
 # Use this for stuff for drivers that don't compile
 [9.255.255]
+INTEL_ATOMISP
 
 [4.7.0]
 # needs i2c_mux_alloc
