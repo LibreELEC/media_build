@@ -1942,4 +1942,40 @@ static inline int dma_coerce_mask_and_coherent(struct device *dev, u64 mask)
 #define snd_pcm_set_ops(pcm, dir, ops) snd_pcm_set_ops(pcm, dir, (struct snd_pcm_ops *)(ops))
 #endif
 
+#ifdef NEED_CDEV_DEVICE
+#include <linux/cdev.h>
+
+static inline void cdev_set_parent(struct cdev *p, struct kobject *kobj)
+{
+	WARN_ON(!kobj->state_initialized);
+	p->kobj.parent = kobj;
+}
+
+static inline int cdev_device_add(struct cdev *cdev, struct device *dev)
+{
+	int rc = 0;
+
+	if (dev->devt) {
+		cdev_set_parent(cdev, &dev->kobj);
+
+		rc = cdev_add(cdev, dev->devt, 1);
+		if (rc)
+			return rc;
+	}
+
+	rc = device_add(dev);
+	if (rc)
+		cdev_del(cdev);
+
+	return rc;
+}
+
+static inline void cdev_device_del(struct cdev *cdev, struct device *dev)
+{
+	device_del(dev);
+	if (dev->devt)
+		cdev_del(cdev);
+}
+#endif
+
 #endif /*  _COMPAT_H */
