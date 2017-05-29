@@ -694,6 +694,7 @@ sub check_other_dependencies()
 	check_files_for_func("dma_coerce_mask_and_coherent", "NEED_DMA_COERCE_MASK", "include/linux/dma-mapping.h");
 	check_files_for_func("devm_kcalloc", "NEED_DEVM_KCALLOC", "include/linux/device.h");
 	check_files_for_func("cdev_device_add", "NEED_CDEV_DEVICE", "include/linux/cdev.h");
+	check_files_for_func("module_param_hw", "NEED_MODULE_PARAM_HW", "include/linux/moduleparam.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");

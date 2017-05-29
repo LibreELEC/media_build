@@ -1978,4 +1978,11 @@ static inline void cdev_device_del(struct cdev *cdev, struct device *dev)
 }
 #endif
 
+#ifdef NEED_MODULE_PARAM_HW
+#include <linux/moduleparam.h>
+#define module_param_hw(n, t, hwtype, p) module_param(n, t, p)
+#define module_param_hw_named(n, v, t, hwtype, p) module_param_named(n, v, t, p)
+#define module_param_hw_array(n, t, hwtype, m, p) module_param_array(n, t, m, p)
+#endif
+
 #endif /*  _COMPAT_H */
