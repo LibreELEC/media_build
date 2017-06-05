@@ -1,5 +1,6 @@
 # Use this for stuff for drivers that don't compile
 [9.255.255]
+INTEL_ATOMISP
 
 [4.7.0]
 # needs i2c_mux_alloc
@@ -46,6 +47,10 @@ VIDEO_OV7670
 [3.15.0]
 # needs reset_control_get_optional
 RC_ST
+
+[3.14.0]
+# needs pci_enable_msi_range
+VIDEO_COBALT
 
 [3.13.0]
 # needs gpio/consumer.h
