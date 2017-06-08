@@ -1985,4 +1985,8 @@ static inline void cdev_device_del(struct cdev *cdev, struct device *dev)
 #define module_param_hw_array(n, t, hwtype, m, p) module_param_array(n, t, m, p)
 #endif
 
+#ifndef of_fwnode_handle
+#define of_fwnode_handle(node) NULL
+#endif
+
 #endif /*  _COMPAT_H */
