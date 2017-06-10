@@ -427,8 +427,13 @@ if (@git == 2) {
 			}
 		}
 	} elsif ($workdir eq "") {
-		system("git --git-dir media/.git remote update '$rname/$git[1]'") == 0
-			or die "Can't update from the upstream tree";
+		if (check_git("remote", "$rname/$git[1]")) {
+			system("git --git-dir media/.git remote update '$rname/$git[1]'") == 0
+				or die "Can't update from the upstream tree";
+		} else {
+			system("git --git-dir media/.git remote update origin") == 0
+				or die "Can't update from the upstream tree";
+		}
 	}
 
 	if ($workdir eq "") {
