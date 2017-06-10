@@ -303,12 +303,13 @@ sub check_git($$)
 	my $cmd = shift;
 	my $remote = shift;
 
-	print "\$ git --git-dir media/.git $cmd\n" if ($level);
+	print "\$ git --git-dir media/.git $cmd (checking for '$remote')\n" if ($level);
 	open IN, "git --git-dir media/.git $cmd|" or die "can't run git --git-dir media/.git $cmd";
 	while (<IN>) {
 		return 1 if (m/^[\*]*\s*($remote)\n$/);
 	}
 	close IN;
+	print "check failed\n" if ($level);
 	return 0;
 }
 
