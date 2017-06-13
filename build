@@ -495,7 +495,8 @@ if (@git == 2) {
 	print "****************************\n";
 	print "Updating the building system\n";
 	print "****************************\n";
-	system("git pull git://linuxtv.org/media_build.git master");
+	run("git pull git://linuxtv.org/media_build.git master",
+	    "Can't clone tree from linuxtv.org");
 
 	run("make -C linux/ download", "Download failed");
 	run("make -C linux/ untar", "Untar failed");
