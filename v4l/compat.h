@@ -1985,4 +1985,47 @@ static inline void cdev_device_del(struct cdev *cdev, struct device *dev)
 #define module_param_hw_array(n, t, hwtype, m, p) module_param_array(n, t, m, p)
 #endif
 
+#ifdef NEED_FWNODE
+
+/* Minimum stuff for drivers to build without OF support */
+#define of_fwnode_handle(node) NULL
+
+struct fwnode_endpoint {
+	unsigned int port;
+	unsigned int id;
+	const struct fwnode_handle *local_fwnode;
+};
+
+static inline struct fwnode_handle *fwnode_get_parent(struct fwnode_handle *fwnode)
+{
+        return NULL;
+}
+
+static inline struct fwnode_handle *fwnode_get_next_parent(struct fwnode_handle *fwnode)
+{
+        return NULL;
+}
+
+static inline struct fwnode_handle *
+fwnode_graph_get_remote_endpoint(struct fwnode_handle *fwnode)
+{
+        return NULL;
+}
+
+static inline struct fwnode_handle *dev_fwnode(struct device *dev)
+{
+	return dev->fwnode;
+}
+
+static inline int fwnode_graph_parse_endpoint(struct fwnode_handle *fwnode,
+                                struct fwnode_endpoint *endpoint)
+{
+	return 0;
+}
+
+static inline void fwnode_handle_get(struct fwnode_handle *fwnode)
+{
+}
+#endif
+
 #endif /*  _COMPAT_H */
