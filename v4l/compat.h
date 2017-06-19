@@ -2035,4 +2035,11 @@ static inline struct device_node *to_of_node(struct fwnode_handle *fwnode)
 }
 #endif
 
+#ifdef NEED_IS_OF_NODE
+static inline bool is_of_node(struct fwnode_handle *fwnode)
+{
+	return false;
+}
+#endif
+
 #endif /*  _COMPAT_H */
