@@ -46,6 +46,7 @@ V4L2_FLASH_LED_CLASS
 
 [3.19.0]
 # needs debugfs_create_devm_seqfile
+CEC_CORE
 MEDIA_CEC_SUPPORT
 
 [3.17.0]
