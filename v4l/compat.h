@@ -2028,4 +2028,11 @@ static inline void fwnode_handle_get(struct fwnode_handle *fwnode)
 }
 #endif
 
+#ifdef NEED_TO_OF_NODE
+static inline struct device_node *to_of_node(struct fwnode_handle *fwnode)
+{
+	return NULL;
+}
+#endif
+
 #endif /*  _COMPAT_H */

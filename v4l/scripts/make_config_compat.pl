@@ -696,6 +696,7 @@ sub check_other_dependencies()
 	check_files_for_func("cdev_device_add", "NEED_CDEV_DEVICE", "include/linux/cdev.h");
 	check_files_for_func("module_param_hw", "NEED_MODULE_PARAM_HW", "include/linux/moduleparam.h");
 	check_files_for_func("of_fwnode_handle", "NEED_FWNODE", "include/linux/of.h");
+	check_files_for_func("to_of_node", "NEED_TO_OF_NODE", "include/linux/of.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");
