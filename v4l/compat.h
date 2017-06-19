@@ -2014,7 +2014,7 @@ fwnode_graph_get_remote_endpoint(struct fwnode_handle *fwnode)
 
 static inline struct fwnode_handle *dev_fwnode(struct device *dev)
 {
-	return dev->fwnode;
+	return NULL;
 }
 
 static inline int fwnode_graph_parse_endpoint(struct fwnode_handle *fwnode,
