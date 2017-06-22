@@ -2014,7 +2014,7 @@ fwnode_graph_get_remote_endpoint(struct fwnode_handle *fwnode)
 
 static inline struct fwnode_handle *dev_fwnode(struct device *dev)
 {
-	return dev->fwnode;
+	return NULL;
 }
 
 static inline int fwnode_graph_parse_endpoint(struct fwnode_handle *fwnode,
@@ -2025,6 +2025,20 @@ static inline int fwnode_graph_parse_endpoint(struct fwnode_handle *fwnode,
 
 static inline void fwnode_handle_get(struct fwnode_handle *fwnode)
 {
+}
+#endif
+
+#ifdef NEED_TO_OF_NODE
+static inline struct device_node *to_of_node(struct fwnode_handle *fwnode)
+{
+	return NULL;
+}
+#endif
+
+#ifdef NEED_IS_OF_NODE
+static inline bool is_of_node(struct fwnode_handle *fwnode)
+{
+	return false;
 }
 #endif
 
