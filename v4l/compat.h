@@ -826,6 +826,19 @@ static inline void *kvzalloc(size_t size, gfp_t flags)
 {
 	return vzalloc(size);
 }
+
+static inline void *kvmalloc(size_t size, gfp_t flags)
+{
+	return vmalloc(size);
+}
+
+static inline void *kvmalloc_array(size_t n, size_t size, gfp_t flags)
+{
+	if (size != 0 && n > SIZE_MAX / size)
+		return NULL;
+
+	return kvmalloc(n * size, flags);
+}
 #endif
 
 #ifdef NEED_FLUSH_WORK_SYNC
