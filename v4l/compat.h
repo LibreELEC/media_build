@@ -2006,6 +2006,12 @@ static inline struct fwnode_handle *fwnode_get_next_parent(struct fwnode_handle 
         return NULL;
 }
 
+static inline struct fwnode_handle *fwnode_graph_get_next_endpoint(
+	struct fwnode_handle *fwnode, struct fwnode_handle *prev)
+{
+	return NULL;
+}
+
 static inline struct fwnode_handle *
 fwnode_graph_get_remote_endpoint(struct fwnode_handle *fwnode)
 {
