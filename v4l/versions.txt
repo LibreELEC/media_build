@@ -41,6 +41,10 @@ DVB_M88DS3103
 # needs regmap_write_bits
 DVB_CXD2820R
 
+[4.5.0]
+# needs pm_runtime_get_if_in_use
+VIDEO_OV13858
+
 [4.2.0]
 # needs led_trigger_remove
 V4L2_FLASH_LED_CLASS
