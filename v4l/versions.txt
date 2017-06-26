@@ -1,6 +1,7 @@
 # Use this for stuff for drivers that don't compile
 [9.255.255]
 INTEL_ATOMISP
+VIDEO_DW9714
 
 [4.12.0]
 # needs V4L2_FWNODE
