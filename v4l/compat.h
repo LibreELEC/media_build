@@ -20,6 +20,8 @@
 #define uninitialized_var(x) x = x
 #endif
 
+#define SIZE_MAX    (~(size_t)0)
+
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0)
 #include <linux/sizes.h>
 #endif
