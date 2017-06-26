@@ -819,6 +819,15 @@ static inline void *vzalloc(unsigned long size)
 
 #endif
 
+#ifdef NEED_KVZALLOC
+#include <linux/vmalloc.h>
+
+static inline void *kvzalloc(size_t size, gfp_t flags)
+{
+	return vzalloc(size);
+}
+#endif
+
 #ifdef NEED_FLUSH_WORK_SYNC
 #define flush_work_sync(dev)
 #endif
