@@ -20,6 +20,8 @@
 #define uninitialized_var(x) x = x
 #endif
 
+#define SIZE_MAX    (~(size_t)0)
+
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0)
 #include <linux/sizes.h>
 #endif
@@ -817,6 +819,28 @@ static inline void *vzalloc(unsigned long size)
 	return p;
 }
 
+#endif
+
+#ifdef NEED_KVZALLOC
+#include <linux/vmalloc.h>
+
+static inline void *kvzalloc(size_t size, gfp_t flags)
+{
+	return vzalloc(size);
+}
+
+static inline void *kvmalloc(size_t size, gfp_t flags)
+{
+	return vmalloc(size);
+}
+
+static inline void *kvmalloc_array(size_t n, size_t size, gfp_t flags)
+{
+	if (size != 0 && n > SIZE_MAX / size)
+		return NULL;
+
+	return kvmalloc(n * size, flags);
+}
 #endif
 
 #ifdef NEED_FLUSH_WORK_SYNC
@@ -2004,6 +2028,12 @@ static inline struct fwnode_handle *fwnode_get_parent(struct fwnode_handle *fwno
 static inline struct fwnode_handle *fwnode_get_next_parent(struct fwnode_handle *fwnode)
 {
         return NULL;
+}
+
+static inline struct fwnode_handle *fwnode_graph_get_next_endpoint(
+	struct fwnode_handle *fwnode, struct fwnode_handle *prev)
+{
+	return NULL;
 }
 
 static inline struct fwnode_handle *

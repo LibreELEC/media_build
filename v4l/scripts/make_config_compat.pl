@@ -673,6 +673,7 @@ sub check_other_dependencies()
 	check_files_for_func("eth_zero_addr", "NEED_ETH_ZERO_ADDR", "include/linux/etherdevice.h");
 	check_files_for_func("frame_vector_create", "NEED_FRAME_VECTOR", "include/linux/mm.h");
 	check_files_for_func("kvfree", "NEED_KVFREE", "include/linux/mm.h");
+	check_files_for_func("kvzalloc", "NEED_KVZALLOC", "include/linux/mm.h");
 	check_files_for_func("ktime_before", "NEED_KTIME_BEFORE", "include/linux/ktime.h");
 	check_files_for_func("ktime_compare", "NEED_KTIME_COMPARE", "include/linux/ktime.h");
 	check_files_for_func("ktime_ms_delta", "NEED_KTIME_MS_DELTA", "include/linux/ktime.h");
