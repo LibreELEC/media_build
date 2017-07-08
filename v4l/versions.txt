@@ -48,6 +48,8 @@ V4L2_FLASH_LED_CLASS
 # needs debugfs_create_devm_seqfile
 CEC_CORE
 MEDIA_CEC_SUPPORT
+# needs fwnode_property_read_u32
+SDR_MAX2175
 
 [3.17.0]
 # needs GPIOD_OUT_LOW/HIGH
