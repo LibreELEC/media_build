@@ -2072,4 +2072,16 @@ static inline bool is_of_node(struct fwnode_handle *fwnode)
 }
 #endif
 
+#ifdef NEED_SKB_PUT_DATA
+static inline void *skb_put_data(struct sk_buff *skb, const void *data,
+                                 unsigned int len)
+{
+        void *tmp = skb_put(skb, len);
+
+        memcpy(tmp, data, len);
+
+        return tmp;
+}
+#endif
+
 #endif /*  _COMPAT_H */

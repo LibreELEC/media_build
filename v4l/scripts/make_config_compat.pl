@@ -699,6 +699,7 @@ sub check_other_dependencies()
 	check_files_for_func("of_fwnode_handle", "NEED_FWNODE", "include/linux/of.h");
 	check_files_for_func("to_of_node", "NEED_TO_OF_NODE", "include/linux/of.h");
 	check_files_for_func("is_of_node", "NEED_IS_OF_NODE", "include/linux/of.h");
+	check_files_for_func("skb_put_data", "NEED_SKB_PUT_DATA", "include/linux/skbuff.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");
