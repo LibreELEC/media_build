@@ -2084,4 +2084,19 @@ static inline void *skb_put_data(struct sk_buff *skb, const void *data,
 }
 #endif
 
+#ifdef NEED_PM_RUNTIME_GET
+static inline int pm_runtime_get_if_in_use(struct device *dev)
+{
+	unsigned long flags;
+	int retval;
+
+	spin_lock_irqsave(&dev->power.lock, flags);
+	retval = dev->power.disable_depth > 0 ? -EINVAL :
+		dev->power.runtime_status == RPM_ACTIVE
+			&& atomic_inc_not_zero(&dev->power.usage_count);
+	spin_unlock_irqrestore(&dev->power.lock, flags);
+	return retval;
+}
+#endif
+
 #endif /*  _COMPAT_H */
