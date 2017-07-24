@@ -28,6 +28,12 @@ VIDEO_S5P_MIPI_CSIS
 VIDEO_RCAR_VIN
 VIDEO_XILINX
 
+[4.10.0]
+# needs *probe_new in struct i2c_driver
+VIDEO_OV5670
+# needs ktime_t as s64
+CEC_PIN
+
 [4.7.0]
 # needs i2c_mux_alloc
 VIDEO_CX231XX
