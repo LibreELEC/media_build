@@ -3,6 +3,10 @@
 INTEL_ATOMISP
 VIDEO_DW9714
 
+[4.13.0]
+# Needs multiplexer support
+VIDEO_MUX
+
 [4.12.0]
 # needs V4L2_FWNODE
 VIDEO_ADV7604
