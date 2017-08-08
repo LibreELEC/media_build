@@ -24,3 +24,16 @@ index 4f27cfa134a1..e0fb14c851d5 100644
  	cap->device_caps = vfd->device_caps;
  	cap->capabilities = vfd->device_caps | V4L2_CAP_DEVICE_CAPS;
  
+diff --git a/drivers/media/media-device.c b/drivers/media/media-device.c
+index e79f72b8b858..77c2abad24b7 100644
+--- a/drivers/media/media-device.c
++++ b/drivers/media/media-device.c
+@@ -69,7 +69,7 @@ static int media_device_get_info(struct media_device *dev,
+ 	strlcpy(info->serial, dev->serial, sizeof(info->serial));
+ 	strlcpy(info->bus_info, dev->bus_info, sizeof(info->bus_info));
+ 
+-	info->media_version = LINUX_VERSION_CODE;
++	info->media_version = V4L2_VERSION;
+ 	info->driver_version = info->media_version;
+ 	info->hw_revision = dev->hw_revision;
+ 
