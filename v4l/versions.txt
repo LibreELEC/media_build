@@ -155,6 +155,8 @@ VIDEO_NOON010PC30
 VIDEO_S5K6AA
 # needs dev_err_ratelimited
 MEDIA_TUNER_E4000
+# regmap_init has different arguments
+DVB_AF9013
 
 [3.4.0]
 # needs devm_regulator_bulk_get
@@ -181,7 +183,6 @@ MEDIA_TUNER_MSI001
 MEDIA_TUNER_M88TS2022
 MEDIA_TUNER_IT913X
 DVB_AF9033
-DVB_AF9013
 DVB_MN88472
 DVB_MN88473
 
