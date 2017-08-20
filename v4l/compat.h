@@ -2099,4 +2099,8 @@ static inline int pm_runtime_get_if_in_use(struct device *dev)
 }
 #endif
 
+#ifndef __GFP_RETRY_MAYFAIL
+#define __GFP_RETRY_MAYFAIL __GFP_REPEAT
+#endif
+
 #endif /*  _COMPAT_H */
