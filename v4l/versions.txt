@@ -39,6 +39,7 @@ VIDEO_XILINX
 VIDEO_OV5670
 # needs ktime_t as s64
 CEC_PIN
+IR_GPIO_TX
 
 [4.7.0]
 # needs i2c_mux_alloc
