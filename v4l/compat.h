@@ -2099,6 +2099,10 @@ static inline int pm_runtime_get_if_in_use(struct device *dev)
 }
 #endif
 
+#ifdef NEED_KEY_APPSELECT
+#define KEY_APPSELECT         0x244   /* AL Select Task/Application */
+#endif
+
 #ifndef __GFP_RETRY_MAYFAIL
 #define __GFP_RETRY_MAYFAIL __GFP_REPEAT
 #endif
