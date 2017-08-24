@@ -126,6 +126,8 @@ IR_SPI
 [3.8.0]
 # needs regmap lock/unlock ops
 DVB_TS2020
+# needs the PCI_DEVICE_SUB macro
+DVB_DDBRIDGE
 
 [3.7.0]
 # i2c_add_mux_adapter prototype change
