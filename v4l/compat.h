@@ -2107,4 +2107,10 @@ static inline int pm_runtime_get_if_in_use(struct device *dev)
 #define __GFP_RETRY_MAYFAIL __GFP_REPEAT
 #endif
 
+#ifdef NEED_PCI_DEVICE_SUB
+#define PCI_DEVICE_SUB(vend, dev, subvend, subdev) \
+	.vendor = (vend), .device = (dev), \
+	.subvendor = (subvend), .subdevice = (subdev)
+#endif
+
 #endif /*  _COMPAT_H */
