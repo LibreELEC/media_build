@@ -2056,6 +2056,11 @@ static inline int fwnode_graph_parse_endpoint(struct fwnode_handle *fwnode,
 static inline void fwnode_handle_get(struct fwnode_handle *fwnode)
 {
 }
+
+static inline void fwnode_handle_put(struct fwnode_handle *fwnode)
+{
+}
+
 #endif
 
 #ifdef NEED_TO_OF_NODE
