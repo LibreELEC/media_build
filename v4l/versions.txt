@@ -39,7 +39,6 @@ VIDEO_XILINX
 VIDEO_OV5670
 # needs ktime_t as s64
 CEC_PIN
-IR_GPIO_TX
 
 [4.7.0]
 # needs i2c_mux_alloc
@@ -84,6 +83,7 @@ VIDEO_ET8EK8
 VIDEO_OV2640
 VIDEO_OV7670
 VIDEO_OV5640
+IR_GPIO_TX
 # needs component_match_add
 VIDEO_VIMC
 
