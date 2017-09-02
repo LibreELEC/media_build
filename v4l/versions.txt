@@ -133,6 +133,8 @@ DVB_USB_AF9035
 DVB_USB_ZD1301
 # needs pcie_capability_clear_and_set_word
 DVB_NETUP_UNIDVB
+# needs devm_pwm_get
+IR_PWM_TX
 
 [3.6.0]
 # needs include/linux/sizes.h
