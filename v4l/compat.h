@@ -823,6 +823,7 @@ static inline void *vzalloc(unsigned long size)
 
 #ifdef NEED_KVZALLOC
 #include <linux/vmalloc.h>
+#include <linux/gfp.h>
 
 static inline void *kvzalloc(size_t size, gfp_t flags)
 {
