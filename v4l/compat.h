@@ -831,7 +831,7 @@ static inline void *kvzalloc(size_t size, gfp_t flags)
 
 static inline void *kvmalloc(size_t size, gfp_t flags)
 {
-	return vmalloc(size);
+	return (flags & __GFP_ZERO) ? vzalloc(size) : vmalloc(size);
 }
 
 static inline void *kvmalloc_array(size_t n, size_t size, gfp_t flags)
