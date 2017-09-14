@@ -823,6 +823,7 @@ static inline void *vzalloc(unsigned long size)
 
 #ifdef NEED_KVZALLOC
 #include <linux/vmalloc.h>
+#include <linux/gfp.h>
 
 static inline void *kvzalloc(size_t size, gfp_t flags)
 {
@@ -831,7 +832,7 @@ static inline void *kvzalloc(size_t size, gfp_t flags)
 
 static inline void *kvmalloc(size_t size, gfp_t flags)
 {
-	return vmalloc(size);
+	return (flags & __GFP_ZERO) ? vzalloc(size) : vmalloc(size);
 }
 
 static inline void *kvmalloc_array(size_t n, size_t size, gfp_t flags)
@@ -2056,6 +2057,11 @@ static inline int fwnode_graph_parse_endpoint(struct fwnode_handle *fwnode,
 static inline void fwnode_handle_get(struct fwnode_handle *fwnode)
 {
 }
+
+static inline void fwnode_handle_put(struct fwnode_handle *fwnode)
+{
+}
+
 #endif
 
 #ifdef NEED_TO_OF_NODE
@@ -2070,6 +2076,47 @@ static inline bool is_of_node(struct fwnode_handle *fwnode)
 {
 	return false;
 }
+#endif
+
+#ifdef NEED_SKB_PUT_DATA
+static inline void *skb_put_data(struct sk_buff *skb, const void *data,
+                                 unsigned int len)
+{
+        void *tmp = skb_put(skb, len);
+
+        memcpy(tmp, data, len);
+
+        return tmp;
+}
+#endif
+
+#ifdef NEED_PM_RUNTIME_GET
+static inline int pm_runtime_get_if_in_use(struct device *dev)
+{
+	unsigned long flags;
+	int retval;
+
+	spin_lock_irqsave(&dev->power.lock, flags);
+	retval = dev->power.disable_depth > 0 ? -EINVAL :
+		dev->power.runtime_status == RPM_ACTIVE
+			&& atomic_inc_not_zero(&dev->power.usage_count);
+	spin_unlock_irqrestore(&dev->power.lock, flags);
+	return retval;
+}
+#endif
+
+#ifdef NEED_KEY_APPSELECT
+#define KEY_APPSELECT         0x244   /* AL Select Task/Application */
+#endif
+
+#ifndef __GFP_RETRY_MAYFAIL
+#define __GFP_RETRY_MAYFAIL __GFP_REPEAT
+#endif
+
+#ifdef NEED_PCI_DEVICE_SUB
+#define PCI_DEVICE_SUB(vend, dev, subvend, subdev) \
+	.vendor = (vend), .device = (dev), \
+	.subvendor = (subvend), .subdevice = (subdev)
 #endif
 
 #endif /*  _COMPAT_H */
