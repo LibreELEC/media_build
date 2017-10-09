@@ -4,7 +4,7 @@
 
 -include ../v4l/.version
 
-MAINDIRS += drivers firmware include sound
+MAINDIRS += drivers include sound
 
 # Drivers source code
 TARDIR += drivers/media/
@@ -59,14 +59,6 @@ TARFILES += include/uapi/linux/cec-funcs.h
 
 # Other random files
 TARFILES += include/linux/fixp-arith.h
-
-# Firmware
-TARFILES += firmware/av7110/bootcode.bin.ihex
-TARFILES += firmware/av7110/Boot.S
-TARFILES += firmware/cpia2/stv0672_vp4.bin.ihex
-TARFILES += firmware/ihex2fw.c
-TARFILES += firmware/vicam/firmware.H16
-TARFILES += firmware/ttusb-budget/dspbootcode.bin.ihex
 
 DATE := `git --git-dir $(DIR)/.git log -n1 '--pretty=format:%h %ai' |perl -ne 'print "$$2-$$1" if (m/([\da-f]+)\s+(\S+)/)'`
 TODAY_TAR := linux-media-${DATE}.tar
