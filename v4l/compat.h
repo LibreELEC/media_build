@@ -6,11 +6,18 @@
 #define _COMPAT_H
 
 #include <linux/version.h>
+
+#include "config-compat.h"
+
+#ifdef NEED_ANNOTATE_REACHABLE
+#define annotate_reachable()
+#define annotate_unreachable()
+#endif
+
 #include <linux/compiler.h>
 #include <linux/input.h>
 #include <linux/init.h>
 #include <linux/idr.h>
-#include "config-compat.h"
 #include "../linux/kernel_version.h"
 
 #undef __devinitconst
