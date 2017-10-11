@@ -2166,4 +2166,8 @@ static inline unsigned long nsecs_to_jiffies_static(u64 n)
 
 #endif
 
+#ifdef NEED_U32_MAX
+#define U32_MAX     ((u32)~0U)
+#endif
+
 #endif /*  _COMPAT_H */
