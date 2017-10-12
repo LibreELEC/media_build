@@ -705,6 +705,7 @@ sub check_other_dependencies()
 	check_files_for_func("PCI_DEVICE_SUB", "NEED_PCI_DEVICE_SUB", "include/linux/pci.h");
 	check_files_for_func("annotate_reachable", "NEED_ANNOTATE_REACHABLE", "include/linux/compiler.h");
 	check_files_for_func("U32_MAX", "NEED_U32_MAX", "include/linux/kernel.h");
+	check_files_for_func("bsearch", "NEED_BSEARCH", "include/linux/bsearch.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");
