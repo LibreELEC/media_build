@@ -6,11 +6,18 @@
 #define _COMPAT_H
 
 #include <linux/version.h>
+
+#include "config-compat.h"
+
+#ifdef NEED_ANNOTATE_REACHABLE
+#define annotate_reachable()
+#define annotate_unreachable()
+#endif
+
 #include <linux/compiler.h>
 #include <linux/input.h>
 #include <linux/init.h>
 #include <linux/idr.h>
-#include "config-compat.h"
 #include "../linux/kernel_version.h"
 
 #undef __devinitconst
@@ -2156,6 +2163,52 @@ static inline unsigned long nsecs_to_jiffies_static(u64 n)
  */
 #define nsecs_to_jiffies64(_n) nsecs_to_jiffies64_static(_n)
 #define nsecs_to_jiffies(_n) nsecs_to_jiffies_static(_n)
+
+#endif
+
+#ifdef NEED_U32_MAX
+#define U32_MAX     ((u32)~0U)
+#endif
+
+#ifdef NEED_BSEARCH
+static inline void *bsearch(const void *key, const void *base, size_t num, size_t size,
+                            int (*cmp)(const void *key, const void *elt))
+{
+    const char *pivot;
+    int result;
+
+    while (num > 0) {
+        pivot = base + (num >> 1) * size;
+        result = cmp(key, pivot);
+
+        if (result == 0)
+            return (void *)pivot;
+
+        if (result > 0) {
+            base = pivot + size;
+            num--;
+        }
+        num >>= 1;
+    }
+
+    return NULL;
+}
+#endif
+
+#ifdef NEED_TIMER_SETUP
+#define TIMER_DATA_TYPE                unsigned long
+#define TIMER_FUNC_TYPE                void (*)(TIMER_DATA_TYPE)
+
+static inline void timer_setup(struct timer_list *timer,
+                              void (*callback)(struct timer_list *),
+                              unsigned int flags)
+{
+       __setup_timer(timer, (TIMER_FUNC_TYPE)callback,
+                     (TIMER_DATA_TYPE)timer, flags);
+}
+
+#define from_timer(var, callback_timer, timer_fieldname) \
+       container_of(callback_timer, typeof(*var), timer_fieldname)
 
 #endif
 
