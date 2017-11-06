@@ -707,6 +707,7 @@ sub check_other_dependencies()
 	check_files_for_func("U32_MAX", "NEED_U32_MAX", "include/linux/kernel.h");
 	check_files_for_func("bsearch", "NEED_BSEARCH", "include/linux/bsearch.h");
 	check_files_for_func("timer_setup", "NEED_TIMER_SETUP", "include/linux/timer.h");
+	check_files_for_func("fwnode_reference_args", "NEED_FWNODE_REF_ARGS", "include/linux/fwnode.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");

@@ -2212,4 +2212,22 @@ static inline void timer_setup(struct timer_list *timer,
 
 #endif
 
+#ifdef NEED_FWNODE_REF_ARGS
+#define NR_FWNODE_REFERENCE_ARGS 8
+struct fwnode_reference_args {
+	struct fwnode_handle *fwnode;
+	unsigned int nargs;
+	unsigned int args[NR_FWNODE_REFERENCE_ARGS];
+};
+
+static inline int fwnode_property_get_reference_args(const struct fwnode_handle *fwnode,
+				       const char *prop, const char *nargs_prop,
+				       unsigned int nargs, unsigned int index,
+				       struct fwnode_reference_args *args)
+{
+	return -ENOENT;
+}
+
+#endif
+
 #endif /*  _COMPAT_H */
