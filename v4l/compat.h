@@ -2195,6 +2195,15 @@ static inline void *bsearch(const void *key, const void *base, size_t num, size_
 }
 #endif
 
+#ifdef NEED_SETUP_TIMER
+#define __setup_timer(_timer, _fn, _data, _flags)                       \
+        do {                                                            \
+                init_timer(_timer);                                     \
+                (_timer)->function = (_fn);                             \
+                (_timer)->data = (_data);                               \
+        } while (0)
+#endif
+
 #ifdef NEED_TIMER_SETUP
 #define TIMER_DATA_TYPE                unsigned long
 #define TIMER_FUNC_TYPE                void (*)(TIMER_DATA_TYPE)
