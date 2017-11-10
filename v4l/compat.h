@@ -2195,6 +2195,15 @@ static inline void *bsearch(const void *key, const void *base, size_t num, size_
 }
 #endif
 
+#ifdef NEED_SETUP_TIMER
+#define __setup_timer(_timer, _fn, _data, _flags)                       \
+        do {                                                            \
+                init_timer(_timer);                                     \
+                (_timer)->function = (_fn);                             \
+                (_timer)->data = (_data);                               \
+        } while (0)
+#endif
+
 #ifdef NEED_TIMER_SETUP
 #define TIMER_DATA_TYPE                unsigned long
 #define TIMER_FUNC_TYPE                void (*)(TIMER_DATA_TYPE)
@@ -2210,6 +2219,55 @@ static inline void timer_setup(struct timer_list *timer,
 #define from_timer(var, callback_timer, timer_fieldname) \
        container_of(callback_timer, typeof(*var), timer_fieldname)
 
+#endif
+
+#ifdef NEED_FWNODE_REF_ARGS
+#define NR_FWNODE_REFERENCE_ARGS 8
+struct fwnode_handle;
+struct fwnode_reference_args {
+	struct fwnode_handle *fwnode;
+	unsigned int nargs;
+	unsigned int args[NR_FWNODE_REFERENCE_ARGS];
+};
+
+static inline int fwnode_property_get_reference_args(const struct fwnode_handle *fwnode,
+				       const char *prop, const char *nargs_prop,
+				       unsigned int nargs, unsigned int index,
+				       struct fwnode_reference_args *args)
+{
+	return -ENOENT;
+}
+#endif
+
+#ifdef NEED_FWNODE_FOR_EACH_CHILD_NODE
+static inline struct fwnode_handle *
+fwnode_get_next_child_node(struct fwnode_handle *fwnode,
+			   struct fwnode_handle *child)
+{
+	return NULL;
+}
+
+#define fwnode_for_each_child_node(fwnode, child)                       \
+        for (child = fwnode_get_next_child_node(fwnode, NULL); child;   \
+             child = fwnode_get_next_child_node(fwnode, child))
+
+static inline struct fwnode_handle *
+fwnode_graph_get_remote_port_parent(const struct fwnode_handle *fwnode)
+{
+	return NULL;
+}
+#endif
+
+#ifdef NEED_FWNODE_GRAPH_GET_PORT_PARENT
+static inline struct fwnode_handle *
+fwnode_graph_get_port_parent(const struct fwnode_handle *fwnode)
+{
+	return NULL;
+}
+static inline bool fwnode_device_is_available(struct fwnode_handle *fwnode)
+{
+	return false;
+}
 #endif
 
 #endif /*  _COMPAT_H */
