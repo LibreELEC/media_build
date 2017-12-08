@@ -26,6 +26,9 @@ add pr_fmt.patch
 add debug.patch
 add drx39xxj.patch
 
+[4.14.255]
+add v4.14_compiler_h.patch
+
 [4.12.255]
 add v4.12_revert_solo6x10_copykerneluser.patch
 
