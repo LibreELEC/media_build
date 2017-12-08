@@ -35,9 +35,9 @@ index f9e099d812c8..8b8ed13955b7 100644
 @@ -1,4 +1,5 @@
  // SPDX-License-Identifier: GPL-2.0
 +#undef pr_fmt
+ // SPDX-License-Identifier: GPL-2.0
  #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
  
- #include <media/drv-intf/saa7146_vv.h>
 diff --git a/drivers/media/common/saa7146/saa7146_video.c b/drivers/media/common/saa7146/saa7146_video.c
 index 2b631eaa65b3..0e28f4d46458 100644
 --- a/drivers/media/common/saa7146/saa7146_video.c
