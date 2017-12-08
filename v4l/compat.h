@@ -2270,4 +2270,9 @@ static inline bool fwnode_device_is_available(struct fwnode_handle *fwnode)
 }
 #endif
 
+#ifdef NEED_TIMER_SETUP_ON_STACK
+#define timer_setup_on_stack(timer, callback, flags)        \
+        setup_timer_on_stack((timer), (callback), (flags))
+#endif
+
 #endif /*  _COMPAT_H */
