@@ -2279,4 +2279,9 @@ static inline bool fwnode_device_is_available(struct fwnode_handle *fwnode)
 #define time64_to_tm(totalsecs, offset, result) time_to_tm((time_t)totalsecs, offset, result)
 #endif
 
+#ifdef NEED_READ_ONCE
+#define READ_ONCE(x)  ACCESS_ONCE(x)
+#endif
+
+
 #endif /*  _COMPAT_H */
