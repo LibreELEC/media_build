@@ -2275,4 +2275,8 @@ static inline bool fwnode_device_is_available(struct fwnode_handle *fwnode)
         setup_timer_on_stack((timer), (TIMER_FUNC_TYPE)(callback), (flags))
 #endif
 
+#ifdef NEED_TIME64_TO_TM
+#define time64_to_tm(totalsecs, offset, result) time_to_tm((time_t)totalsecs, offset, result)
+#endif
+
 #endif /*  _COMPAT_H */
