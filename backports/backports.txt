@@ -62,6 +62,9 @@ add v4.5_uvc_super_plus.patch
 [4.4.255]
 add v4.4_gpio_chip_parent.patch
 
+[4.3.255]
+add v4.3_add_autorepeat_handling.patch
+
 [4.2.255]
 add v4.2_atomic64.patch
 add v4.2_frame_vector.patch
