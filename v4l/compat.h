@@ -2283,5 +2283,12 @@ static inline bool fwnode_device_is_available(struct fwnode_handle *fwnode)
 #define READ_ONCE(x)  ACCESS_ONCE(x)
 #endif
 
+#ifdef NEED_USB_EP_CHECK
+static inline int usb_urb_ep_type_check(void *urb)
+{
+	/* This is for security. Backward compat may survive without that */
+	return 0;
+}
+#endif
 
 #endif /*  _COMPAT_H */
