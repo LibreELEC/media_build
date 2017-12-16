@@ -1,5 +1,5 @@
 diff --git a/drivers/media/rc/lirc_dev.c b/drivers/media/rc/lirc_dev.c
-index 42e7831a77e9..a61aaec9f498 100644
+index 42e7831a77e9..207c50d0325c 100644
 --- a/drivers/media/rc/lirc_dev.c
 +++ b/drivers/media/rc/lirc_dev.c
 @@ -21,7 +21,6 @@
@@ -19,7 +19,7 @@ index 42e7831a77e9..a61aaec9f498 100644
 +/* This mutex protects the irctls array */
 +static DEFINE_MUTEX(lirc_dev_lock);
 +
-+static struct lirc_dev *irctls[MAX_IRCTL_DEVICES];
++static struct rc_dev *irctls[RC_DEV_MAX];
  
  /* Only used for sysfs but defined to void otherwise */
  static struct class *lirc_class;
@@ -28,7 +28,7 @@ index 42e7831a77e9..a61aaec9f498 100644
  	struct rc_dev *rcdev = container_of(ld, struct rc_dev, lirc_dev);
  
 +	mutex_lock(&lirc_dev_lock);
-+	irctls[d->minor] = NULL;
++	irctls[MINOR(rcdev->lirc_dev.devt)] = NULL;
 +	mutex_unlock(&lirc_dev_lock);
 +
  	put_device(&rcdev->dev);
@@ -44,16 +44,16 @@ index 42e7831a77e9..a61aaec9f498 100644
 +	mutex_lock(&lirc_dev_lock);
 +
 +	/* find first free slot for driver */
-+	for (minor = 0; minor < MAX_IRCTL_DEVICES; minor++)
++	for (minor = 0; minor < RC_DEV_MAX; minor++)
 +		if (!irctls[minor])
 +			break;
 +
-+	if (minor == MAX_IRCTL_DEVICES) {
-+		dev_err(&d->dev, "no free slots for drivers!\n");
++	if (minor == RC_DEV_MAX) {
++		dev_err(&dev->dev, "no free slots for drivers!\n");
 +		mutex_unlock(&lirc_dev_lock);
 +		return -ENOMEM;
 +	}
-+	irctls[minor] = d;
++	irctls[minor] = dev;
 +	mutex_unlock(&lirc_dev_lock);
  
  	device_initialize(&dev->lirc_dev);
@@ -76,7 +76,7 @@ index 42e7831a77e9..a61aaec9f498 100644
  	cdev_device_del(&dev->lirc_cdev, &dev->lirc_dev);
 -	ida_simple_remove(&lirc_ida, MINOR(dev->lirc_dev.devt));
 +	mutex_lock(&lirc_dev_lock);
-+	irctls[minor] = NULL;
++	irctls[MINOR(dev->lirc_dev.devt)] = NULL;
 +	mutex_unlock(&lirc_dev_lock);
  }
  
