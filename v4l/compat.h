@@ -9,6 +9,16 @@
 
 #include "config-compat.h"
 
+#ifndef SZ_512
+#define SZ_512				0x00000200
+#endif
+#ifndef SZ_4K
+#define SZ_4K				0x00001000
+#endif
+#ifndef SZ_8K
+#define SZ_8K				0x00002000
+#endif
+
 #ifdef NEED_ANNOTATE_REACHABLE
 #define annotate_reachable()
 #define annotate_unreachable()
