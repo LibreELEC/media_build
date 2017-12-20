@@ -35,6 +35,8 @@ VIDEO_SOLO6X10
 [4.2.0]
 # needs led_trigger_remove
 V4L2_FLASH_LED_CLASS
+# needs regmap_write_bits
+MEDIA_TUNER_TDA18250
 
 [4.0.0]
 # needs of_property_read_u64_array
@@ -86,8 +88,6 @@ VIDEO_COBALT
 [3.13.0]
 # needs gpio/consumer.h
 RADIO_SI4713
-# needs regmap_reg_range
-MEDIA_TUNER_TDA18250
 
 [3.12.0]
 # BIN_ATTR_RW was changed
