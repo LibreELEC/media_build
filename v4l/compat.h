@@ -2301,4 +2301,17 @@ static inline int usb_urb_ep_type_check(void *urb)
 }
 #endif
 
+/* prototype of get_user_pages changed in Kernel 4.6. For older Kernels
+ * this will not compile */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+#ifdef NEED_GET_USER_PAGES_LONGTERM
+static inline long get_user_pages_longterm(unsigned long start,
+                unsigned long nr_pages, unsigned int gup_flags,
+                struct page **pages, struct vm_area_struct **vmas)
+{
+        return get_user_pages(start, nr_pages, gup_flags, pages, vmas);
+}
+#endif
+#endif
+
 #endif /*  _COMPAT_H */

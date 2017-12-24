@@ -715,6 +715,7 @@ sub check_other_dependencies()
 	check_files_for_func("time64_to_tm", "NEED_TIME64_TO_TM", "include/linux/time.h");
 	check_files_for_func("READ_ONCE", "NEED_READ_ONCE", "include/linux/compiler.h");
 	check_files_for_func("usb_urb_ep_type_check", "NEED_USB_EP_CHECK", "include/linux/usb.h");
+	check_files_for_func("get_user_pages_longterm", "NEED_GET_USER_PAGES_LONGTERM", "include/linux/mm.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");
