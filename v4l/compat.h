@@ -2314,4 +2314,8 @@ static inline long get_user_pages_longterm(unsigned long start,
 #endif
 #endif
 
+#ifdef NEED_PCI_EXP_DEVCTL2_COMP_TIMEOUT
+#define  PCI_EXP_DEVCTL2_COMP_TIMEOUT     0x000f
+#endif
+
 #endif /*  _COMPAT_H */
