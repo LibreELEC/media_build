@@ -35,6 +35,8 @@ VIDEO_SOLO6X10
 [4.3.0]
 # needs regmap_write_bits
 MEDIA_TUNER_TDA18250
+# Needs struct reg_sequence
+VIDEO_OV7740
 
 [4.2.0]
 # needs led_trigger_remove
