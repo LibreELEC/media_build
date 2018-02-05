@@ -33,7 +33,7 @@ index 44936d6..a61f632 100644
  
  	if (y_pages != y_dma.page_count || uv_pages != uv_dma.page_count) {
 diff --git a/drivers/media/v4l2-core/videobuf-dma-sg.c b/drivers/media/v4l2-core/videobuf-dma-sg.c
-index 1db0af6..f300f06 100644
+index f412429..323ae3a 100644
 --- a/drivers/media/v4l2-core/videobuf-dma-sg.c
 +++ b/drivers/media/v4l2-core/videobuf-dma-sg.c
 @@ -156,7 +156,6 @@ static int videobuf_dma_init_user_locked(struct videobuf_dmabuf *dma,
@@ -54,17 +54,18 @@ index 1db0af6..f300f06 100644
  	dprintk(1, "init user [0x%lx+0x%lx => %d pages]\n",
  		data, size, dma->nr_pages);
  
- 	err = get_user_pages(data & PAGE_MASK, dma->nr_pages,
+-	err = get_user_pages_longterm(data & PAGE_MASK, dma->nr_pages,
 -			     flags, dma->pages, NULL);
++	err = get_user_pages(data & PAGE_MASK, dma->nr_pages,
 +			     rw == READ, 1, /* force */
 +			     dma->pages, NULL);
  
  	if (err != dma->nr_pages) {
  		dma->nr_pages = (err >= 0) ? err : 0;
-diff --git a/drivers/media/v4l2-core/videobuf2-memops.c b/drivers/media/v4l2-core/videobuf2-memops.c
+diff --git a/drivers/media/common/videobuf2/videobuf2-memops.c b/drivers/media/common/videobuf2/videobuf2-memops.c
 index 1cd322e..3c3b517 100644
---- a/drivers/media/v4l2-core/videobuf2-memops.c
-+++ b/drivers/media/v4l2-core/videobuf2-memops.c
+--- a/drivers/media/common/videobuf2/videobuf2-memops.c
++++ b/drivers/media/common/videobuf2/videobuf2-memops.c
 @@ -42,10 +42,6 @@ struct frame_vector *vb2_create_framevec(unsigned long start,
  	unsigned long first, last;
  	unsigned long nr;

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Enable some staging drivers
-make allyesconfig
+#make allyesconfig
 
 echo "V4L drivers building..."
 make -j5
