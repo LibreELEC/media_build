@@ -2301,9 +2301,9 @@ static inline int usb_urb_ep_type_check(void *urb)
 }
 #endif
 
-/* prototype of get_user_pages changed in Kernel 4.6. For older Kernels
+/* prototype of get_user_pages changed in Kernel 4.9. For older Kernels
  * this will not compile */
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
 #ifdef NEED_GET_USER_PAGES_LONGTERM
 #include <linux/mm.h>
 static inline long get_user_pages_longterm(unsigned long start,
