@@ -78,6 +78,9 @@ add v4.0_dma_buf_export.patch
 add v4.0_drop_trace.patch
 add v4.0_fwnode.patch
 
+[3.19.255]
+add v3.19_get_user_pages_unlocked.patch
+
 [3.18.255]
 add v3.18_drop_property_h.patch
 add v3.18_ktime_get_real_seconds.patch
