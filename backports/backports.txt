@@ -80,6 +80,7 @@ add v4.0_drop_trace.patch
 add v4.0_fwnode.patch
 
 [3.19.255]
+add v3.19_get_user_pages_unlocked.patch
 add v3.19_get_user_pages_locked.patch
 
 [3.18.255]
