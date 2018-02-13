@@ -37,6 +37,11 @@
 #define uninitialized_var(x) x = x
 #endif
 
+#ifdef NEED_POLL_T
+typedef unsigned __poll_t;
+#include <linux/eventpoll.h>
+#endif
+
 #define SIZE_MAX    (~(size_t)0)
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0)
