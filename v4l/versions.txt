@@ -86,6 +86,8 @@ VIDEO_VIMC
 [3.15.0]
 # needs reset_control_get_optional
 RC_ST
+# needs of_property_count_u32_elems
+VIDEO_TDA1997X
 
 [3.14.0]
 # needs pci_enable_msi_range
