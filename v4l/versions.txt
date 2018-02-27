@@ -48,6 +48,8 @@ MEDIA_CEC_SUPPORT
 SDR_MAX2175
 # needs dma_wmb
 VIDEO_IPU3_CIO2
+# needs fwnode_property_present
+VIDEO_OV7670
 
 [3.18.0]
 # needs LED brightness support
@@ -67,17 +69,21 @@ VIDEO_ADV7180
 VIDEO_ET8EK8
 VIDEO_OV2640
 VIDEO_OV5645
-VIDEO_OV7670
 VIDEO_OV5640
 VIDEO_IMX274
 IR_GPIO_TX
 IR_GPIO_CIR
+VIDEO_OV5695
+VIDEO_OV9650
+VIDEO_OV2685
 # needs component_match_add
 VIDEO_VIMC
 
 [3.15.0]
 # needs reset_control_get_optional
 RC_ST
+# needs of_property_count_u32_elems
+VIDEO_TDA1997X
 
 [3.14.0]
 # needs pci_enable_msi_range
@@ -147,7 +153,6 @@ VIDEO_S5K5BAF
 VIDEO_S5K6A3
 VIDEO_OV2659
 # needs devm_gpio_request_one
-VIDEO_OV9650
 VIDEO_ADV7183
 VIDEO_VS6624
 VIDEO_NOON010PC30
