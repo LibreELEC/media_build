@@ -2336,4 +2336,9 @@ static inline long get_user_pages_longterm(unsigned long start,
 #define  PCI_EXP_DEVCTL2_COMP_TIMEOUT     0x000f
 #endif
 
+#ifdef NEED_PFN_TO_PHYS
+#include <linux/pfn.h>
+#define __pfn_to_phys(pfn)  PFN_PHYS(pfn)
+#endif
+
 #endif /*  _COMPAT_H */
