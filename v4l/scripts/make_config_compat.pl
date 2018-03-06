@@ -722,6 +722,7 @@ sub check_other_dependencies()
 	check_files_for_func_uapi("usb_endpoint_maxp_mult", "NEED_USB_ENDPOINT_MAXP_MULT", "usb/ch9.h");
 	check_files_for_func_uapi("PCI_EXP_DEVCTL2_COMP_TIMEOUT", "NEED_PCI_EXP_DEVCTL2_COMP_TIMEOUT", "pci_regs.h");
 	check_files_for_func_uapi("__poll_t", "NEED_POLL_T", "types.h");
+	check_files_for_func_uapi("__pfn_to_phys", "NEED_PFN_TO_PHYS", "include/asm-generic/memory_model.h");
 }
 
 # Do the basic rules
