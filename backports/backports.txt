@@ -46,6 +46,7 @@ add v4.9_ktime_cleanups.patch
 
 [4.8.255]
 add v4.8_user_pages_flag.patch
+add v4.8_em28xx_bitfield.patch
 
 [4.7.255]
 add v4.7_dma_attrs.patch
