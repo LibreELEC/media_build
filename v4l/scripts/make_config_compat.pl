@@ -723,6 +723,7 @@ sub check_other_dependencies()
 	check_files_for_func_uapi("PCI_EXP_DEVCTL2_COMP_TIMEOUT", "NEED_PCI_EXP_DEVCTL2_COMP_TIMEOUT", "pci_regs.h");
 	check_files_for_func_uapi("__poll_t", "NEED_POLL_T", "types.h");
 	check_files_for_func_uapi("__pfn_to_phys", "NEED_PFN_TO_PHYS", "include/asm-generic/memory_model.h");
+	check_files_for_func_uapi("next_pseudo_random32", "NEED_NEXT_PSEUDO_RANDOM32", "include/linux/random.h");
 }
 
 # Do the basic rules

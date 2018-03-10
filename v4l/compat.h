@@ -2341,4 +2341,11 @@ static inline long get_user_pages_longterm(unsigned long start,
 #define __pfn_to_phys(pfn)  PFN_PHYS(pfn)
 #endif
 
+#ifdef NEED_NEXT_PSEUDO_RANDOM32
+static inline u32 next_pseudo_random32(u32 seed)
+{
+	return seed * 1664525 + 1013904223;
+}
+#endif
+
 #endif /*  _COMPAT_H */
