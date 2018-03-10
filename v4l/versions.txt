@@ -35,7 +35,7 @@ VIDEO_SOLO6X10
 [4.3.0]
 # needs regmap_write_bits
 MEDIA_TUNER_TDA18250
-# Needs struct reg_sequence
+# needs struct reg_sequence
 VIDEO_OV7740
 
 [4.2.0]
@@ -100,6 +100,8 @@ VIDEO_COBALT
 [3.13.0]
 # needs gpio/consumer.h
 RADIO_SI4713
+SOC_CAMERA_TW9910
+VIDEO_TW9910
 
 [3.12.0]
 # BIN_ATTR_RW was changed
@@ -207,7 +209,6 @@ SOC_CAMERA_MT9V022
 SOC_CAMERA_MT9M001
 SOC_CAMERA_MT9T031
 SOC_CAMERA_OV772X
-SOC_CAMERA_TW9910
 SOC_CAMERA_PLATFORM
 # Needs of_match_ptr
 VIDEO_THS8200
