@@ -206,6 +206,8 @@ VIDEO_TVP7002
 VIDEO_VIVID
 # requires functions from clk.h
 VIDEO_OV5647
+# does not compile for older kernels
+CXD2880_SPI_DRV
 
 [3.2.0]
 # due to the rename at include/linux from "pm_qos_params.h" to "pm_qos.h"
