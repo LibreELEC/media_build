@@ -187,6 +187,7 @@ DVB_TDA10071
 DVB_SI2165
 # needs spi_finalize_current_message
 USB_MSI3101
+USB_MSI2500
 MEDIA_TUNER_MSI001
 # needs regmap_bulk_write
 MEDIA_TUNER_M88TS2022
