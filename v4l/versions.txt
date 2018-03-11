@@ -203,6 +203,8 @@ VIDEO_TVP514X
 VIDEO_TVP7002
 # requires new interface for alloc_ordered_workqueue
 VIDEO_VIVID
+# requires functions from clk.h
+VIDEO_OV5647
 
 [3.2.0]
 # due to the rename at include/linux from "pm_qos_params.h" to "pm_qos.h"
