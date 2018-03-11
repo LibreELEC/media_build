@@ -201,6 +201,8 @@ VIDEO_MEM2MEM_DEINTERLACE
 # Needs of_node_put
 VIDEO_TVP514X
 VIDEO_TVP7002
+# requires new interface for alloc_ordered_workqueue
+VIDEO_VIVID
 
 [3.2.0]
 # due to the rename at include/linux from "pm_qos_params.h" to "pm_qos.h"
