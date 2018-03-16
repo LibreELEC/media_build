@@ -120,6 +120,7 @@ add v3.6_i2c_add_mux_adapter.patch
 
 [3.4.255]
 add v3.4_i2c_add_mux_adapter.patch
+add v3.4_stk_webcam.patch
 
 [3.3.255]
 add v3.3_eprobe_defer.patch
@@ -132,7 +133,6 @@ add v3.2_alloc_ordered_workqueue.patch
 add v3.1_no_export_h.patch
 add v3.1_no_dma_buf_h.patch
 add v3.1_no_pm_qos.patch
-add v3.1_stk_webcam.patch
 
 [3.0.255]
 add no_atomic_include.patch
