@@ -157,6 +157,7 @@ VIDEO_MT9T001
 VIDEO_S5K5BAF
 VIDEO_S5K6A3
 VIDEO_OV2659
+VIDEO_OV5647
 # needs devm_gpio_request_one
 VIDEO_ADV7183
 VIDEO_VS6624
@@ -204,8 +205,6 @@ VIDEO_TVP514X
 VIDEO_TVP7002
 # requires new interface for alloc_ordered_workqueue
 VIDEO_VIVID
-# requires functions from clk.h
-VIDEO_OV5647
 # does not compile for older kernels
 CXD2880_SPI_DRV
 
