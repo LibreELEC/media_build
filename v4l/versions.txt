@@ -235,6 +235,8 @@ VIDEO_VIA_CAMERA
 # needs div64_s64
 MEDIA_TUNER_QM1D1C0042
 DVB_TC90522
+# requires linux/atomic.h
+DVB_CXD2880
 
 [2.6.36]
 
