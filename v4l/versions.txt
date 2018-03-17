@@ -198,6 +198,8 @@ MEDIA_TUNER_IT913X
 DVB_AF9033
 DVB_MN88472
 DVB_MN88473
+# does not compile for older kernels
+CXD2880_SPI_DRV
 
 [3.3.0]
 # Needs struct dma_interleaved_template in dmaengine.h
@@ -207,8 +209,6 @@ VIDEO_TVP514X
 VIDEO_TVP7002
 # requires new interface for alloc_ordered_workqueue
 VIDEO_VIVID
-# does not compile for older kernels
-CXD2880_SPI_DRV
 
 [3.2.0]
 # due to the rename at include/linux from "pm_qos_params.h" to "pm_qos.h"
