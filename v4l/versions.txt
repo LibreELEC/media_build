@@ -96,6 +96,8 @@ VIDEO_TDA1997X
 [3.14.0]
 # needs pci_enable_msi_range
 VIDEO_COBALT
+# requires m2m_ctx in struct v4l2_fh
+VIDEO_VIM2M
 
 [3.13.0]
 # needs gpio/consumer.h
