@@ -2350,10 +2350,9 @@ static inline u32 next_pseudo_random32(u32 seed)
 
 #ifdef NEED_I2C_NEW_SECONDARY_DEV
 #include <linux/i2c.h>
-static inline
-struct i2c_client *i2c_new_secondary_device(struct i2c_client *client,
-					    const char *name,
-					    u16 default_addr)
+static inline struct i2c_client *i2c_new_secondary_device(struct i2c_client *client,
+							  const char *name,
+							  u16 default_addr)
 {
 	struct device_node *np = client->dev.of_node;
 	u32 addr = default_addr;
@@ -2367,6 +2366,31 @@ struct i2c_client *i2c_new_secondary_device(struct i2c_client *client,
 
 	dev_dbg(&client->adapter->dev, "Address for %s : 0x%x\n", name, addr);
 	return i2c_new_dummy(client->adapter, addr);
+}
+#endif
+
+
+#ifdef NEED_MEMDUP_USER_NUL
+static inline void *memdup_user_nul(const void __user *src, size_t len)
+{
+	char *p;
+
+	/*
+	 * Always use GFP_KERNEL, since copy_from_user() can sleep and
+	 * cause pagefault, which makes it pointless to use GFP_NOFS
+	 * or GFP_ATOMIC.
+	 */
+	p = kmalloc_track_caller(len + 1, GFP_KERNEL);
+	if (!p)
+		return ERR_PTR(-ENOMEM);
+
+	if (copy_from_user(p, src, len)) {
+		kfree(p);
+		return ERR_PTR(-EFAULT);
+	}
+	p[len] = '\0';
+
+	return p;
 }
 #endif
 
