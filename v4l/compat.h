@@ -2394,4 +2394,8 @@ static inline void *memdup_user_nul(const void __user *src, size_t len)
 }
 #endif
 
+#ifdef NEED_KEY_SCREENSAVER
+#define KEY_SCREENSAVER     0x245   /* AL Screen Saver */
+#endif
+
 #endif /*  _COMPAT_H */
