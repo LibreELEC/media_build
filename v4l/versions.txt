@@ -21,6 +21,8 @@ DVB_SI2168
 DVB_RTL2830
 DVB_RTL2832
 DVB_M88DS3103
+# needs struct i2c_mux_core
+DVB_AF9013
 
 [4.6.0]
 # needs regmap_write_bits
@@ -168,8 +170,6 @@ VIDEO_NOON010PC30
 VIDEO_S5K6AA
 # needs dev_err_ratelimited
 MEDIA_TUNER_E4000
-# regmap_init has different arguments
-DVB_AF9013
 
 [3.4.0]
 # needs devm_regulator_bulk_get
