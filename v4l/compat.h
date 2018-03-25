@@ -2348,4 +2348,26 @@ static inline u32 next_pseudo_random32(u32 seed)
 }
 #endif
 
+#ifdef NEED_I2C_NEW_SECONDARY_DEV
+#include <linux/i2c.h>
+static inline
+struct i2c_client *i2c_new_secondary_device(struct i2c_client *client,
+					    const char *name,
+					    u16 default_addr)
+{
+	struct device_node *np = client->dev.of_node;
+	u32 addr = default_addr;
+	int i;
+
+	if (np) {
+		i = of_property_match_string(np, "reg-names", name);
+		if (i >= 0)
+			of_property_read_u32_index(np, "reg", i, &addr);
+	}
+
+	dev_dbg(&client->adapter->dev, "Address for %s : 0x%x\n", name, addr);
+	return i2c_new_dummy(client->adapter, addr);
+}
+#endif
+
 #endif /*  _COMPAT_H */
