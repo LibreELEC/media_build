@@ -2348,6 +2348,9 @@ static inline u32 next_pseudo_random32(u32 seed)
 }
 #endif
 
+/* of_property_read_u32_index is available since Kernel 3.10. For older Kernels
+ * this will not compile */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 10, 0)
 #ifdef NEED_I2C_NEW_SECONDARY_DEV
 #include <linux/i2c.h>
 static inline struct i2c_client *i2c_new_secondary_device(struct i2c_client *client,
@@ -2368,7 +2371,7 @@ static inline struct i2c_client *i2c_new_secondary_device(struct i2c_client *cli
 	return i2c_new_dummy(client->adapter, addr);
 }
 #endif
-
+#endif
 
 #ifdef NEED_MEMDUP_USER_NUL
 static inline void *memdup_user_nul(const void __user *src, size_t len)
