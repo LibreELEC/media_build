@@ -170,6 +170,8 @@ VIDEO_NOON010PC30
 VIDEO_S5K6AA
 # needs dev_err_ratelimited
 MEDIA_TUNER_E4000
+# needs regmap_init with 4 arguments
+DVB_USB_AF9015
 
 [3.4.0]
 # needs devm_regulator_bulk_get
@@ -220,10 +222,6 @@ SOC_CAMERA_OV772X
 SOC_CAMERA_PLATFORM
 # Needs of_match_ptr
 VIDEO_THS8200
-
-[3.1.0]
-# needs regmap.h
-DVB_USB_AF9015
 
 [3.0.0]
 # fw_iso_context_queue_flush
