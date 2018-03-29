@@ -30,12 +30,6 @@
 #include <linux/idr.h>
 #include "../linux/kernel_version.h"
 
-#ifdef RETPOLINE
-#ifndef __noretpoline
-#define __noretpoline __attribute__((indirect_branch("keep")))
-#endif
-#endif
-
 #undef __devinitconst
 #define __devinitconst
 
