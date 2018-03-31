@@ -144,6 +144,7 @@ add v3.0_remove_ida_lird_dev.patch
 
 [2.6.39]
 add v2.6_rc_main_bsearch_h.patch
+add v2.6.39_const_rc_main.patch
 
 [2.6.38]
 add v2.6.38_use_getkeycode_new_setkeycode_new.patch
