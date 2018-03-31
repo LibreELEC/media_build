@@ -52,6 +52,7 @@ add v4.8_em28xx_bitfield.patch
 add v4.7_dma_attrs.patch
 add v4.7_pci_alloc_irq_vectors.patch
 add v4.7_copy_to_user_warning.patch
+add v4.7_objtool_warning.patch
 
 [4.6.255]
 add v4.6_i2c_mux.patch
