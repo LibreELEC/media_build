@@ -720,6 +720,7 @@ sub check_other_dependencies()
 	check_files_for_func("next_pseudo_random32", "NEED_NEXT_PSEUDO_RANDOM32", "include/linux/random.h");
 	check_files_for_func("i2c_new_secondary_device", "NEED_I2C_NEW_SECONDARY_DEV", "include/linux/i2c.h");
 	check_files_for_func("memdup_user_nul", "NEED_MEMDUP_USER_NUL", "include/linux/string.h");
+	check_files_for_func("STACK_FRAME_NON_STANDARD", "NEED_STACK_FRAME_NON_STANDARD", "include/linux/frame.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");

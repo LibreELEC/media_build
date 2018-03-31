@@ -2401,4 +2401,11 @@ static inline void *memdup_user_nul(const void __user *src, size_t len)
 #define KEY_SCREENSAVER     0x245   /* AL Screen Saver */
 #endif
 
+#ifdef NEED_STACK_FRAME_NON_STANDARD
+#define STACK_FRAME_NON_STANDARD(func)
+#else
+/* be sure STACK_FRAME_NON_STANDARD is defined */
+#include <linux/frame.h>
+#endif
+
 #endif /*  _COMPAT_H */
