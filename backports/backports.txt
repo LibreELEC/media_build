@@ -142,7 +142,6 @@ add v3.1_no_pm_qos.patch
 
 [3.0.255]
 add no_atomic_include.patch
-add v4l2-compat-timespec.patch
 add v3.0_ida2bit.patch
 add v3.0_remove_ida_lird_dev.patch
 
