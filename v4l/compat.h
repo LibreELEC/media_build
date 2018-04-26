@@ -2461,4 +2461,11 @@ static inline bool kthread_freezable_should_stop(bool *was_frozen)
 typedef int vm_fault_t;
 #endif
 
+/* header location for of_find_i2c_[device,adapter]_by_node */
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 12, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 5, 0)
+#include <linux/of_i2c.h>
+#endif
+#endif
+
 #endif /*  _COMPAT_H */
