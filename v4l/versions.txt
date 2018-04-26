@@ -17,6 +17,10 @@ RADIO_WL128X
 # needs *probe_new in struct i2c_driver
 VIDEO_OV5670
 
+[4.8.0]
+# needs i2c_new_secondary_device
+VIDEO_ADV748X
+
 [4.7.0]
 # needs i2c_mux_alloc
 DVB_RTL2830
