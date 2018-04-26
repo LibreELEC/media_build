@@ -188,6 +188,7 @@ MEDIA_TUNER_E4000
 DVB_USB_AF9015
 # needs of_find_i2c_adapter_by_node
 DVB_C8SECTPFE
+SOC_CAMERA
 
 [3.4.0]
 # needs devm_regulator_bulk_get
@@ -232,7 +233,6 @@ VIDEO_GS1662
 
 [3.2.0]
 # due to the rename at include/linux from "pm_qos_params.h" to "pm_qos.h"
-SOC_CAMERA
 SOC_CAMERA_MT9V022
 SOC_CAMERA_MT9M001
 SOC_CAMERA_MT9T031
