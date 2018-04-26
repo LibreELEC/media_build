@@ -88,7 +88,7 @@ ifneq ($(filter $(no-makefile-media-targets), $(MAKECMDGOALS)),)
 endif
 
 makefile-mm := 1
-ifeq ($(wildcard ../linux/mm/frame_vector.c),)
+ifeq ("$(wildcard $(obj)/frame_vector.c)","")
 	makefile-mm := 0
 endif
 
