@@ -186,6 +186,8 @@ VIDEO_S5K6AA
 MEDIA_TUNER_E4000
 # needs regmap_init with 4 arguments
 DVB_USB_AF9015
+# needs of_find_i2c_adapter_by_node
+DVB_C8SECTPFE
 
 [3.4.0]
 # needs devm_regulator_bulk_get
