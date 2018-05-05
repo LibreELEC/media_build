@@ -3,6 +3,10 @@
 INTEL_ATOMISP
 VIDEO_DW9714
 
+[4.16.0]
+# Needs device_get_match_data
+VIDEO_I2C
+
 [4.13.0]
 # Needs multiplexer support
 VIDEO_MUX
