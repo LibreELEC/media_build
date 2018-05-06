@@ -2421,4 +2421,14 @@ static inline void pci_free_irq_vectors(struct pci_dev *dev)
 }
 #endif
 
+#ifdef NEED_PCI_IRQ_VECTOR
+#include <linux/pci.h>
+static inline int pci_irq_vector(struct pci_dev *dev, unsigned int nr)
+{
+        if (WARN_ON_ONCE(nr > 0))
+                    return -EINVAL;
+            return dev->irq;
+}
+#endif
+
 #endif /*  _COMPAT_H */
