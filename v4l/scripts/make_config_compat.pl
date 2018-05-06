@@ -721,6 +721,7 @@ sub check_other_dependencies()
 	check_files_for_func("i2c_new_secondary_device", "NEED_I2C_NEW_SECONDARY_DEV", "include/linux/i2c.h");
 	check_files_for_func("memdup_user_nul", "NEED_MEMDUP_USER_NUL", "include/linux/string.h");
 	check_files_for_func("STACK_FRAME_NON_STANDARD", "NEED_STACK_FRAME_NON_STANDARD", "include/linux/frame.h");
+	check_files_for_func("pci_free_irq_vectors", "NEED_PCI_FREE_IRQ_VECTORS", "include/linux/pci.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");

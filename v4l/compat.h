@@ -2414,4 +2414,11 @@ static inline void *memdup_user_nul(const void __user *src, size_t len)
 #include <linux/frame.h>
 #endif
 
+#ifdef NEED_PCI_FREE_IRQ_VECTORS
+#include <linux/pci.h>
+static inline void pci_free_irq_vectors(struct pci_dev *dev)
+{
+}
+#endif
+
 #endif /*  _COMPAT_H */
