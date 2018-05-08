@@ -2431,4 +2431,8 @@ static inline int pci_irq_vector(struct pci_dev *dev, unsigned int nr)
 }
 #endif
 
+#ifdef NEED_U8_MAX
+#define U8_MAX      ((u8)~0U)
+#endif
+
 #endif /*  _COMPAT_H */
