@@ -2435,4 +2435,26 @@ static inline int pci_irq_vector(struct pci_dev *dev, unsigned int nr)
 #define U8_MAX      ((u8)~0U)
 #endif
 
+#ifdef NEED_KTHREAD_FREEZABLE_SHOULD_STOP
+#include <linux/freezer.h>
+#include <linux/kthread.h>
+static inline bool kthread_freezable_should_stop(bool *was_frozen)
+{
+	bool frozen = false;
+
+	might_sleep();
+
+	if (unlikely(freezing(current))) {
+		/* __refrigerator is not available for Kernels older than 3.3
+		 * so we can only sa false */
+		frozen = false;
+	}
+
+	if (was_frozen)
+		*was_frozen = frozen;
+
+	return kthread_should_stop();
+}
+#endif
+
 #endif /*  _COMPAT_H */
