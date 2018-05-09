@@ -2436,8 +2436,8 @@ static inline int pci_irq_vector(struct pci_dev *dev, unsigned int nr)
 #endif
 
 #ifdef NEED_KTHREAD_FREEZABLE_SHOULD_STOP
-#include <linux/freezer.h>
 #include <linux/kthread.h>
+#include <linux/freezer.h>
 static inline bool kthread_freezable_should_stop(bool *was_frozen)
 {
 	bool frozen = false;
