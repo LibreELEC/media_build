@@ -43,8 +43,6 @@ add v4.10_refcount.patch
 [4.9.255]
 add v4.9_mm_address.patch
 add v4.9_dvb_net_max_mtu.patch
-add v4.9_revert_ktime_set.patch
-add v4.9_use_ktime_set_in_pt1.patch
 
 [4.8.255]
 add v4.8_user_pages_flag.patch
