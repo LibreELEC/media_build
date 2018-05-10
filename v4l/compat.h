@@ -2457,4 +2457,8 @@ static inline bool kthread_freezable_should_stop(bool *was_frozen)
 }
 #endif
 
+#ifdef NEED_VM_FAULT_T
+typedef int vm_fault_t;
+#endif
+
 #endif /*  _COMPAT_H */

@@ -725,6 +725,7 @@ sub check_other_dependencies()
 	check_files_for_func(" pci_irq_vector", "NEED_PCI_IRQ_VECTOR", "include/linux/pci.h");
 	check_files_for_func("U8_MAX", "NEED_U8_MAX", "include/linux/kernel.h");
 	check_files_for_func("kthread_freezable_should_stop", "NEED_KTHREAD_FREEZABLE_SHOULD_STOP", "include/linux/kthread.h");
+	check_files_for_func(" vm_fault_t;", "NEED_VM_FAULT_T", "include/linux/mm_types.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");
