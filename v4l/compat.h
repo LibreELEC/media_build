@@ -8,6 +8,29 @@
 #include <linux/version.h>
 
 #include "config-compat.h"
+/*
+ * config-mycompat.h is for use with kernels/distros whose maintainers
+ * have integrated various backports, which the media_build system does
+ * not pick up on for whatever reason. At that point there are options
+ * defined in config-compat.h, which enable backports here, in compat.h,
+ * but which already exist in the target kernel. This allows disabling of
+ * specific backports for a particular build, allowing compliation to succeed.
+
+ * For example, if the following three statements exist in config-mycompat.h:
+
+ * #undef NEED_WRITEL_RELAXED
+ * #undef NEED_PM_RUNTIME_GET
+ * #undef NEED_PFN_TO_PHYS
+
+ * Those three media_build backports will be disabled in this file and
+ * compilation on a problematic kernel will succeed without issue.
+ * conifg-mycompat.h should be used strictly for disabling media_build
+ * backports causing compilation issues. It will typically be left empty.
+ *
+ * WARNING: v4l/config-mycompat.h is removed by distclean, the file
+ * should be saved externally and copied into v4l/ when required.
+ */
+#include "config-mycompat.h"
 
 #ifndef SZ_512
 #define SZ_512				0x00000200
