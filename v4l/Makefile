@@ -273,7 +273,7 @@ links::
 	@find ../linux/drivers/misc -name '*.[ch]' -type f -print0 | xargs -0n 255 ln -sf --target-directory=.
 
 config-compat.h:: $(obj)/.version .myconfig scripts/make_config_compat.pl
-	-touch $(obj)/config-mycompat.h
+	[ ! -f "$(obj)/config-mycompat.h" ] && echo "/* empty config-mycompat.h */" > "$(obj)/config-mycompat.h" || true
 	perl scripts/make_config_compat.pl $(SRCDIR) $(obj)/.myconfig $(obj)/config-compat.h
 
 kernel-links makelinks::
