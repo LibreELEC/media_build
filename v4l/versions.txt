@@ -16,6 +16,7 @@ RADIO_WL128X
 [4.10.0]
 # needs *probe_new in struct i2c_driver
 VIDEO_OV5670
+VIDEO_OV7251
 
 [4.8.0]
 # needs i2c_new_secondary_device
