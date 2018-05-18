@@ -2492,4 +2492,8 @@ typedef int vm_fault_t;
 #endif
 #endif
 
+#ifdef NEED_ARRAY_INDEX_NOSPEC
+#define array_index_nospec(index, size)    index
+#endif
+
 #endif /*  _COMPAT_H */
