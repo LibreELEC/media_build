@@ -2494,6 +2494,12 @@ typedef int vm_fault_t;
 
 #ifdef NEED_ARRAY_INDEX_NOSPEC
 #define array_index_nospec(index, size)    index
+#else
+/* Some older Kernels got a backport, but we removed the include of
+ * "linux/nospec.h" with patch "v4.13_remove_nospec_h.patch". Thus
+ * including it again.
+ */
+#include <linux/nospec.h>
 #endif
 
 #endif /*  _COMPAT_H */
