@@ -112,12 +112,12 @@ VIDEO_TDA1997X
 VIDEO_COBALT
 # requires m2m_ctx in struct v4l2_fh
 VIDEO_VIM2M
+# requires devm_phy_optional_get
+VIDEO_CADENCE_CSI2RX
 
 [3.13.0]
 # needs gpio/consumer.h
 RADIO_SI4713
-# requires phy/phy.h
-VIDEO_CADENCE_CSI2RX
 
 [3.12.0]
 # BIN_ATTR_RW was changed
