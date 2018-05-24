@@ -19,9 +19,9 @@ my @git;
 #my $main_branch = "master";
 #my $firmware_url = "http://www.linuxtv.org/downloads/firmware/";
 
-my $main_git_url = "https://github.com/crazycat69/linux_media.git";
+my $main_git_url = "https://bitbucket.org/crazycat/linux_media.git";
 my $main_branch = "latest";
-my $firmware_url = "https://bitbucket.org/CrazyCat/media_build/downloads";
+my $firmware_url = "https://bitbucket.org/crazycat/media_build/downloads";
 my $firmware_tarball = "dvb-firmwares.tar.bz2";
 
 GetOptions('v|verbose' => \$level,
