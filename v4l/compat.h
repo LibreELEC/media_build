@@ -2502,4 +2502,9 @@ typedef int vm_fault_t;
 #include <linux/nospec.h>
 #endif
 
+#ifdef NEED_LIST_FIRST_ENTRY_OR_NULL
+#define list_first_entry_or_null(ptr, type, member) \
+        (!list_empty(ptr) ? list_first_entry(ptr, type, member) : NULL)
+#endif
+
 #endif /*  _COMPAT_H */
