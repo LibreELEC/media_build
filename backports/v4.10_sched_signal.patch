@@ -182,18 +182,6 @@ index 89f2f2a..0456f2d 100644
  
  #include "solo6x10.h"
  
-diff --git a/drivers/media/pci/zoran/zoran_device.c b/drivers/media/pci/zoran/zoran_device.c
-index 40adcee..671907a 100644
---- a/drivers/media/pci/zoran/zoran_device.c
-+++ b/drivers/media/pci/zoran/zoran_device.c
-@@ -28,7 +28,6 @@
- #include <linux/module.h>
- #include <linux/vmalloc.h>
- #include <linux/ktime.h>
--#include <linux/sched/signal.h>
- 
- #include <linux/interrupt.h>
- #include <linux/proc_fs.h>
 diff --git a/drivers/media/platform/vivid/vivid-radio-rx.c b/drivers/media/platform/vivid/vivid-radio-rx.c
 index 1f86d7d..854325d 100644
 --- a/drivers/media/platform/vivid/vivid-radio-rx.c
@@ -257,6 +245,18 @@ index 2e5c346..09e86b3 100644
  #include <linux/slab.h>
  #include <linux/interrupt.h>
  
+diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
+index 40adcee..671907a 100644
+--- a/drivers/staging/media/zoran/zoran_device.c
++++ b/drivers/staging/media/zoran/zoran_device.c
+@@ -28,7 +28,6 @@
+ #include <linux/module.h>
+ #include <linux/vmalloc.h>
+ #include <linux/ktime.h>
+-#include <linux/sched/signal.h>
+ 
+ #include <linux/interrupt.h>
+ #include <linux/proc_fs.h>
 diff --git a/include/media/v4l2-ioctl.h b/include/media/v4l2-ioctl.h
 index a7b3f7c..a63034b 100644
 --- a/include/media/v4l2-ioctl.h
