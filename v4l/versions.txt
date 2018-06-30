@@ -22,6 +22,7 @@ RADIO_WL128X
 VIDEO_OV5670
 VIDEO_OV7251
 VIDEO_IMX258
+VIDEO_DW9807
 
 [4.8.0]
 # needs i2c_new_secondary_device
