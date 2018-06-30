@@ -2507,4 +2507,8 @@ typedef int vm_fault_t;
         (!list_empty(ptr) ? list_first_entry(ptr, type, member) : NULL)
 #endif
 
+#ifdef NEED_STRUCT_SIZE
+#include <linux/overflow.h>
+#endif
+
 #endif /*  _COMPAT_H */
