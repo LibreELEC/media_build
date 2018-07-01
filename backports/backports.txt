@@ -102,6 +102,7 @@ add v3.18_ktime_get_real_seconds.patch
 
 [3.17.255]
 add v3.17_fix_clamp.patch
+add v3.17_remove_bpf_h.patch
 
 [3.16.255]
 add v3.16_netdev.patch

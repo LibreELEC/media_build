@@ -106,6 +106,8 @@ VIDEO_OV772X
 SOC_CAMERA_OV772X
 # needs component_match_add
 VIDEO_VIMC
+# needs bpf.h
+BPF_LIRC_MODE2
 
 [3.15.0]
 # needs reset_control_get_optional
