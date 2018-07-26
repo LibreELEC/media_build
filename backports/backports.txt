@@ -29,6 +29,7 @@ add noretpoline.patch
 
 [4.17.255]
 add v4.17_proc_create_single.patch
+add v4.17_i2c_check_num_msgs.patch
 
 [4.15.255]
 add v4.15_pmdown_time.patch
