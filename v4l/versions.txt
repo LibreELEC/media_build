@@ -25,6 +25,7 @@ VIDEO_IMX258
 VIDEO_DW9807
 VIDEO_AK7375
 VIDEO_DW9807_VCM
+VIDEO_OV2680
 
 [4.8.0]
 # needs i2c_new_secondary_device
