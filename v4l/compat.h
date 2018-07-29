@@ -2526,4 +2526,9 @@ typedef int vm_fault_t;
 #include <linux/overflow.h>
 #endif
 
+#ifdef NEED_LIST_LAST_ENTRY
+#define list_last_entry(ptr, type, member) \
+        list_entry((ptr)->prev, type, member)
+#endif
+
 #endif /*  _COMPAT_H */
