@@ -124,6 +124,7 @@ RC_ST
 VIDEO_COBALT
 # requires m2m_ctx in struct v4l2_fh
 VIDEO_VIM2M
+VIDEO_VICODEC
 # requires devm_phy_optional_get
 VIDEO_CADENCE_CSI2RX
 
