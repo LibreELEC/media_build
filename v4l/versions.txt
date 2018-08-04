@@ -28,6 +28,10 @@ VIDEO_DW9807_VCM
 VIDEO_OV2680
 VIDEO_MT9V111
 
+[4.9.0]
+# needs linux/bitfield.h
+DVB_MN88443X
+
 [4.8.0]
 # needs i2c_new_secondary_device
 VIDEO_ADV748X
