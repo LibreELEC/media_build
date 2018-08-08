@@ -27,9 +27,6 @@ add debug.patch
 add drx39xxj.patch
 add noretpoline.patch
 
-[4.18.255]
-add v4.18_fix_warning_in_Aptina_MT9V111.patch
-
 [4.17.255]
 add v4.17_proc_create_single.patch
 add v4.17_i2c_check_num_msgs.patch
