@@ -680,7 +680,7 @@ sub check_other_dependencies()
 	check_files_for_func("ktime_get_ns", "NEED_KTIME_GET_NS", "include/linux/timekeeping.h");
 	check_files_for_func("div64_u64_rem", "NEED_DIV64_U64_REM", "include/linux/math64.h");
 	check_files_for_func("led_set_brightness_sync", "NEED_LED_SET_BRIGHTNESS", "include/linux/leds.h");
-	check_files_for_func("GENMASK_ULL", "NEED_GENMASK_ULL", "include/linux/bitops.h");
+	check_files_for_func("GENMASK_ULL", "NEED_GENMASK_ULL", "include/linux/bitops.h", "include/linux/bits.h");
 	check_files_for_func("ida_simple_remove", "NEED_IDA_SIMPLE_REMOVE", "include/linux/idr.h");
 	check_files_for_func("ktime_get_boottime", "NEED_KTIME_GET_BOOTTIME", "include/linux/hrtimer.h", "include/linux/timekeeping.h");
 	check_files_for_func("BUS_CEC", "NEED_BUS_CEC", "include/uapi/linux/input.h");
