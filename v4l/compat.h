@@ -1163,17 +1163,6 @@ static inline size_t memweight(const void *ptr, size_t bytes)
 		       pci_unregister_driver)
 #endif
 
-#ifdef NEED_LOCK_ADAPTER
-static inline void i2c_lock_adapter(struct i2c_adapter *adapter)
-{
-	mutex_lock(&adapter->bus_lock);
-}
-static inline void i2c_unlock_adapter(struct i2c_adapter *adapter)
-{
-	mutex_unlock(&adapter->bus_lock);
-}
-#endif
-
 #ifdef NEED_I2C_PROBE_FUNC_QUICK_READ
 static inline int i2c_probe_func_quick_read(struct i2c_adapter *adap, unsigned short addr)
 {
