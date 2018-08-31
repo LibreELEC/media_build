@@ -657,7 +657,7 @@ sub check_other_dependencies()
 	check_files_for_func("kref_get_unless_zero", "NEED_KREF_GET_UNLESS_ZERO", "include/linux/kref.h");
 	check_files_for_func("prandom_u32_max", "NEED_PRANDOM_U32_MAX", "include/linux/random.h");
 	check_files_for_func("prandom_u32", "NEED_PRANDOM_U32", "include/linux/random.h");
-	check_files_for_func("GENMASK", "NEED_GENMASK", "include/linux/bitops.h");
+	check_files_for_func("GENMASK", "NEED_GENMASK", "include/linux/bitops.h", "include/linux/bits.h");
 	check_files_for_func("mult_frac", "NEED_MULT_FRAC", "include/linux/kernel.h");
 	check_files_for_func("clk_prepare_enable", "NEED_CLOCK_HELPERS", "include/linux/clk.h");
 	check_files_for_func("IS_MODULE", "NEED_IS_MODULE", "include/linux/kconfig.h");
