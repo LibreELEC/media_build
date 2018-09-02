@@ -2521,10 +2521,15 @@ typedef int vm_fault_t;
 #endif
 
 #ifdef NEED_XA_LOCK_IRQSAVE
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 17, 0)
+#define xa_lock_irqsave(xa, flags) (void)flags
+#define xa_unlock_irqrestore(xa, flags) (void)flags
+#else
 #define xa_lock_irqsave(xa, flags) \
 				spin_lock_irqsave(&(xa)->xa_lock, flags)
 #define xa_unlock_irqrestore(xa, flags) \
 				spin_unlock_irqrestore(&(xa)->xa_lock, flags)
+#endif
 #endif
 
 
