@@ -37,7 +37,6 @@ add v4.17_i2c_check_num_msgs.patch
 add v4.15_pmdown_time.patch
 
 [4.14.255]
-add v4.14_compiler_h.patch
 add v4.14_saa7146_timer_cast.patch
 add v4.14_module_param_call.patch
 
