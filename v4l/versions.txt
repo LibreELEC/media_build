@@ -3,6 +3,10 @@
 INTEL_ATOMISP
 VIDEO_DW9714
 
+[4.19.0]
+# Needs union ec_response_get_next_data_v1.cec_message
+VIDEO_CROS_EC_CEC
+
 [4.16.0]
 # Needs device_get_match_data
 VIDEO_I2C
