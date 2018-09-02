@@ -2520,4 +2520,64 @@ typedef int vm_fault_t;
         list_entry((ptr)->prev, type, member)
 #endif
 
+#ifdef NEED_XA_LOCK_IRQSAVE
+#define xa_lock_irqsave(xa, flags) \
+				spin_lock_irqsave(&(xa)->xa_lock, flags)
+#define xa_unlock_irqrestore(xa, flags) \
+				spin_unlock_irqrestore(&(xa)->xa_lock, flags)
+#endif
+
+
+#ifdef NEED_IDA_ALLOC_MIN
+#include <linux/idr.h>
+static inline
+int ida_alloc_range(struct ida *ida, unsigned int min, unsigned int max,
+			gfp_t gfp)
+{
+	int id = 0, err;
+	unsigned long flags;
+
+	if ((int)min < 0)
+		return -ENOSPC;
+
+	if ((int)max < 0)
+		max = INT_MAX;
+
+again:
+	xa_lock_irqsave(&ida->ida_rt, flags);
+	err = ida_get_new_above(ida, min, &id);
+	if (err < 0)
+		id = err;
+	if (id > (int)max) {
+		ida_remove(ida, id);
+		id = -ENOSPC;
+	}
+	xa_unlock_irqrestore(&ida->ida_rt, flags);
+
+	if (unlikely(id == -EAGAIN)) {
+		if (!ida_pre_get(ida, gfp))
+			return -ENOMEM;
+		goto again;
+	}
+
+	return id;
+}
+
+static inline int ida_alloc_min(struct ida *ida, unsigned int min, gfp_t gfp)
+{
+	return ida_alloc_range(ida, min, ~0, gfp);
+}
+
+static inline
+void ida_free(struct ida *ida, unsigned int id)
+{
+	unsigned long flags;
+
+	BUG_ON((int)id < 0);
+	xa_lock_irqsave(&ida->ida_rt, flags);
+	ida_remove(ida, id);
+	xa_unlock_irqrestore(&ida->ida_rt, flags);
+}
+#endif
+
 #endif /*  _COMPAT_H */

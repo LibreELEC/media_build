@@ -730,6 +730,8 @@ sub check_other_dependencies()
 	check_files_for_func("list_first_entry_or_null", "NEED_LIST_FIRST_ENTRY_OR_NULL", "include/linux/list.h");
 	check_files_for_func("struct_size", "NEED_STRUCT_SIZE", "linux/overflow.h");
 	check_files_for_func("list_last_entry", "NEED_LIST_LAST_ENTRY", "include/linux/list.h");
+	check_files_for_func("xa_lock_irqsave", "NEED_XA_LOCK_IRQSAVE", "include/linux/xarray.h");
+	check_files_for_func("ida_alloc_min", "NEED_IDA_ALLOC_MIN", "include/linux/idr.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");
