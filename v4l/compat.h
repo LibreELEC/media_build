@@ -42,11 +42,6 @@
 #define SZ_8K				0x00002000
 #endif
 
-#ifdef NEED_ANNOTATE_REACHABLE
-#define annotate_reachable()
-#define annotate_unreachable()
-#endif
-
 #include <linux/compiler.h>
 #include <linux/input.h>
 #include <linux/init.h>

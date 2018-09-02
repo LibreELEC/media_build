@@ -703,7 +703,6 @@ sub check_other_dependencies()
 	check_files_for_func("pm_runtime_get_if_in_use", "NEED_PM_RUNTIME_GET", "include/linux/pm_runtime.h");
 	check_files_for_func("KEY_APPSELECT", "NEED_KEY_APPSELECT", "include/uapi/linux/input-event-codes.h");
 	check_files_for_func("PCI_DEVICE_SUB", "NEED_PCI_DEVICE_SUB", "include/linux/pci.h");
-	check_files_for_func("annotate_reachable", "NEED_ANNOTATE_REACHABLE", "include/linux/compiler.h");
 	check_files_for_func("U32_MAX", "NEED_U32_MAX", "include/linux/kernel.h");
 	check_files_for_func("bsearch", "NEED_BSEARCH", "include/linux/bsearch.h");
 	check_files_for_func("timer_setup", "NEED_TIMER_SETUP", "include/linux/timer.h");
