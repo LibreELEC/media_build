@@ -2580,4 +2580,26 @@ void ida_free(struct ida *ida, unsigned int id)
 }
 #endif
 
+#ifdef NEED_I2C_LOCK_BUS
+
+#define I2C_LOCK_ROOT_ADAPTER 0
+#define I2C_LOCK_SEGMENT      1
+
+static inline void
+i2c_lock_bus(struct i2c_adapter *adapter, unsigned int flags)
+{
+	/* there is no bus implementation for Kernels < 4.7
+	 * fallback to adapter locking */
+	i2c_lock_adapter(adapter);
+}
+
+static inline void
+i2c_unlock_bus(struct i2c_adapter *adapter, unsigned int flags)
+{
+	/* there is no bus implementation for Kernels < 4.7
+	 * fallback to adapter unlocking */
+	i2c_unlock_adapter(adapter);
+}
+#endif
+
 #endif /*  _COMPAT_H */
