@@ -2606,4 +2606,23 @@ i2c_unlock_bus(struct i2c_adapter *adapter, unsigned int flags)
 }
 #endif
 
+#ifdef NEED_STRSCPY
+#include <linux/string.h>
+static inline
+ssize_t strscpy(char *dest, const char *src, size_t count)
+{
+	ssize_t ret;
+
+	if (count == 0)
+		return -E2BIG;
+	memcpy(dest, src, count);
+	ret = strlen(src);
+	if (ret >= count) {
+		dest[count-1] = '\0';
+		ret = -E2BIG;
+	}
+	return ret;
+}
+#endif
+
 #endif /*  _COMPAT_H */
