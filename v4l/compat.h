@@ -43,6 +43,17 @@
 #endif
 
 #include <linux/compiler.h>
+
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 16, 0)
+/* we got a lot of warnings for Kernels older than 4.16 because strscpy has
+ * been declared with "__must_check" prior to 4.16. In fact it is really not
+ * necessary to check the return value of strscpy, so we clear the
+ * "__must_check" definition.
+ */
+#undef __must_check
+#define __must_check
+#endif
+
 #include <linux/input.h>
 #include <linux/init.h>
 #include <linux/idr.h>
