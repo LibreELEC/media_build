@@ -2622,17 +2622,27 @@ i2c_unlock_bus(struct i2c_adapter *adapter, unsigned int flags)
 static inline
 ssize_t strscpy(char *dest, const char *src, size_t count)
 {
-	ssize_t ret;
+	long res = 0;
 
 	if (count == 0)
 		return -E2BIG;
-	memcpy(dest, src, count);
-	ret = strlen(src);
-	if (ret >= count) {
-		dest[count-1] = '\0';
-		ret = -E2BIG;
+
+	while (count) {
+		char c;
+
+		c = src[res];
+		dest[res] = c;
+		if (!c)
+			return res;
+		res++;
+		count--;
 	}
-	return ret;
+
+	/* Hit buffer length without finding a NUL; force NUL-termination. */
+	if (res)
+		dest[res-1] = '\0';
+
+	return -E2BIG;
 }
 #endif
 
