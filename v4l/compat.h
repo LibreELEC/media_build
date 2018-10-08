@@ -2646,4 +2646,10 @@ ssize_t strscpy(char *dest, const char *src, size_t count)
 }
 #endif
 
+#ifdef NEED_FWNODE_GRAPH_FOR_EACH_ENDPOINT
+#define fwnode_graph_for_each_endpoint(fwnode, child)			\
+	for (child = NULL;						\
+	     (child = fwnode_graph_get_next_endpoint(fwnode, child)); )
+#endif
+
 #endif /*  _COMPAT_H */

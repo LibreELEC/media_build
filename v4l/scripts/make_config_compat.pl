@@ -710,6 +710,7 @@ sub check_other_dependencies()
 	check_files_for_func("__setup_timer", "NEED_SETUP_TIMER", "include/linux/timer.h");
 	check_files_for_func("fwnode_reference_args", "NEED_FWNODE_REF_ARGS", "include/linux/fwnode.h");
 	check_files_for_func("fwnode_for_each_child_node", "NEED_FWNODE_FOR_EACH_CHILD_NODE", "include/linux/property.h");
+	check_files_for_func("fwnode_graph_for_each_endpoint", "NEED_FWNODE_GRAPH_FOR_EACH_ENDPOINT", "include/linux/property.h");
 	check_files_for_func("fwnode_graph_get_port_parent", "NEED_FWNODE_GRAPH_GET_PORT_PARENT", "include/linux/property.h");
 	check_files_for_func("timer_setup_on_stack", "NEED_TIMER_SETUP_ON_STACK", "include/linux/timer.h");
 	check_files_for_func("time64_to_tm", "NEED_TIME64_TO_TM", "include/linux/time.h");
