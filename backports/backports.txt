@@ -45,6 +45,7 @@ add v4.13_remove_nospec_h.patch
 
 [4.12.255]
 add v4.12_revert_solo6x10_copykerneluser.patch
+add v4.12_use_wait_queue_head.patch
 
 [4.10.255]
 add v4.10_sched_signal.patch
