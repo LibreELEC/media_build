@@ -2530,6 +2530,11 @@ typedef int vm_fault_t;
         list_entry((ptr)->prev, type, member)
 #endif
 
+#ifdef NEED_LIST_NEXT_ENTRY
+#define list_next_entry(pos, member) \
+	list_entry((pos)->member.next, typeof(*(pos)), member)
+#endif
+
 #ifdef NEED_XA_LOCK_IRQSAVE
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 17, 0)
 #define xa_lock_irqsave(xa, flags) (void)flags
