@@ -1,0 +1,31 @@
+From 9ec95c7b4274c412781843065692ce570ab725e6 Mon Sep 17 00:00:00 2001
+From: Jasmin Jessich <jasmin@anw.at>
+Date: Mon, 26 Nov 2018 21:51:11 +0100
+Subject: [PATCH] media: adv7604 added include of linux/interrupt.h
+
+On older Kernels (prior to 4.15) irqreturn_t and devm_request_threaded_irq
+is not defined when compiling adv7604.c. It seems more recent Kernels
+include it via another header which is included by adv7604.c.
+Now we include linux/interrupt.h explicitly to get the type also defined
+for Kernels prior to 4.15.
+
+Signed-off-by: Jasmin Jessich <jasmin@anw.at>
+---
+ drivers/media/i2c/adv7604.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/media/i2c/adv7604.c b/drivers/media/i2c/adv7604.c
+index 43d27edac636..dfb4400f0445 100644
+--- a/drivers/media/i2c/adv7604.c
++++ b/drivers/media/i2c/adv7604.c
+@@ -27,6 +27,7 @@
+ #include <linux/videodev2.h>
+ #include <linux/workqueue.h>
+ #include <linux/regmap.h>
++#include <linux/interrupt.h>
+ 
+ #include <media/i2c/adv7604.h>
+ #include <media/cec.h>
+-- 
+2.17.1
+
