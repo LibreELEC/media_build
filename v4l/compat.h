@@ -2662,4 +2662,26 @@ ssize_t strscpy(char *dest, const char *src, size_t count)
 #define lockdep_assert_irqs_disabled() do { } while (0)
 #endif
 
+
+#ifdef NEED_OF_NODE_NAME_EQ
+#include <linux/of.h>
+#include <linux/string.h>
+static inline
+bool of_node_name_eq(const struct device_node *np, const char *name)
+{
+	const char *node_name;
+	size_t len;
+
+	if (!np)
+		return false;
+
+	node_name = kbasename(np->full_name);
+	len = strchrnul(node_name, '@') - node_name;
+
+	return (strlen(name) == len) && (strncmp(node_name, name, len) == 0);
+}
+#endif
+
+
+
 #endif /*  _COMPAT_H */
