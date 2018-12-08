@@ -2657,4 +2657,9 @@ ssize_t strscpy(char *dest, const char *src, size_t count)
 	     (child = fwnode_graph_get_next_endpoint(fwnode, child)); )
 #endif
 
+#ifdef NEED_LOCKDEP_ASSERT_IRQS
+#define lockdep_assert_irqs_enabled() do { } while (0)
+#define lockdep_assert_irqs_disabled() do { } while (0)
+#endif
+
 #endif /*  _COMPAT_H */

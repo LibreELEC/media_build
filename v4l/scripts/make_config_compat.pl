@@ -736,6 +736,7 @@ sub check_other_dependencies()
 	check_files_for_func("ida_alloc_min", "NEED_IDA_ALLOC_MIN", "include/linux/idr.h");
 	check_files_for_func("i2c_lock_bus", "NEED_I2C_LOCK_BUS", "include/linux/i2c.h");
 	check_files_for_func("strscpy", "NEED_STRSCPY", "include/linux/string.h");
+	check_files_for_func("lockdep_assert_irqs_enabled", "NEED_LOCKDEP_ASSERT_IRQS", "include/linux/lockdep.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");
