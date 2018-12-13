@@ -2651,6 +2651,16 @@ ssize_t strscpy(char *dest, const char *src, size_t count)
 }
 #endif
 
+#ifdef NEED_STRCHRNUL
+#include <linux/string.h>
+static inline char *strchrnul(const char *s, int c)
+{
+        while (*s && *s != (char)c)
+                s++;
+        return (char *)s;
+}
+#endif
+
 #ifdef NEED_FWNODE_GRAPH_FOR_EACH_ENDPOINT
 #define fwnode_graph_for_each_endpoint(fwnode, child)			\
 	for (child = NULL;						\
