@@ -157,6 +157,8 @@ RADIO_SI4713
 [3.12.0]
 # BIN_ATTR_RW was changed
 IR_NUVOTON
+# needs devm_regulator_get_optional
+CXD2880_SPI_DRV
 
 [3.11.0]
 # needs freezable_schedule_hrtimeout_range
