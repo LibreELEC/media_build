@@ -43,6 +43,7 @@ I2C_BCM2048
 [4.9.0]
 # needs linux/bitfield.h
 DVB_MN88443X
+VIDEO_ASPEED
 
 [4.8.0]
 # needs i2c_new_secondary_device
