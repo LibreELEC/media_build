@@ -1,6 +1,6 @@
 # Use this for stuff for drivers that don't compile
 [9.255.255]
-INTEL_ATOMISP
+VIDEO_IPU3_IMGU
 VIDEO_DW9714
 
 [4.19.0]
