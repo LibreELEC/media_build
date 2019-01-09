@@ -29,6 +29,9 @@ add drx39xxj.patch
 [4.18.255]
 add v4.18_fwnode_args_args.patch
 
+[4.20.255]
+add v4.20_access_ok.patch
+
 [4.17.255]
 add v4.17_proc_create_single.patch
 add v4.17_i2c_check_num_msgs.patch
