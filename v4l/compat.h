@@ -2692,6 +2692,12 @@ bool of_node_name_eq(const struct device_node *np, const char *name)
 }
 #endif
 
-
+#ifdef NEED_I2C_8BIT_ADDR_FROM_MSG
+#include <linux/i2c.h>
+static inline u8 i2c_8bit_addr_from_msg(const struct i2c_msg *msg)
+{
+	return (msg->addr << 1) | (msg->flags & I2C_M_RD ? 1 : 0);
+}
+#endif
 
 #endif /*  _COMPAT_H */
