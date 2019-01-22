@@ -154,6 +154,7 @@ VIDEO_CADENCE_CSI2RX
 [3.13.0]
 # needs gpio/consumer.h
 RADIO_SI4713
+RADIO_SI470X
 
 [3.12.0]
 # BIN_ATTR_RW was changed
