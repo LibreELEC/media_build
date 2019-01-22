@@ -11,8 +11,8 @@ VIDEO_CROS_EC_CEC
 # Needs devm_regmap_init_sccb
 VIDEO_OV772X
 
-[4.16.0]
-# Needs device_get_match_data
+[4.17.0]
+# Needs devm_nvmem_register
 VIDEO_I2C
 
 [4.15.0]
