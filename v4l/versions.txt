@@ -1,6 +1,6 @@
 # Use this for stuff for drivers that don't compile
 [9.255.255]
-INTEL_ATOMISP
+VIDEO_IPU3_IMGU
 VIDEO_DW9714
 
 [4.19.0]
@@ -11,8 +11,8 @@ VIDEO_CROS_EC_CEC
 # Needs devm_regmap_init_sccb
 VIDEO_OV772X
 
-[4.16.0]
-# Needs device_get_match_data
+[4.17.0]
+# Needs devm_nvmem_register
 VIDEO_I2C
 
 [4.15.0]
@@ -28,6 +28,7 @@ RADIO_WL128X
 [4.10.0]
 # needs *probe_new in struct i2c_driver
 VIDEO_OV5670
+VIDEO_OV8856
 VIDEO_OV7251
 VIDEO_IMX258
 VIDEO_DW9807
@@ -120,15 +121,15 @@ VIDEO_IMX274
 IR_GPIO_TX
 IR_GPIO_CIR
 VIDEO_OV5695
+VIDEO_OV9640
 VIDEO_OV9650
 VIDEO_OV2685
 VIDEO_TW9910
-SOC_CAMERA_TW9910
 VIDEO_MT9T112
-SOC_CAMERA_MT9T112
-SOC_CAMERA_OV772X
+VIDEO_MT9M001
 VIDEO_RJ54N1
 SOC_CAMERA_RJ54N1
+RADIO_SI470X
 # needs component_match_add
 VIDEO_VIMC
 # needs bpf.h
