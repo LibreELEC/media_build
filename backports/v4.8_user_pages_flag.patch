@@ -1,24 +1,21 @@
 diff --git a/drivers/media/common/videobuf2/videobuf2-memops.c b/drivers/media/common/videobuf2/videobuf2-memops.c
-index c4a85be48ac2..a932ec68297d 100644
+index 6e9e05153f4e..6c029616977f 100644
 --- a/drivers/media/common/videobuf2/videobuf2-memops.c
 +++ b/drivers/media/common/videobuf2/videobuf2-memops.c
-@@ -42,10 +42,6 @@ struct frame_vector *vb2_create_framevec(unsigned long start,
+@@ -40,7 +40,6 @@ struct frame_vector *vb2_create_framevec(unsigned long start,
  	unsigned long first, last;
  	unsigned long nr;
  	struct frame_vector *vec;
--	unsigned int flags = FOLL_FORCE;
--
--	if (write)
--		flags |= FOLL_WRITE;
+-	unsigned int flags = FOLL_FORCE | FOLL_WRITE;
  
  	first = start >> PAGE_SHIFT;
  	last = (start + length - 1) >> PAGE_SHIFT;
-@@ -53,7 +49,7 @@ struct frame_vector *vb2_create_framevec(unsigned long start,
+@@ -48,7 +47,7 @@ struct frame_vector *vb2_create_framevec(unsigned long start,
  	vec = frame_vector_create(nr);
  	if (!vec)
  		return ERR_PTR(-ENOMEM);
 -	ret = get_vaddr_frames(start & PAGE_MASK, nr, flags, vec);
-+	ret = get_vaddr_frames(start & PAGE_MASK, nr, write, true, vec);
++	ret = get_vaddr_frames(start & PAGE_MASK, nr, true, true, vec);
  	if (ret < 0)
  		goto out_destroy;
  	/* We accept only complete set of PFNs */
