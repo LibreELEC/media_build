@@ -89,7 +89,6 @@ add v4.5_copy_to_user_warning.patch
 add v4.4_gpio_chip_parent.patch
 
 [4.3.255]
-add v4.3_add_autorepeat_handling.patch
 add v4.3_bt87x_const_fix.patch
 
 [4.2.255]
