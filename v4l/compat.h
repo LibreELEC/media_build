@@ -57,6 +57,7 @@
 #include <linux/input.h>
 #include <linux/init.h>
 #include <linux/idr.h>
+#include <linux/kernel.h>
 #include "../linux/kernel_version.h"
 
 #ifdef RETPOLINE
@@ -1095,7 +1096,6 @@ static inline int __i2c_transfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
 #endif
 
 #ifdef NEED_KSTRTOU16
-#include <linux/kernel.h>
 
 static inline int kstrtou16(const char *s, unsigned int base, u16 *res)
 {
@@ -1109,7 +1109,6 @@ static inline int kstrtou16(const char *s, unsigned int base, u16 *res)
 #endif
 
 #ifdef NEED_KSTRTOUL
-#include <linux/kernel.h>
 
 #define kstrtoul strict_strtoul
 
@@ -2011,9 +2010,11 @@ static inline s64 ktime_ms_delta(const ktime_t later, const ktime_t earlier)
 
 #define of_node_cmp(s1, s2)          strcasecmp((s1), (s2))
 
+#ifndef BIT_ULL
 #define BIT_ULL(nr)        (1ULL << (nr))
 #define BIT_ULL_MASK(nr)   (1ULL << ((nr) % BITS_PER_LONG_LONG))
 #define BIT_ULL_WORD(nr)   ((nr) / BITS_PER_LONG_LONG)
+#endif
 
 #ifdef NEED_DMA_COERCE_MASK
 #include <linux/dma-mapping.h>
