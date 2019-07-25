@@ -2326,6 +2326,23 @@ static inline bool fwnode_device_is_available(struct fwnode_handle *fwnode)
 }
 #endif
 
+#ifdef CONFIG_OF
+#ifdef NEED_PROP_COUNT
+#include <linux/property.h>
+static inline int fwnode_property_count_u32(const struct fwnode_handle *fwnode,
+					    const char *propname)
+{
+	return fwnode_property_read_u32_array(fwnode, propname, NULL, 0);
+}
+
+static inline int fwnode_property_count_u64(const struct fwnode_handle *fwnode,
+					    const char *propname)
+{
+	return fwnode_property_read_u64_array(fwnode, propname, NULL, 0);
+}
+#endif
+#endif
+
 #ifdef NEED_TIMER_SETUP_ON_STACK
 #define timer_setup_on_stack(timer, callback, flags)        \
         setup_timer_on_stack((timer), (TIMER_FUNC_TYPE)(callback), (flags))
