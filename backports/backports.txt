@@ -49,6 +49,7 @@ add v4.15_pmdown_time.patch
 [4.14.255]
 add v4.14_saa7146_timer_cast.patch
 add v4.14_module_param_call.patch
+add v4.14_fwnode_handle_get.patch
 
 [4.13.255]
 add v4.13_remove_nospec_h.patch
