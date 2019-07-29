@@ -2327,7 +2327,25 @@ static inline bool fwnode_device_is_available(struct fwnode_handle *fwnode)
 #endif
 
 #ifdef NEED_PROP_COUNT
+
+#ifdef NEED_PROP_READ_U32_ARRAY
+static inline int fwnode_property_read_u32_array(struct fwnode_handle *fwnode,
+						 const char *propname,
+						 u32 *val, size_t nval)
+{
+	return -ENODATA;
+}
+
+static inline int fwnode_property_read_u64_array(struct fwnode_handle *fwnode,
+						 const char *propnam,
+						 u64 *val, size_t nval)
+{
+	return -ENODATA;
+}
+#else
 #include <linux/property.h>
+#endif
+
 static inline int fwnode_property_count_u32(struct fwnode_handle *fwnode,
 					    const char *propname)
 {
