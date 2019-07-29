@@ -2326,7 +2326,6 @@ static inline bool fwnode_device_is_available(struct fwnode_handle *fwnode)
 }
 #endif
 
-#ifdef CONFIG_OF
 #ifdef NEED_PROP_COUNT
 #include <linux/property.h>
 static inline int fwnode_property_count_u32(struct fwnode_handle *fwnode,
@@ -2340,7 +2339,6 @@ static inline int fwnode_property_count_u64(struct fwnode_handle *fwnode,
 {
 	return fwnode_property_read_u64_array(fwnode, propname, NULL, 0);
 }
-#endif
 #endif
 
 #ifdef NEED_TIMER_SETUP_ON_STACK
