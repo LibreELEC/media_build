@@ -2742,4 +2742,8 @@ static inline u8 i2c_8bit_addr_from_msg(const struct i2c_msg *msg)
 #define stream_open nonseekable_open
 #endif
 
+#ifdef NEED_I2C_NEW_DUMMY_DEVICE
+#define i2c_new_dummy_device(adap, addr) (i2c_new_dummy(adap, addr) ? : (struct i2c_client *)ERR_PTR(-ENODEV))
+#endif
+
 #endif /*  _COMPAT_H */
