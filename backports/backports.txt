@@ -28,6 +28,7 @@ add drx39xxj.patch
 
 [5.1.255]
 add v5.1_vm_map_pages.patch
+add v5.1_devm_i2c_new_dummy_device.patch
 
 [5.0.255]
 add v5.0_ipu3-cio2.patch
