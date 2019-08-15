@@ -257,7 +257,11 @@ static inline int pci_msi_enabled(void)
 #endif
 
 #ifndef KEY_IMAGES
-#define KEY_IMAGES           0x1ba   /* AL Image Browser */
+#define KEY_IMAGES		0x1ba   /* AL Image Browser */
+#endif
+
+#ifndef KEY_FULL_SCREEN
+#define KEY_FULL_SCREEN		0x174   /* AC View Toggle */
 #endif
 
 #ifdef NEED_DEFINE_PCI_DEVICE_TABLE
