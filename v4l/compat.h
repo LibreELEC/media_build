@@ -2755,4 +2755,8 @@ static inline u8 i2c_8bit_addr_from_msg(const struct i2c_msg *msg)
 	(i2c_new_secondary_device(client, name, addr) ? : (struct i2c_client *)ERR_PTR(-ENODEV))
 #endif
 
+#ifdef NEED_UNTAGGED_ADDR
+#define untagged_addr(addr) (addr)
+#endif
+
 #endif /*  _COMPAT_H */
