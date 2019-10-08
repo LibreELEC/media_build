@@ -41,7 +41,6 @@ add v4.18_fwnode_args_args.patch
 add v4.18_add_map_atomic.patch
 
 [4.17.255]
-add v4.17_proc_create_single.patch
 add v4.17_i2c_check_num_msgs.patch
 
 [4.15.255]
