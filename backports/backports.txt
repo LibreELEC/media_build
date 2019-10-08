@@ -127,6 +127,7 @@ add v3.17_remove_bpf_h.patch
 add v3.16_netdev.patch
 add v3.16_wait_on_bit.patch
 add v3.16_void_gpiochip_remove.patch
+add v3.16_drop_pointing_stick.patch
 
 [3.13.255]
 add v3.13_ddbridge_pcimsi.patch
