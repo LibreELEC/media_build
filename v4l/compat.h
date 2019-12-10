@@ -2759,4 +2759,18 @@ static inline u8 i2c_8bit_addr_from_msg(const struct i2c_msg *msg)
 #define untagged_addr(addr) (addr)
 #endif
 
+#ifdef NEED_COMPAT_PTR_IOCTL
+#ifdef CONFIG_COMPAT
+static inline long compat_ptr_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+{
+        if (!file->f_op->unlocked_ioctl)
+                return -ENOIOCTLCMD;
+
+        return file->f_op->unlocked_ioctl(file, cmd, (unsigned long)compat_ptr(arg));
+}
+#else
+#define compat_ptr_ioctl NULL
+#endif
+#endif
+
 #endif /*  _COMPAT_H */
