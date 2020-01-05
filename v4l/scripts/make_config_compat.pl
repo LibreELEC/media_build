@@ -748,6 +748,7 @@ sub check_other_dependencies()
 	check_files_for_func("i2c_new_ancillary_device", "NEED_I2C_NEW_ANCILLARY_DEVICE", "include/linux/i2c.h");
 	check_files_for_func("untagged_addr", "NEED_UNTAGGED_ADDR", "include/linux/mm.h");
 	check_files_for_func("compat_ptr_ioctl", "NEED_COMPAT_PTR_IOCTL", "include/linux/fs.h");
+	check_files_for_func("ns_to_timespec64", "NEED_TIMESPEC64", "include/linux/time64.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");

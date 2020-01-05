@@ -2775,4 +2775,9 @@ static inline long compat_ptr_ioctl(struct file *file, unsigned int cmd, unsigne
 #endif
 #endif
 
+#ifdef NEED_TIMESPEC64
+#define timespec64 timespec
+#define ns_to_timespec64 ns_to_timespec
+#endif
+
 #endif /*  _COMPAT_H */
