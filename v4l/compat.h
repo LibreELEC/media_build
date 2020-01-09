@@ -2755,6 +2755,21 @@ static inline u8 i2c_8bit_addr_from_msg(const struct i2c_msg *msg)
 	(i2c_new_secondary_device(client, name, addr) ? : (struct i2c_client *)ERR_PTR(-ENODEV))
 #endif
 
+#ifdef NEED_I2C_NEW_SCANNED_DEVICE
+#include <linux/i2c.h>
+static inline struct i2c_client *
+i2c_new_scanned_device(struct i2c_adapter *adap,
+		       struct i2c_board_info *info,
+		       unsigned short const *addr_list,
+		       int (*probe)(struct i2c_adapter *adap, unsigned short addr))
+{
+	struct i2c_client *client;
+
+	client = i2c_new_probed_device(adap, info, addr_list, probe);
+	return client ? : ERR_PTR(-ENOMEM);
+}
+#endif
+
 #ifdef NEED_UNTAGGED_ADDR
 #define untagged_addr(addr) (addr)
 #endif
