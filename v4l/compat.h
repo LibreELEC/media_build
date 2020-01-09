@@ -2807,4 +2807,8 @@ static inline long compat_ptr_ioctl(struct file *file, unsigned int cmd, unsigne
 #define ns_to_timespec64 ns_to_timespec
 #endif
 
+#ifdef NEED_SIZEOF_FIELD
+#define sizeof_field(TYPE, MEMBER) sizeof((((TYPE *)0)->MEMBER))
+#endif
+
 #endif /*  _COMPAT_H */
