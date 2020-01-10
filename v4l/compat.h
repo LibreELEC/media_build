@@ -2782,6 +2782,14 @@ i2c_new_scanned_device(struct i2c_adapter *adap,
 }
 #endif
 
+#ifdef NEED_I2C_CLIENT_HAS_DRIVER
+#include <linux/i2c.h>
+static inline bool i2c_client_has_driver(struct i2c_client *client)
+{
+	return !IS_ERR_OR_NULL(client) && client->dev.driver;
+}
+#endif
+
 #ifdef NEED_UNTAGGED_ADDR
 #define untagged_addr(addr) (addr)
 #endif
