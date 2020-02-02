@@ -3,6 +3,34 @@
 VIDEO_IPU3_IMGU
 VIDEO_DW9714
 
+# CEC support
+CEC_CORE
+CEC_NOTIFIER
+CEC_PIN
+MEDIA_CEC_RC
+MEDIA_CEC_SUPPORT
+
+# rc support
+LIRC
+RC_CORE
+
+# radio support
+MEDIA_RADIO_SUPPORT
+
+# camera support
+MEDIA_CAMERA_SUPPORT
+SOC_CAMERA
+
+# old analog devices support
+MEDIA_ANALOG_TV_SUPPORT
+
+# broken modules
+DVB_MXL58X
+DVB_MXL5XX
+DVB_SAA716X_FF
+MEDIA_TUNER_R848
+VIDEO_CX25840
+
 [5.5]
 # lots of kAPI changes in 5.6, so disable for older kernels
 SND_BT87X
