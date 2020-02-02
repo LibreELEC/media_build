@@ -51,7 +51,6 @@ default:: prepare
 	@echo Kernel build directory is $(OUTDIR)
 	$(MAKE) -C ../linux apply_patches
 	$(MAKE) -C $(OUTDIR) M=$(PWD) $(MYCFLAGS) modules
-	./scripts/rmmod.pl check
 #	$(MAKE) checkpatch
 
 mismatch:: prepare
