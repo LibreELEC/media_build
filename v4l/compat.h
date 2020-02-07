@@ -2728,6 +2728,7 @@ static inline u8 i2c_8bit_addr_from_msg(const struct i2c_msg *msg)
 #ifdef NEED_I2C_NEW_ANCILLARY_DEVICE
 #include <linux/i2c.h>
 
+#ifdef NEED_I2C_NEW_SECONDARY_DEV
 static inline struct i2c_client *i2c_new_secondary_device(struct i2c_client *client,
 							  const char *name,
 							  u16 default_addr)
@@ -2745,6 +2746,7 @@ static inline struct i2c_client *i2c_new_secondary_device(struct i2c_client *cli
 	dev_dbg(&client->adapter->dev, "Address for %s : 0x%x\n", name, addr);
 	return i2c_new_dummy(client->adapter, addr);
 }
+#endif
 
 #define i2c_new_ancillary_device(client, name, addr) \
 	(i2c_new_secondary_device(client, name, addr) ? : (struct i2c_client *)ERR_PTR(-ENODEV))

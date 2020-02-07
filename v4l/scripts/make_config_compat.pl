@@ -743,6 +743,7 @@ sub check_other_dependencies()
 	check_files_for_func("stream_open", "NEED_STREAM_OPEN", "include/linux/fs.h");
 	check_files_for_func("fwnode_property_read_u32_array", "NEED_PROP_READ_U32_ARRAY", "include/linux/property.h");
 	check_files_for_func("fwnode_property_count_u32", "NEED_PROP_COUNT", "include/linux/property.h");
+	check_files_for_func("i2c_new_secondary_device", "NEED_I2C_NEW_SECONDARY_DEV", "include/linux/i2c.h");
 	check_files_for_func("^i2c_new_dummy_device", "NEED_I2C_NEW_DUMMY_DEVICE", "include/linux/i2c.h");
 	check_files_for_func("i2c_new_ancillary_device", "NEED_I2C_NEW_ANCILLARY_DEVICE", "include/linux/i2c.h");
 	check_files_for_func("i2c_new_scanned_device", "NEED_I2C_NEW_SCANNED_DEVICE", "include/linux/i2c.h");
