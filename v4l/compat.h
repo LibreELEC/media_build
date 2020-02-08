@@ -2615,6 +2615,8 @@ void ida_free(struct ida *ida, unsigned int id)
 
 #ifdef NEED_I2C_LOCK_BUS
 
+#include <linux/i2c.h>
+
 #define I2C_LOCK_ROOT_ADAPTER 0
 #define I2C_LOCK_SEGMENT      1
 
