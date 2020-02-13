@@ -622,7 +622,7 @@ sub check_other_dependencies()
 	check_files_for_func("kstrtou16", "NEED_KSTRTOU16", "include/linux/kernel.h");
 	check_files_for_func("kstrtoul", "NEED_KSTRTOUL", "include/linux/kernel.h");
 	check_files_for_func("memweight", "NEED_MEMWEIGHT", "include/linux/string.h");
-	check_files_for_func("dev_dbg_ratelimited", "NEED_DEV_DBG_RATELIMITED", "include/linux/device.h");
+	check_files_for_func("dev_dbg_ratelimited", "NEED_DEV_DBG_RATELIMITED", "include/linux/device.h", "include/linux/dev_printk.h");
 	check_files_for_func("i2c_probe_func_quick_read", "NEED_I2C_PROBE_FUNC_QUICK_READ", "include/linux/i2c.h");
 	check_files_for_func("abs64", "NEED_ABS64", "include/linux/kernel.h");
 	check_files_for_func("VM_DONTDUMP", "NEED_DONTDUMP", "include/linux/mm.h");
@@ -686,8 +686,8 @@ sub check_other_dependencies()
 	check_files_for_func("ktime_get_boottime", "NEED_KTIME_GET_BOOTTIME", "include/linux/hrtimer.h", "include/linux/timekeeping.h");
 	check_files_for_func("BUS_CEC", "NEED_BUS_CEC", "include/uapi/linux/input.h");
 	check_files_for_func("smp_load_acquire", "NEED_SMP_LOAD_ACQUIRE", "include/asm-generic/barrier.h");
-	check_files_for_func("dev_err_once", "NEED_DEV_ERR_ONCE", "include/linux/device.h");
-	check_files_for_func("dev_warn_once", "NEED_DEV_WARN_ONCE", "include/linux/device.h");
+	check_files_for_func("dev_err_once", "NEED_DEV_ERR_ONCE", "include/linux/device.h", "include/linux/dev_printk.h");
+	check_files_for_func("dev_warn_once", "NEED_DEV_WARN_ONCE", "include/linux/device.h", "include/linux/dev_printk.h");
 	check_files_for_func("kthread_init_worker", "NEED_KTHREAD_INIT_WORKER", "include/linux/kthread.h");
 	check_files_for_func("print_hex_dump_debug", "NEED_PRINT_HEX_DUMP_DEBUG", "include/linux/printk.h");
 	check_files_for_func("min3", "NEED_MIN3", "include/linux/kernel.h");
