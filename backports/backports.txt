@@ -29,6 +29,7 @@ add drx39xxj.patch
 [5.6.255]
 add v5.6_pin_user_pages.patch
 add v5.6_memtype_h.patch
+add v5.6_const_fb_ops.patch
 
 [5.5.255]
 add v5.5_alsa_pcm_api_updates.patch
