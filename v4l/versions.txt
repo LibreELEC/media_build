@@ -3,6 +3,10 @@
 VIDEO_IPU3_IMGU
 VIDEO_DW9714
 
+[5.5]
+# lots of kAPI changes in 5.6, so disable for older kernels
+SND_BT87X
+
 [5.4]
 VIDEO_CROS_EC_CEC
 
