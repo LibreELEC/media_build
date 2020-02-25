@@ -2818,4 +2818,16 @@ static inline long compat_ptr_ioctl(struct file *file, unsigned int cmd, unsigne
 #define sizeof_field(TYPE, MEMBER) sizeof((((TYPE *)0)->MEMBER))
 #endif
 
+#ifdef NEED_DEVM_PLATFORM_IOREMAP_RESOURCE
+#include <linux/platform_device.h>
+static inline void __iomem *devm_platform_ioremap_resource(struct platform_device *pdev,
+							   unsigned int index)
+{
+        struct resource *res;
+
+        res = platform_get_resource(pdev, IORESOURCE_MEM, index);
+        return devm_ioremap_resource(&pdev->dev, res);
+}
+#endif
+
 #endif /*  _COMPAT_H */

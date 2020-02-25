@@ -753,6 +753,7 @@ sub check_other_dependencies()
 	check_files_for_func("compat_ptr_ioctl", "NEED_COMPAT_PTR_IOCTL", "include/linux/fs.h");
 	check_files_for_func("ns_to_timespec64", "NEED_TIMESPEC64", "include/linux/time64.h");
 	check_files_for_func("sizeof_field", "NEED_SIZEOF_FIELD", "include/linux/stddef.h");
+	check_files_for_func("devm_platform_ioremap_resource", "NEED_DEVM_PLATFORM_IOREMAP_RESOURCE", "include/linux/platform_device.h");
 
 	# For tests for uapi-dependent logic
 	check_files_for_func_uapi("usb_endpoint_maxp", "NEED_USB_ENDPOINT_MAXP", "usb/ch9.h");
