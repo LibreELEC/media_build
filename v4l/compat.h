@@ -2118,6 +2118,8 @@ static inline struct fwnode_handle *dev_fwnode(struct device *dev)
 static inline int fwnode_graph_parse_endpoint(struct fwnode_handle *fwnode,
                                 struct fwnode_endpoint *endpoint)
 {
+	if (endpoint)
+		endpoint->port = endpoint->id = 0;
 	return 0;
 }
 
