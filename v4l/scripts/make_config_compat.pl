@@ -342,7 +342,8 @@ sub check_snd_BUG_ON()
 sub check_bitops()
 {
 	my @files = ( "$kdir/include/linux/bitops.h",
-                  "$kdir/include/linux/bits.h" );
+                  "$kdir/include/linux/bits.h",
+		  "$kdir/include/vdso/bits.h" );
 
 	foreach my $file ( @files ) {
 		open IN, "<$file" or next;
