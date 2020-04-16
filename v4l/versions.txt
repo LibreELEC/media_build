@@ -7,7 +7,7 @@ VIDEO_IPU3_IMGU
 SND_BT87X
 
 [5.4]
-VIDEO_CROS_EC_CEC
+CEC_CROS_EC_CEC
 
 [5.2]
 # Needs fwnode_graph_get_endpoint_by_id
@@ -96,7 +96,7 @@ VIDEO_CAFE_CCIC
 
 [4.1.0]
 # needs has_acpi_companion
-VIDEO_SECO_CEC
+CEC_SECO_CEC
 
 [4.2.0]
 # needs led_trigger_remove
