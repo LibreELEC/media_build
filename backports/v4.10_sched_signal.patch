@@ -182,10 +182,10 @@ index 89f2f2a..0456f2d 100644
  
  #include "solo6x10.h"
  
-diff --git a/drivers/media/test_drivers/vivid/vivid-radio-rx.c b/drivers/media/test_drivers/vivid/vivid-radio-rx.c
+diff --git a/drivers/media/test-drivers/vivid/vivid-radio-rx.c b/drivers/media/test-drivers/vivid/vivid-radio-rx.c
 index 1f86d7d..854325d 100644
---- a/drivers/media/test_drivers/vivid/vivid-radio-rx.c
-+++ b/drivers/media/test_drivers/vivid/vivid-radio-rx.c
+--- a/drivers/media/test-drivers/vivid/vivid-radio-rx.c
++++ b/drivers/media/test-drivers/vivid/vivid-radio-rx.c
 @@ -10,8 +10,6 @@
  #include <linux/delay.h>
  #include <linux/videodev2.h>
@@ -195,10 +195,10 @@ index 1f86d7d..854325d 100644
  #include <media/v4l2-common.h>
  #include <media/v4l2-event.h>
  #include <media/v4l2-dv-timings.h>
-diff --git a/drivers/media/test_drivers/vivid/vivid-radio-tx.c b/drivers/media/test_drivers/vivid/vivid-radio-tx.c
+diff --git a/drivers/media/test-drivers/vivid/vivid-radio-tx.c b/drivers/media/test-drivers/vivid/vivid-radio-tx.c
 index 1a3749b..89a1ee6 100644
---- a/drivers/media/test_drivers/vivid/vivid-radio-tx.c
-+++ b/drivers/media/test_drivers/vivid/vivid-radio-tx.c
+--- a/drivers/media/test-drivers/vivid/vivid-radio-tx.c
++++ b/drivers/media/test-drivers/vivid/vivid-radio-tx.c
 @@ -7,7 +7,6 @@
  
  #include <linux/errno.h>
