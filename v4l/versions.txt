@@ -9,6 +9,12 @@ SND_BT87X
 [5.4]
 CEC_CROS_EC
 
+[5.3]
+# sort_r appeared in 5.4
+VIDEO_HANTRO
+VIDEO_ROCKCHIP_VDEC
+V4L2_H264
+
 [5.2]
 # Needs fwnode_graph_get_endpoint_by_id
 VIDEO_IPU3_CIO2
