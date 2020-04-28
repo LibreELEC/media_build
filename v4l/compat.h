@@ -2839,4 +2839,11 @@ static inline void __iomem *devm_platform_ioremap_resource(struct platform_devic
 }
 #endif
 
+#ifdef NEED_CPU_LATENCY_QOS
+#define cpu_latency_qos_add_request(req, val) \
+	pm_qos_add_request((req), PM_QOS_CPU_DMA_LATENCY, (val));
+
+#define cpu_latency_qos_remove_request pm_qos_remove_request
+#endif
+
 #endif /*  _COMPAT_H */
