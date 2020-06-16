@@ -28,6 +28,7 @@ add drx39xxj.patch
 
 [5.7.255]
 add v5.7_mmap_read_lock.patch
+add v5.7_vm_map_ram.patch
 
 [5.6.255]
 add v5.6_pin_user_pages.patch
