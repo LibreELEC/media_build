@@ -29,6 +29,7 @@ VIDEO_OV9650
 [4.17.0]
 # Needs devm_nvmem_register
 VIDEO_I2C
+VIDEO_OV2740
 
 [4.15.0]
 # Needs idle_bias_on and other flags in struct snd_soc_component_driver
@@ -48,7 +49,6 @@ VIDEO_OV5670
 VIDEO_OV5675
 VIDEO_OV8856
 VIDEO_OV7251
-VIDEO_OV2740
 VIDEO_IMX258
 VIDEO_DW9807
 VIDEO_AK7375
