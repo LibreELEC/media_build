@@ -40,6 +40,8 @@ VIDEO_TDA1997X
 VIDEO_MUX
 # skb_put changed prototype in 4.13
 RADIO_WL128X
+# Needs clk_bulk_data
+VIDEO_XILINX_CSI2RXSS
 
 [4.10.0]
 # needs dma_request_chan
