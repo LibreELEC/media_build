@@ -2246,6 +2246,10 @@ static inline unsigned long nsecs_to_jiffies_static(u64 n)
 #define U32_MAX     ((u32)~0U)
 #endif
 
+#ifdef NEED_U16_MAX
+#define U16_MAX     ((u16)~0U)
+#endif
+
 #ifdef NEED_BSEARCH
 static inline void *bsearch(const void *key, const void *base, size_t num, size_t size,
                             int (*cmp)(const void *key, const void *elt))
