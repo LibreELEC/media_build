@@ -31,6 +31,10 @@ VIDEO_OV9650
 VIDEO_I2C
 VIDEO_OV2740
 
+[4.16.0]
+# Needs disable_locking in struct regmap_config
+CEC_CH7322
+
 [4.15.0]
 # Needs idle_bias_on and other flags in struct snd_soc_component_driver
 VIDEO_TDA1997X
