@@ -2868,4 +2868,8 @@ static inline void __iomem *devm_platform_ioremap_resource(struct platform_devic
 #define fwnode_graph_is_endpoint(fwnode) fwnode_property_present((fwnode), "remote-endpoint")
 #endif
 
+#ifdef NEED_FALLTHROUGH
+#define fallthrough do {} while (0)  /* fallthrough */
+#endif
+
 #endif /*  _COMPAT_H */
