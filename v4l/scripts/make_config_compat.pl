@@ -759,6 +759,7 @@ sub check_other_dependencies()
 	check_files_for_func("sizeof_field", "NEED_SIZEOF_FIELD", "include/linux/stddef.h");
 	check_files_for_func("devm_platform_ioremap_resource", "NEED_DEVM_PLATFORM_IOREMAP_RESOURCE", "include/linux/platform_device.h");
 	check_files_for_func("cpu_latency_qos_add_request", "NEED_CPU_LATENCY_QOS", "include/linux/pm_qos.h");
+	check_files_for_func("fwnode_property_present", "NEED_FWNODE_PROPERTY_PRESENT", "include/linux/property.h");
 	check_files_for_func("fwnode_graph_is_endpoint", "NEED_FWNODE_GRAPH_IS_ENDPOINT", "include/linux/property.h");
 	check_files_for_func("fallthrough", "NEED_FALLTHROUGH", "include/linux/compiler_attributes.h");
 
