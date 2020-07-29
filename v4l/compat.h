@@ -2864,4 +2864,16 @@ static inline void __iomem *devm_platform_ioremap_resource(struct platform_devic
 #define cpu_latency_qos_remove_request pm_qos_remove_request
 #endif
 
+#ifdef NEED_FWNODE_PROPERTY_PRESENT
+#define fwnode_property_present(fwnode, propname) 0
+#endif
+
+#ifdef NEED_FWNODE_GRAPH_IS_ENDPOINT
+#define fwnode_graph_is_endpoint(fwnode) fwnode_property_present((fwnode), "remote-endpoint")
+#endif
+
+#ifdef NEED_FALLTHROUGH
+#define fallthrough do {} while (0)  /* fallthrough */
+#endif
+
 #endif /*  _COMPAT_H */

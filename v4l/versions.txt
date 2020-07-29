@@ -25,6 +25,8 @@ VIDEO_OMAP3
 # Needs devm_regmap_init_sccb
 VIDEO_OV772X
 VIDEO_OV9650
+# Needs gpiod_set_consumer_name
+VIDEO_MAX9286
 
 [4.17.0]
 # Needs devm_nvmem_register
@@ -70,6 +72,8 @@ VIDEO_ST_MIPID02
 I2C_BCM2048
 VIDEO_HI556
 VIDEO_DW9714
+VIDEO_DW9768
+VIDEO_RDACM20
 
 [4.9.0]
 # needs linux/bitfield.h
