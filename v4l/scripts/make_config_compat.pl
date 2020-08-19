@@ -717,7 +717,7 @@ sub check_other_dependencies()
 	check_files_for_func("fwnode_graph_get_endpoint_by_id", "NEED_FWNODE_GRAPH_GET_ENDPOINT_BY_ID", "include/linux/property.h");
 	check_files_for_func("timer_setup_on_stack", "NEED_TIMER_SETUP_ON_STACK", "include/linux/timer.h");
 	check_files_for_func("time64_to_tm", "NEED_TIME64_TO_TM", "include/linux/time.h");
-	check_files_for_func("READ_ONCE", "NEED_READ_ONCE", "include/linux/compiler.h");
+	check_files_for_func("READ_ONCE", "NEED_READ_ONCE", "include/linux/compiler.h", "include/asm-generic/rwonce.h");
 	check_files_for_func("usb_urb_ep_type_check", "NEED_USB_EP_CHECK", "include/linux/usb.h");
 	check_files_for_func("get_user_pages_longterm", "NEED_GET_USER_PAGES_LONGTERM", "include/linux/mm.h");
 	check_files_for_func("__pfn_to_phys", "NEED_PFN_TO_PHYS", "include/asm-generic/memory_model.h");
