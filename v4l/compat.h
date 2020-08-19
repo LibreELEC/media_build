@@ -2876,4 +2876,16 @@ static inline void __iomem *devm_platform_ioremap_resource(struct platform_devic
 #define fallthrough do {} while (0)  /* fallthrough */
 #endif
 
+#ifdef NEED_SCHED_SET_FIFO
+#include <linux/sched.h>
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
+#include <uapi/linux/sched/types.h>
+#endif
+static inline void sched_set_fifo(struct task_struct *p)
+{
+	struct sched_param sp = { .sched_priority = 50 };
+	sched_setscheduler(p, SCHED_FIFO, &sp);
+}
+#endif
+
 #endif /*  _COMPAT_H */
