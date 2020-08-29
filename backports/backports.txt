@@ -26,6 +26,9 @@ add pr_fmt.patch
 add debug.patch
 add drx39xxj.patch
 
+[5.9.255]
+add v5.9_tasklet.patch
+
 [5.7.255]
 add v5.7_mmap_read_lock.patch
 add v5.7_vm_map_ram.patch
