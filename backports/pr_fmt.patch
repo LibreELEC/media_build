@@ -132,7 +132,7 @@ index 06ea30a689d7..bfbeb45035cd 100644
  
  #include <linux/string.h>
 diff --git a/drivers/media/dvb-core/dvb_net.c b/drivers/media/dvb-core/dvb_net.c
-index 630509ecee20..d6d21a8c2016 100644
+index 89620da983ba..08021c2161b0 100644
 --- a/drivers/media/dvb-core/dvb_net.c
 +++ b/drivers/media/dvb-core/dvb_net.c
 @@ -40,6 +40,7 @@
@@ -180,7 +180,7 @@ index cafb41dba861..f0118188ac3b 100644
  
  #include <linux/kernel.h>
 diff --git a/drivers/media/dvb-frontends/dib0090.c b/drivers/media/dvb-frontends/dib0090.c
-index bc374750529b..97437ddb68e5 100644
+index 08a85831e917..6c45d91b1423 100644
 --- a/drivers/media/dvb-frontends/dib0090.c
 +++ b/drivers/media/dvb-frontends/dib0090.c
 @@ -8,6 +8,7 @@
@@ -192,7 +192,7 @@ index bc374750529b..97437ddb68e5 100644
  
  #include <linux/kernel.h>
 diff --git a/drivers/media/dvb-frontends/dib3000mb.c b/drivers/media/dvb-frontends/dib3000mb.c
-index 0f0480d8576d..df50ec4bc05a 100644
+index a6c2fc4586eb..6fcdf7c2e562 100644
 --- a/drivers/media/dvb-frontends/dib3000mb.c
 +++ b/drivers/media/dvb-frontends/dib3000mb.c
 @@ -17,6 +17,7 @@
@@ -228,7 +228,7 @@ index 97ce97789c9e..a79dfa89bdbb 100644
  
  #include <linux/kernel.h>
 diff --git a/drivers/media/dvb-frontends/dib7000p.c b/drivers/media/dvb-frontends/dib7000p.c
-index 0a7790c4bad3..75e18905bf6c 100644
+index 55bee50aa871..ac07ad1cfbb7 100644
 --- a/drivers/media/dvb-frontends/dib7000p.c
 +++ b/drivers/media/dvb-frontends/dib7000p.c
 @@ -5,6 +5,7 @@
@@ -273,7 +273,7 @@ index 63a4c6a4afb5..1fbdac917dc2 100644
  #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
  
 diff --git a/drivers/media/dvb-frontends/drx39xyj/drxj.c b/drivers/media/dvb-frontends/drx39xyj/drxj.c
-index 5de016412c42..6d81a007829d 100644
+index 237b9d04c076..263314c91e14 100644
 --- a/drivers/media/dvb-frontends/drx39xyj/drxj.c
 +++ b/drivers/media/dvb-frontends/drx39xyj/drxj.c
 @@ -53,6 +53,7 @@
@@ -285,7 +285,7 @@ index 5de016412c42..6d81a007829d 100644
  
  #include <linux/module.h>
 diff --git a/drivers/media/dvb-frontends/drxk_hard.c b/drivers/media/dvb-frontends/drxk_hard.c
-index 0ae9d8c72d8d..00dd56982f6c 100644
+index 32f9346deb3e..aab46b2313c9 100644
 --- a/drivers/media/dvb-frontends/drxk_hard.c
 +++ b/drivers/media/dvb-frontends/drxk_hard.c
 @@ -5,6 +5,7 @@
@@ -321,7 +321,7 @@ index ed671e951a17..97b9b3f690f8 100644
  
  #include "gp8psk-fe.h"
 diff --git a/drivers/media/dvb-frontends/lgdt3306a.c b/drivers/media/dvb-frontends/lgdt3306a.c
-index d3c330e035c4..763e85e74935 100644
+index 722576f1732a..9464b5a72040 100644
 --- a/drivers/media/dvb-frontends/lgdt3306a.c
 +++ b/drivers/media/dvb-frontends/lgdt3306a.c
 @@ -7,6 +7,7 @@
@@ -693,7 +693,7 @@ index 129a1f8ebe1a..3bf4b7ab7655 100644
  
  #define DEBUG_VARIABLE debug
 diff --git a/drivers/media/pci/ttpci/av7110_v4l.c b/drivers/media/pci/ttpci/av7110_v4l.c
-index 6d9c908be713..bc6b4fe7e95f 100644
+index c89f536f699c..ea769ca04cec 100644
 --- a/drivers/media/pci/ttpci/av7110_v4l.c
 +++ b/drivers/media/pci/ttpci/av7110_v4l.c
 @@ -11,6 +11,7 @@
@@ -705,7 +705,7 @@ index 6d9c908be713..bc6b4fe7e95f 100644
  
  #include <linux/kernel.h>
 diff --git a/drivers/media/pci/ttpci/budget-av.c b/drivers/media/pci/ttpci/budget-av.c
-index 38cac508bd72..d2867a6c0dad 100644
+index 3cb83005cf09..64e61883a79d 100644
 --- a/drivers/media/pci/ttpci/budget-av.c
 +++ b/drivers/media/pci/ttpci/budget-av.c
 @@ -16,6 +16,7 @@
@@ -861,7 +861,7 @@ index 8a37f083fe3d..400b9f10e641 100644
  
  #include <linux/kernel.h>
 diff --git a/drivers/media/rc/rc-main.c b/drivers/media/rc/rc-main.c
-index 3f9a4f1ddc79..6da720010b2b 100644
+index 1d811e5ffb55..70bd38178a0d 100644
 --- a/drivers/media/rc/rc-main.c
 +++ b/drivers/media/rc/rc-main.c
 @@ -3,6 +3,7 @@
@@ -920,6 +920,114 @@ index 4077217777f9..1c5157e2423f 100644
  #define pr_fmt(fmt) KBUILD_MODNAME ": %s: " fmt, __func__
  
  #include <linux/spi/spi.h>
+diff --git a/drivers/media/test-drivers/vidtv/vidtv_bridge.c b/drivers/media/test-drivers/vidtv/vidtv_bridge.c
+index 82e375048b99..58328e27a92f 100644
+--- a/drivers/media/test-drivers/vidtv/vidtv_bridge.c
++++ b/drivers/media/test-drivers/vidtv/vidtv_bridge.c
+@@ -9,6 +9,7 @@
+  * Copyright (C) 2020 Daniel W. S. Almeida
+  */
+ 
++#undef pr_fmt
+ #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
+ 
+ #include <linux/moduleparam.h>
+diff --git a/drivers/media/test-drivers/vidtv/vidtv_channel.c b/drivers/media/test-drivers/vidtv/vidtv_channel.c
+index ac4bdf05395e..8f9832ffd4f2 100644
+--- a/drivers/media/test-drivers/vidtv/vidtv_channel.c
++++ b/drivers/media/test-drivers/vidtv/vidtv_channel.c
+@@ -18,6 +18,7 @@
+  * Copyright (C) 2020 Daniel W. S. Almeida
+  */
+ 
++#undef pr_fmt
+ #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
+ 
+ #include <linux/types.h>
+diff --git a/drivers/media/test-drivers/vidtv/vidtv_common.c b/drivers/media/test-drivers/vidtv/vidtv_common.c
+index 9093df32e0ab..dfd88b11a521 100644
+--- a/drivers/media/test-drivers/vidtv/vidtv_common.c
++++ b/drivers/media/test-drivers/vidtv/vidtv_common.c
+@@ -6,6 +6,7 @@
+  *
+  * Copyright (C) 2020 Daniel W. S. Almeida
+  */
++#undef pr_fmt
+ #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
+ 
+ #include <linux/printk.h>
+diff --git a/drivers/media/test-drivers/vidtv/vidtv_mux.c b/drivers/media/test-drivers/vidtv/vidtv_mux.c
+index 540f404372aa..7a651dc633a3 100644
+--- a/drivers/media/test-drivers/vidtv/vidtv_mux.c
++++ b/drivers/media/test-drivers/vidtv/vidtv_mux.c
+@@ -12,6 +12,7 @@
+  * Copyright (C) 2020 Daniel W. S. Almeida
+  */
+ 
++#undef pr_fmt
+ #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
+ 
+ #include <linux/types.h>
+diff --git a/drivers/media/test-drivers/vidtv/vidtv_pes.c b/drivers/media/test-drivers/vidtv/vidtv_pes.c
+index 8237434f3fc2..1ebea195dade 100644
+--- a/drivers/media/test-drivers/vidtv/vidtv_pes.c
++++ b/drivers/media/test-drivers/vidtv/vidtv_pes.c
+@@ -11,6 +11,7 @@
+  * Copyright (C) 2020 Daniel W. S. Almeida
+  */
+ 
++#undef pr_fmt
+ #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
+ 
+ #include <linux/types.h>
+diff --git a/drivers/media/test-drivers/vidtv/vidtv_psi.c b/drivers/media/test-drivers/vidtv/vidtv_psi.c
+index 761034d10d9d..2e6370c51178 100644
+--- a/drivers/media/test-drivers/vidtv/vidtv_psi.c
++++ b/drivers/media/test-drivers/vidtv/vidtv_psi.c
+@@ -13,6 +13,7 @@
+  * Copyright (C) 2020 Daniel W. S. Almeida
+  */
+ 
++#undef pr_fmt
+ #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
+ 
+ #include <linux/kernel.h>
+diff --git a/drivers/media/test-drivers/vidtv/vidtv_s302m.c b/drivers/media/test-drivers/vidtv/vidtv_s302m.c
+index 3b20a26d8721..58e342c04c93 100644
+--- a/drivers/media/test-drivers/vidtv/vidtv_s302m.c
++++ b/drivers/media/test-drivers/vidtv/vidtv_s302m.c
+@@ -15,6 +15,7 @@
+  * Copyright (C) 2020 Daniel W. S. Almeida
+  */
+ 
++#undef pr_fmt
+ #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
+ 
+ #include <linux/types.h>
+diff --git a/drivers/media/test-drivers/vidtv/vidtv_ts.c b/drivers/media/test-drivers/vidtv/vidtv_ts.c
+index 190b9e4438dc..3e76f229d3a6 100644
+--- a/drivers/media/test-drivers/vidtv/vidtv_ts.c
++++ b/drivers/media/test-drivers/vidtv/vidtv_ts.c
+@@ -7,6 +7,7 @@
+  * Copyright (C) 2020 Daniel W. S. Almeida
+  */
+ 
++#undef pr_fmt
+ #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
+ 
+ #include <linux/printk.h>
+diff --git a/drivers/media/test-drivers/vidtv/vidtv_tuner.c b/drivers/media/test-drivers/vidtv/vidtv_tuner.c
+index c8e64bab0379..fbf778fbc262 100644
+--- a/drivers/media/test-drivers/vidtv/vidtv_tuner.c
++++ b/drivers/media/test-drivers/vidtv/vidtv_tuner.c
+@@ -10,6 +10,7 @@
+  * Copyright (C) 2020 Daniel W. S. Almeida
+  */
+ 
++#undef pr_fmt
+ #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
+ 
+ #include <linux/errno.h>
 diff --git a/drivers/media/tuners/r820t.c b/drivers/media/tuners/r820t.c
 index aed2f130ec74..2b556606d815 100644
 --- a/drivers/media/tuners/r820t.c
@@ -1689,7 +1797,7 @@ index 9e016b71aa91..3f0c291b9a67 100644
  
  #include <linux/init.h>
 diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
-index c138914f507b..77488910f325 100644
+index 73f3d65957ff..1b432a2a75b0 100644
 --- a/drivers/media/v4l2-core/v4l2-ctrls.c
 +++ b/drivers/media/v4l2-core/v4l2-ctrls.c
 @@ -6,6 +6,7 @@
