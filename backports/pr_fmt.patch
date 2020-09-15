@@ -920,30 +920,6 @@ index 4077217777f9..1c5157e2423f 100644
  #define pr_fmt(fmt) KBUILD_MODNAME ": %s: " fmt, __func__
  
  #include <linux/spi/spi.h>
-diff --git a/drivers/media/test-drivers/vidtv/vidtv_bridge.c b/drivers/media/test-drivers/vidtv/vidtv_bridge.c
-index 82e375048b99..58328e27a92f 100644
---- a/drivers/media/test-drivers/vidtv/vidtv_bridge.c
-+++ b/drivers/media/test-drivers/vidtv/vidtv_bridge.c
-@@ -9,6 +9,7 @@
-  * Copyright (C) 2020 Daniel W. S. Almeida
-  */
- 
-+#undef pr_fmt
- #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
- 
- #include <linux/moduleparam.h>
-diff --git a/drivers/media/test-drivers/vidtv/vidtv_channel.c b/drivers/media/test-drivers/vidtv/vidtv_channel.c
-index ac4bdf05395e..8f9832ffd4f2 100644
---- a/drivers/media/test-drivers/vidtv/vidtv_channel.c
-+++ b/drivers/media/test-drivers/vidtv/vidtv_channel.c
-@@ -18,6 +18,7 @@
-  * Copyright (C) 2020 Daniel W. S. Almeida
-  */
- 
-+#undef pr_fmt
- #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
- 
- #include <linux/types.h>
 diff --git a/drivers/media/test-drivers/vidtv/vidtv_common.c b/drivers/media/test-drivers/vidtv/vidtv_common.c
 index 9093df32e0ab..dfd88b11a521 100644
 --- a/drivers/media/test-drivers/vidtv/vidtv_common.c
@@ -956,18 +932,6 @@ index 9093df32e0ab..dfd88b11a521 100644
  #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
  
  #include <linux/printk.h>
-diff --git a/drivers/media/test-drivers/vidtv/vidtv_mux.c b/drivers/media/test-drivers/vidtv/vidtv_mux.c
-index 540f404372aa..7a651dc633a3 100644
---- a/drivers/media/test-drivers/vidtv/vidtv_mux.c
-+++ b/drivers/media/test-drivers/vidtv/vidtv_mux.c
-@@ -12,6 +12,7 @@
-  * Copyright (C) 2020 Daniel W. S. Almeida
-  */
- 
-+#undef pr_fmt
- #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
- 
- #include <linux/types.h>
 diff --git a/drivers/media/test-drivers/vidtv/vidtv_pes.c b/drivers/media/test-drivers/vidtv/vidtv_pes.c
 index 8237434f3fc2..1ebea195dade 100644
 --- a/drivers/media/test-drivers/vidtv/vidtv_pes.c
@@ -1016,18 +980,6 @@ index 190b9e4438dc..3e76f229d3a6 100644
  #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
  
  #include <linux/printk.h>
-diff --git a/drivers/media/test-drivers/vidtv/vidtv_tuner.c b/drivers/media/test-drivers/vidtv/vidtv_tuner.c
-index c8e64bab0379..fbf778fbc262 100644
---- a/drivers/media/test-drivers/vidtv/vidtv_tuner.c
-+++ b/drivers/media/test-drivers/vidtv/vidtv_tuner.c
-@@ -10,6 +10,7 @@
-  * Copyright (C) 2020 Daniel W. S. Almeida
-  */
- 
-+#undef pr_fmt
- #define pr_fmt(fmt) KBUILD_MODNAME ":%s, %d: " fmt, __func__, __LINE__
- 
- #include <linux/errno.h>
 diff --git a/drivers/media/tuners/r820t.c b/drivers/media/tuners/r820t.c
 index aed2f130ec74..2b556606d815 100644
 --- a/drivers/media/tuners/r820t.c
