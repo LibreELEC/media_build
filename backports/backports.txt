@@ -164,6 +164,7 @@ add v3.12_kfifo_in.patch
 
 [3.11.255]
 add v3.11_dev_groups.patch
+add v3.11_vidtv.patch
 
 [3.10.255]
 add v3.10_fw_driver_probe.patch
