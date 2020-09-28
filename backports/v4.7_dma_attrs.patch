@@ -1,8 +1,8 @@
 diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 37d0186ba330..05aa0ad74f15 100644
+index f544d3393e9d..f0249a6e4015 100644
 --- a/drivers/media/common/videobuf2/videobuf2-core.c
 +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -704,17 +704,17 @@ EXPORT_SYMBOL(vb2_verify_memory_type);
+@@ -723,17 +723,17 @@ EXPORT_SYMBOL(vb2_verify_memory_type);
  
  static void set_queue_consistency(struct vb2_queue *q, bool consistent_mem)
  {
@@ -22,9 +22,9 @@ index 37d0186ba330..05aa0ad74f15 100644
 +	bool queue_is_consistent = !dma_get_attr(DMA_ATTR_NON_CONSISTENT, q->dma_attrs);
  
  	if (consistent_mem != queue_is_consistent) {
- 		dprintk(1, "memory consistency model mismatch\n");
+ 		dprintk(q, 1, "memory consistency model mismatch\n");
 diff --git a/drivers/media/common/videobuf2/videobuf2-dma-contig.c b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-index 59a016181109..ac947ff3abd2 100644
+index 03349e5df8e2..ac947ff3abd2 100644
 --- a/drivers/media/common/videobuf2/videobuf2-dma-contig.c
 +++ b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
 @@ -27,7 +27,7 @@ struct vb2_dc_buf {
@@ -48,7 +48,39 @@ index 59a016181109..ac947ff3abd2 100644
  }
  
  /*********************************************/
-@@ -133,12 +133,12 @@ static void vb2_dc_put(void *buf_priv)
+@@ -57,10 +57,10 @@ static unsigned long vb2_dc_get_contiguous_size(struct sg_table *sgt)
+ 	unsigned int i;
+ 	unsigned long size = 0;
+ 
+-	for_each_sgtable_dma_sg(sgt, s, i) {
++	for_each_sg(sgt->sgl, s, sgt->nents, i) {
+ 		if (sg_dma_address(s) != expected)
+ 			break;
+-		expected += sg_dma_len(s);
++		expected = sg_dma_address(s) + sg_dma_len(s);
+ 		size += sg_dma_len(s);
+ 	}
+ 	return size;
+@@ -102,7 +102,8 @@ static void vb2_dc_prepare(void *buf_priv)
+ 	if (!sgt)
+ 		return;
+ 
+-	dma_sync_sgtable_for_device(buf->dev, sgt, buf->dma_dir);
++	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->orig_nents,
++			       buf->dma_dir);
+ }
+ 
+ static void vb2_dc_finish(void *buf_priv)
+@@ -113,7 +114,7 @@ static void vb2_dc_finish(void *buf_priv)
+ 	if (!sgt)
+ 		return;
+ 
+-	dma_sync_sgtable_for_cpu(buf->dev, sgt, buf->dma_dir);
++	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
+ }
+ 
+ /*********************************************/
+@@ -132,12 +133,12 @@ static void vb2_dc_put(void *buf_priv)
  		kfree(buf->sgt_base);
  	}
  	dma_free_attrs(buf->dev, buf->size, buf->cookie, buf->dma_addr,
@@ -63,7 +95,7 @@ index 59a016181109..ac947ff3abd2 100644
  			  unsigned long size, enum dma_data_direction dma_dir,
  			  gfp_t gfp_flags)
  {
-@@ -151,16 +151,16 @@ static void *vb2_dc_alloc(struct device *dev, unsigned long attrs,
+@@ -150,16 +151,16 @@ static void *vb2_dc_alloc(struct device *dev, unsigned long attrs,
  	if (!buf)
  		return ERR_PTR(-ENOMEM);
  
@@ -83,7 +115,7 @@ index 59a016181109..ac947ff3abd2 100644
  		buf->vaddr = buf->cookie;
  
  	/* Prevent the device from being released while the buffer is used */
-@@ -188,7 +188,7 @@ static int vb2_dc_mmap(void *buf_priv, struct vm_area_struct *vma)
+@@ -187,7 +188,7 @@ static int vb2_dc_mmap(void *buf_priv, struct vm_area_struct *vma)
  	}
  
  	ret = dma_mmap_attrs(buf->dev, vma, buf->cookie,
@@ -92,7 +124,7 @@ index 59a016181109..ac947ff3abd2 100644
  
  	if (ret) {
  		pr_err("Remapping memory failed, error: %d\n", ret);
-@@ -267,7 +267,10 @@ static void vb2_dc_dmabuf_ops_detach(struct dma_buf *dbuf,
+@@ -266,15 +267,19 @@ static void vb2_dc_dmabuf_ops_detach(struct dma_buf *dbuf,
  	sgt = &attach->sgt;
  
  	/* release the scatterlist cache */
@@ -104,17 +136,18 @@ index 59a016181109..ac947ff3abd2 100644
  		/*
  		 * Cache sync can be skipped here, as the vb2_dc memory is
  		 * allocated from device coherent memory, which means the
-@@ -275,7 +278,8 @@ static void vb2_dc_dmabuf_ops_detach(struct dma_buf *dbuf,
+ 		 * memory locations do not require any explicit cache
  		 * maintenance prior or after being used by the device.
  		 */
- 		dma_unmap_sg_attrs(db_attach->dev, sgt->sgl, sgt->orig_nents,
--				   attach->dma_dir, DMA_ATTR_SKIP_CPU_SYNC);
+-		dma_unmap_sgtable(db_attach->dev, sgt, attach->dma_dir,
+-				  DMA_ATTR_SKIP_CPU_SYNC);
++		dma_unmap_sg_attrs(db_attach->dev, sgt->sgl, sgt->orig_nents,
 +				   attach->dma_dir, &attrs);
 +	}
  	sg_free_table(sgt);
  	kfree(attach);
  	db_attach->priv = NULL;
-@@ -288,6 +292,9 @@ static struct sg_table *vb2_dc_dmabuf_ops_map(
+@@ -287,6 +292,9 @@ static struct sg_table *vb2_dc_dmabuf_ops_map(
  	/* stealing dmabuf mutex to serialize map/unmap operations */
  	struct mutex *lock = &db_attach->dmabuf->lock;
  	struct sg_table *sgt;
@@ -124,25 +157,30 @@ index 59a016181109..ac947ff3abd2 100644
  
  	mutex_lock(lock);
  
-@@ -301,7 +308,7 @@ static struct sg_table *vb2_dc_dmabuf_ops_map(
+@@ -299,8 +307,8 @@ static struct sg_table *vb2_dc_dmabuf_ops_map(
+ 
  	/* release any previous cache */
  	if (attach->dma_dir != DMA_NONE) {
- 		dma_unmap_sg_attrs(db_attach->dev, sgt->sgl, sgt->orig_nents,
--				   attach->dma_dir, DMA_ATTR_SKIP_CPU_SYNC);
+-		dma_unmap_sgtable(db_attach->dev, sgt, attach->dma_dir,
+-				  DMA_ATTR_SKIP_CPU_SYNC);
++		dma_unmap_sg_attrs(db_attach->dev, sgt->sgl, sgt->orig_nents,
 +				   attach->dma_dir, &attrs);
  		attach->dma_dir = DMA_NONE;
  	}
  
-@@ -310,7 +317,7 @@ static struct sg_table *vb2_dc_dmabuf_ops_map(
+@@ -308,8 +316,9 @@ static struct sg_table *vb2_dc_dmabuf_ops_map(
+ 	 * mapping to the client with new direction, no cache sync
  	 * required see comment in vb2_dc_dmabuf_ops_detach()
  	 */
- 	sgt->nents = dma_map_sg_attrs(db_attach->dev, sgt->sgl, sgt->orig_nents,
--				      dma_dir, DMA_ATTR_SKIP_CPU_SYNC);
+-	if (dma_map_sgtable(db_attach->dev, sgt, dma_dir,
+-			    DMA_ATTR_SKIP_CPU_SYNC)) {
++	sgt->nents = dma_map_sg_attrs(db_attach->dev, sgt->sgl, sgt->orig_nents,
 +				      dma_dir, &attrs);
- 	if (!sgt->nents) {
++	if (!sgt->nents) {
  		pr_err("failed to map scatterlist\n");
  		mutex_unlock(lock);
-@@ -343,7 +350,7 @@ vb2_dc_dmabuf_ops_begin_cpu_access(struct dma_buf *dbuf,
+ 		return ERR_PTR(-EIO);
+@@ -341,7 +350,7 @@ vb2_dc_dmabuf_ops_begin_cpu_access(struct dma_buf *dbuf,
  	struct vb2_dc_buf *buf = dbuf->priv;
  	struct sg_table *sgt = buf->dma_sgt;
  
@@ -151,7 +189,7 @@ index 59a016181109..ac947ff3abd2 100644
  		return 0;
  
  	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-@@ -357,7 +364,7 @@ vb2_dc_dmabuf_ops_end_cpu_access(struct dma_buf *dbuf,
+@@ -355,7 +364,7 @@ vb2_dc_dmabuf_ops_end_cpu_access(struct dma_buf *dbuf,
  	struct vb2_dc_buf *buf = dbuf->priv;
  	struct sg_table *sgt = buf->dma_sgt;
  
@@ -160,7 +198,7 @@ index 59a016181109..ac947ff3abd2 100644
  		return 0;
  
  	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-@@ -401,7 +408,7 @@ static struct sg_table *vb2_dc_get_base_sgt(struct vb2_dc_buf *buf)
+@@ -399,7 +408,7 @@ static struct sg_table *vb2_dc_get_base_sgt(struct vb2_dc_buf *buf)
  	}
  
  	ret = dma_get_sgtable_attrs(buf->dev, sgt, buf->cookie, buf->dma_addr,
@@ -169,7 +207,7 @@ index 59a016181109..ac947ff3abd2 100644
  	if (ret < 0) {
  		dev_err(buf->dev, "failed to get scatterlist from DMA API\n");
  		kfree(sgt);
-@@ -450,12 +457,15 @@ static void vb2_dc_put_userptr(void *buf_priv)
+@@ -448,12 +457,15 @@ static void vb2_dc_put_userptr(void *buf_priv)
  	struct page **pages;
  
  	if (sgt) {
@@ -180,13 +218,14 @@ index 59a016181109..ac947ff3abd2 100644
  		 * No need to sync to CPU, it's already synced to the CPU
  		 * since the finish() memop will have been called before this.
  		 */
- 		dma_unmap_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
--				   buf->dma_dir, DMA_ATTR_SKIP_CPU_SYNC);
+-		dma_unmap_sgtable(buf->dev, sgt, buf->dma_dir,
+-				  DMA_ATTR_SKIP_CPU_SYNC);
++		dma_unmap_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
 +				   buf->dma_dir, &attrs);
  		pages = frame_vector_pages(buf->vec);
  		/* sgt should exist only if vector contains pages... */
  		BUG_ON(IS_ERR(pages));
-@@ -484,6 +494,9 @@ static void *vb2_dc_get_userptr(struct device *dev, unsigned long vaddr,
+@@ -482,6 +494,9 @@ static void *vb2_dc_get_userptr(struct device *dev, unsigned long vaddr,
  	struct sg_table *sgt;
  	unsigned long contig_size;
  	unsigned long dma_align = dma_get_cache_alignment();
@@ -196,26 +235,30 @@ index 59a016181109..ac947ff3abd2 100644
  
  	/* Only cache aligned DMA transfers are reliable */
  	if (!IS_ALIGNED(vaddr | size, dma_align)) {
-@@ -553,7 +566,7 @@ static void *vb2_dc_get_userptr(struct device *dev, unsigned long vaddr,
+@@ -550,8 +565,9 @@ static void *vb2_dc_get_userptr(struct device *dev, unsigned long vaddr,
+ 	 * No need to sync to the device, this will happen later when the
  	 * prepare() memop is called.
  	 */
- 	sgt->nents = dma_map_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
--				      buf->dma_dir, DMA_ATTR_SKIP_CPU_SYNC);
+-	if (dma_map_sgtable(buf->dev, sgt, buf->dma_dir,
+-			    DMA_ATTR_SKIP_CPU_SYNC)) {
++	sgt->nents = dma_map_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
 +				      buf->dma_dir, &attrs);
- 	if (sgt->nents <= 0) {
++	if (sgt->nents <= 0) {
  		pr_err("failed to map scatterlist\n");
  		ret = -EIO;
-@@ -577,7 +590,7 @@ static void *vb2_dc_get_userptr(struct device *dev, unsigned long vaddr,
+ 		goto fail_sgt_init;
+@@ -573,7 +589,8 @@ static void *vb2_dc_get_userptr(struct device *dev, unsigned long vaddr,
+ 	return buf;
  
  fail_map_sg:
- 	dma_unmap_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
--			   buf->dma_dir, DMA_ATTR_SKIP_CPU_SYNC);
+-	dma_unmap_sgtable(buf->dev, sgt, buf->dma_dir, DMA_ATTR_SKIP_CPU_SYNC);
++	dma_unmap_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
 +			   buf->dma_dir, &attrs);
  
  fail_sgt_init:
  	sg_free_table(sgt);
 diff --git a/drivers/media/common/videobuf2/videobuf2-dma-sg.c b/drivers/media/common/videobuf2/videobuf2-dma-sg.c
-index 13f74b1296eb..131bc64f7cf2 100644
+index 2d9860cc4d6d..131bc64f7cf2 100644
 --- a/drivers/media/common/videobuf2/videobuf2-dma-sg.c
 +++ b/drivers/media/common/videobuf2/videobuf2-dma-sg.c
 @@ -95,7 +95,7 @@ static int vb2_dma_sg_alloc_compacted(struct vb2_dma_sg_buf *buf,
@@ -237,16 +280,19 @@ index 13f74b1296eb..131bc64f7cf2 100644
  
  	if (WARN_ON(!dev))
  		return ERR_PTR(-EINVAL);
-@@ -148,7 +151,7 @@ static void *vb2_dma_sg_alloc(struct device *dev, unsigned long dma_attrs,
+@@ -147,8 +150,9 @@ static void *vb2_dma_sg_alloc(struct device *dev, unsigned long dma_attrs,
+ 	 * No need to sync to the device, this will happen later when the
  	 * prepare() memop is called.
  	 */
- 	sgt->nents = dma_map_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
--				      buf->dma_dir, DMA_ATTR_SKIP_CPU_SYNC);
+-	if (dma_map_sgtable(buf->dev, sgt, buf->dma_dir,
+-			    DMA_ATTR_SKIP_CPU_SYNC))
++	sgt->nents = dma_map_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
 +				      buf->dma_dir, &attrs);
- 	if (!sgt->nents)
++	if (!sgt->nents)
  		goto fail_map;
  
-@@ -183,10 +186,13 @@ static void vb2_dma_sg_put(void *buf_priv)
+ 	buf->handler.refcount = &buf->refcount;
+@@ -182,10 +186,13 @@ static void vb2_dma_sg_put(void *buf_priv)
  	int i = buf->num_pages;
  
  	if (atomic_dec_and_test(&buf->refcount)) {
@@ -255,13 +301,33 @@ index 13f74b1296eb..131bc64f7cf2 100644
 +		dma_set_attr(DMA_ATTR_SKIP_CPU_SYNC, &attrs);
  		dprintk(1, "%s: Freeing buffer of %d pages\n", __func__,
  			buf->num_pages);
- 		dma_unmap_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
--				   buf->dma_dir, DMA_ATTR_SKIP_CPU_SYNC);
+-		dma_unmap_sgtable(buf->dev, sgt, buf->dma_dir,
+-				  DMA_ATTR_SKIP_CPU_SYNC);
++		dma_unmap_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
 +				   buf->dma_dir, &attrs);
  		if (buf->vaddr)
  			vm_unmap_ram(buf->vaddr, buf->num_pages);
  		sg_free_table(buf->dma_sgt);
-@@ -221,11 +227,13 @@ static void *vb2_dma_sg_get_userptr(struct device *dev, unsigned long vaddr,
+@@ -202,7 +209,8 @@ static void vb2_dma_sg_prepare(void *buf_priv)
+ 	struct vb2_dma_sg_buf *buf = buf_priv;
+ 	struct sg_table *sgt = buf->dma_sgt;
+ 
+-	dma_sync_sgtable_for_device(buf->dev, sgt, buf->dma_dir);
++	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->orig_nents,
++			       buf->dma_dir);
+ }
+ 
+ static void vb2_dma_sg_finish(void *buf_priv)
+@@ -210,7 +218,7 @@ static void vb2_dma_sg_finish(void *buf_priv)
+ 	struct vb2_dma_sg_buf *buf = buf_priv;
+ 	struct sg_table *sgt = buf->dma_sgt;
+ 
+-	dma_sync_sgtable_for_cpu(buf->dev, sgt, buf->dma_dir);
++	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
+ }
+ 
+ static void *vb2_dma_sg_get_userptr(struct device *dev, unsigned long vaddr,
+@@ -219,11 +227,13 @@ static void *vb2_dma_sg_get_userptr(struct device *dev, unsigned long vaddr,
  {
  	struct vb2_dma_sg_buf *buf;
  	struct sg_table *sgt;
@@ -275,16 +341,19 @@ index 13f74b1296eb..131bc64f7cf2 100644
  	buf = kzalloc(sizeof *buf, GFP_KERNEL);
  	if (!buf)
  		return ERR_PTR(-ENOMEM);
-@@ -256,7 +264,7 @@ static void *vb2_dma_sg_get_userptr(struct device *dev, unsigned long vaddr,
+@@ -253,8 +263,9 @@ static void *vb2_dma_sg_get_userptr(struct device *dev, unsigned long vaddr,
+ 	 * No need to sync to the device, this will happen later when the
  	 * prepare() memop is called.
  	 */
- 	sgt->nents = dma_map_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
--				      buf->dma_dir, DMA_ATTR_SKIP_CPU_SYNC);
+-	if (dma_map_sgtable(buf->dev, sgt, buf->dma_dir,
+-			    DMA_ATTR_SKIP_CPU_SYNC))
++	sgt->nents = dma_map_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
 +				      buf->dma_dir, &attrs);
- 	if (!sgt->nents)
++	if (!sgt->nents)
  		goto userptr_fail_map;
  
-@@ -280,11 +288,14 @@ static void vb2_dma_sg_put_userptr(void *buf_priv)
+ 	return buf;
+@@ -277,10 +288,14 @@ static void vb2_dma_sg_put_userptr(void *buf_priv)
  	struct vb2_dma_sg_buf *buf = buf_priv;
  	struct sg_table *sgt = &buf->sg_table;
  	int i = buf->num_pages;
@@ -294,14 +363,42 @@ index 13f74b1296eb..131bc64f7cf2 100644
  
  	dprintk(1, "%s: Releasing userspace buffer of %d pages\n",
  	       __func__, buf->num_pages);
- 	dma_unmap_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir,
--			   DMA_ATTR_SKIP_CPU_SYNC);
+-	dma_unmap_sgtable(buf->dev, sgt, buf->dma_dir, DMA_ATTR_SKIP_CPU_SYNC);
++	dma_unmap_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir,
 +			   &attrs);
  	if (buf->vaddr)
  		vm_unmap_ram(buf->vaddr, buf->num_pages);
  	sg_free_table(buf->dma_sgt);
+@@ -403,7 +418,8 @@ static void vb2_dma_sg_dmabuf_ops_detach(struct dma_buf *dbuf,
+ 
+ 	/* release the scatterlist cache */
+ 	if (attach->dma_dir != DMA_NONE)
+-		dma_unmap_sgtable(db_attach->dev, sgt, attach->dma_dir, 0);
++		dma_unmap_sg(db_attach->dev, sgt->sgl, sgt->orig_nents,
++			attach->dma_dir);
+ 	sg_free_table(sgt);
+ 	kfree(attach);
+ 	db_attach->priv = NULL;
+@@ -428,12 +444,15 @@ static struct sg_table *vb2_dma_sg_dmabuf_ops_map(
+ 
+ 	/* release any previous cache */
+ 	if (attach->dma_dir != DMA_NONE) {
+-		dma_unmap_sgtable(db_attach->dev, sgt, attach->dma_dir, 0);
++		dma_unmap_sg(db_attach->dev, sgt->sgl, sgt->orig_nents,
++			attach->dma_dir);
+ 		attach->dma_dir = DMA_NONE;
+ 	}
+ 
+ 	/* mapping to the client with new direction */
+-	if (dma_map_sgtable(db_attach->dev, sgt, dma_dir, 0)) {
++	sgt->nents = dma_map_sg(db_attach->dev, sgt->sgl, sgt->orig_nents,
++				dma_dir);
++	if (!sgt->nents) {
+ 		pr_err("failed to map scatterlist\n");
+ 		mutex_unlock(lock);
+ 		return ERR_PTR(-EIO);
 diff --git a/drivers/media/common/videobuf2/videobuf2-vmalloc.c b/drivers/media/common/videobuf2/videobuf2-vmalloc.c
-index 163a5da6168d..bd3315a9cf2b 100644
+index 2af64480ead5..bd3315a9cf2b 100644
 --- a/drivers/media/common/videobuf2/videobuf2-vmalloc.c
 +++ b/drivers/media/common/videobuf2/videobuf2-vmalloc.c
 @@ -33,7 +33,7 @@ struct vb2_vmalloc_buf {
@@ -313,6 +410,43 @@ index 163a5da6168d..bd3315a9cf2b 100644
  			       unsigned long size, enum dma_data_direction dma_dir,
  			       gfp_t gfp_flags)
  {
+@@ -228,7 +228,7 @@ static int vb2_vmalloc_dmabuf_ops_attach(struct dma_buf *dbuf,
+ 		kfree(attach);
+ 		return ret;
+ 	}
+-	for_each_sgtable_sg(sgt, sg, i) {
++	for_each_sg(sgt->sgl, sg, sgt->nents, i) {
+ 		struct page *page = vmalloc_to_page(vaddr);
+ 
+ 		if (!page) {
+@@ -258,7 +258,8 @@ static void vb2_vmalloc_dmabuf_ops_detach(struct dma_buf *dbuf,
+ 
+ 	/* release the scatterlist cache */
+ 	if (attach->dma_dir != DMA_NONE)
+-		dma_unmap_sgtable(db_attach->dev, sgt, attach->dma_dir, 0);
++		dma_unmap_sg(db_attach->dev, sgt->sgl, sgt->orig_nents,
++			attach->dma_dir);
+ 	sg_free_table(sgt);
+ 	kfree(attach);
+ 	db_attach->priv = NULL;
+@@ -283,12 +284,15 @@ static struct sg_table *vb2_vmalloc_dmabuf_ops_map(
+ 
+ 	/* release any previous cache */
+ 	if (attach->dma_dir != DMA_NONE) {
+-		dma_unmap_sgtable(db_attach->dev, sgt, attach->dma_dir, 0);
++		dma_unmap_sg(db_attach->dev, sgt->sgl, sgt->orig_nents,
++			attach->dma_dir);
+ 		attach->dma_dir = DMA_NONE;
+ 	}
+ 
+ 	/* mapping to the client with new direction */
+-	if (dma_map_sgtable(db_attach->dev, sgt, dma_dir, 0)) {
++	sgt->nents = dma_map_sg(db_attach->dev, sgt->sgl, sgt->orig_nents,
++				dma_dir);
++	if (!sgt->nents) {
+ 		pr_err("failed to map scatterlist\n");
+ 		mutex_unlock(lock);
+ 		return ERR_PTR(-EIO);
 diff --git a/drivers/media/platform/sti/bdisp/bdisp-hw.c b/drivers/media/platform/sti/bdisp/bdisp-hw.c
 index a74e9fd65238..eafc63307ef7 100644
 --- a/drivers/media/platform/sti/bdisp/bdisp-hw.c
@@ -381,7 +515,7 @@ index a74e9fd65238..eafc63307ef7 100644
  		return -ENOMEM;
  
 diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index 9e68fe043a6c..0034cf84ed79 100644
+index 52ef92049073..cf1c9543e95d 100644
 --- a/include/media/videobuf2-core.h
 +++ b/include/media/videobuf2-core.h
 @@ -116,7 +116,7 @@ struct vb2_threadio_data;
@@ -402,7 +536,7 @@ index 9e68fe043a6c..0034cf84ed79 100644
   * @bidirectional: when this flag is set the DMA direction for the buffers of
   *		this queue will be overridden with %DMA_BIDIRECTIONAL direction.
   *		This is useful in cases where the hardware (firmware) writes to
-@@ -566,7 +566,7 @@ struct vb2_queue {
+@@ -568,7 +568,7 @@ struct vb2_queue {
  	unsigned int			type;
  	unsigned int			io_modes;
  	struct device			*dev;
