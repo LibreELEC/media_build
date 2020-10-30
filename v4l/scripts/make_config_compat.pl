@@ -140,25 +140,6 @@ sub check_is_singular()
 	close INNET;
 }
 
-sub check_clamp()
-{
-	my $file = "$kdir/include/linux/kernel.h";
-	my $need_compat = 1;
-
-	open INNET, "<$file" or die "File not found: $file";
-	while (<INNET>) {
-		if (m/define\s+clamp/) {
-			$need_compat = 0;
-			last;
-		}
-	}
-
-	if ($need_compat) {
-		$out.= "\n#define NEED_CLAMP 1\n";
-	}
-	close INNET;
-}
-
 sub check_proc_create()
 {
 	my $file = "$kdir/include/linux/proc_fs.h";
@@ -587,7 +568,6 @@ sub check_other_dependencies()
 	check_snd_pcm_stop_xrun();
 	check_bool();
 	check_is_singular();
-	check_clamp();
 	check_proc_create();
 	check_pcm_lock();
 	check_algo_control();

@@ -561,20 +561,6 @@ static inline int list_is_singular(const struct list_head *head)
 }
 #endif
 
-#ifdef NEED_CLAMP
-#define clamp( x, l, h )        max_t( __typeof__( x ),		\
-				      ( l ),			\
-				      min_t( __typeof__( x ),	\
-					     ( h ),        	\
-					     ( x ) ) )
-#define clamp_val(val, min, max) ({		\
-	typeof(val) __val = (val);		\
-	typeof(val) __min = (min);		\
-	typeof(val) __max = (max);		\
-	__val = __val < __min ? __min : __val;	\
-	__val > __max ? __max : __val; })
-#endif
-
 #ifdef NEED_ALGO_CONTROL
 static inline int dummy_algo_control(struct i2c_adapter *adapter,
 			     unsigned int cmd, unsigned long arg)
