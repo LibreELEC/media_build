@@ -1,5 +1,5 @@
 diff --git a/include/linux/dma-buf.h b/include/linux/dma-buf.h
-index a2ca294eaebe..ec212cb27fdc 100644
+index 957b398d30e5..46cdc6d4f897 100644
 --- a/include/linux/dma-buf.h
 +++ b/include/linux/dma-buf.h
 @@ -81,43 +81,14 @@ struct dma_buf_ops {
@@ -120,18 +120,18 @@ index a2ca294eaebe..ec212cb27fdc 100644
 - * @name: userspace-provided name; useful for accounting and debugging,
 - *        protected by @resv.
 + * @name: userspace-provided name; useful for accounting and debugging.
+  * @name_lock: spinlock to protect name access
   * @owner: pointer to exporter module; used for refcounting when exporter is a
   *         kernel module.
-  * @list_node: node for dma_buf accounting and debugging.
-@@ -311,7 +303,6 @@ struct dma_buf {
+@@ -312,7 +304,6 @@ struct dma_buf {
  	void *vmap_ptr;
  	const char *exp_name;
  	const char *name;
--	spinlock_t name_lock; /* spinlock to protect name access */
+-	spinlock_t name_lock;
  	struct module *owner;
  	struct list_head list_node;
  	void *priv;
-@@ -328,53 +319,14 @@ struct dma_buf {
+@@ -329,53 +320,14 @@ struct dma_buf {
  	} cb_excl, cb_shared;
  };
  
@@ -186,7 +186,7 @@ index a2ca294eaebe..ec212cb27fdc 100644
   *
   * This structure holds the attachment information between the dma_buf buffer
   * and its user device(s). The list contains one attachment struct per device
-@@ -391,9 +343,6 @@ struct dma_buf_attachment {
+@@ -392,9 +344,6 @@ struct dma_buf_attachment {
  	struct list_head node;
  	struct sg_table *sgt;
  	enum dma_data_direction dir;
@@ -196,7 +196,7 @@ index a2ca294eaebe..ec212cb27fdc 100644
  	void *priv;
  };
  
-@@ -445,43 +394,10 @@ static inline void get_dma_buf(struct dma_buf *dmabuf)
+@@ -446,43 +395,10 @@ static inline void get_dma_buf(struct dma_buf *dmabuf)
  	get_file(dmabuf->file);
  }
  
@@ -242,7 +242,7 @@ index a2ca294eaebe..ec212cb27fdc 100644
  
  struct dma_buf *dma_buf_export(const struct dma_buf_export_info *exp_info);
  
-@@ -493,11 +409,12 @@ struct sg_table *dma_buf_map_attachment(struct dma_buf_attachment *,
+@@ -494,11 +410,12 @@ struct sg_table *dma_buf_map_attachment(struct dma_buf_attachment *,
  					enum dma_data_direction);
  void dma_buf_unmap_attachment(struct dma_buf_attachment *, struct sg_table *,
  				enum dma_data_direction);
