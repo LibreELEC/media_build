@@ -2459,7 +2459,11 @@ static inline void *memdup_user_nul(const void __user *src, size_t len)
 #define STACK_FRAME_NON_STANDARD(func)
 #else
 /* be sure STACK_FRAME_NON_STANDARD is defined */
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0)
 #include <linux/frame.h>
+#else
+#include <linux/objtool.h>
+#endif
 #endif
 
 #ifdef NEED_PCI_FREE_IRQ_VECTORS
