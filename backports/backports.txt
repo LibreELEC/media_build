@@ -33,6 +33,7 @@ add v5.9_tasklet.patch
 add v5.7_mmap_read_lock.patch
 add v5.7_vm_map_ram.patch
 add v5.7_pin_user_pages.patch
+add v5.7_define_seq_attribute.patch
 
 [5.6.255]
 add v5.6_pin_user_pages.patch
