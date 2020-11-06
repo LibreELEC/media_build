@@ -2934,4 +2934,11 @@ static inline void dma_sync_sgtable_for_device(struct device *dev,
 #endif
 #endif
 
+#ifdef NEED_IN_COMPAT_SYSCALL
+#include <linux/compat.h>
+
+static inline bool in_compat_syscall(void) { return is_compat_task(); }
+
+#endif
+
 #endif /*  _COMPAT_H */
