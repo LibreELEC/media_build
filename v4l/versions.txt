@@ -21,6 +21,10 @@ V4L2_H264
 VIDEO_IPU3_CIO2
 VIDEO_OMAP3
 
+[5.1]
+# Needs devm_clk_get_optional
+VIDEO_IMX274
+
 [4.19.0]
 # Needs devm_regmap_init_sccb
 VIDEO_OV772X
@@ -58,6 +62,7 @@ VIDEO_XILINX_CSI2RXSS
 VIDEO_XILINX
 # needs *probe_new in struct i2c_driver
 VIDEO_OV5670
+VIDEO_OV9734
 VIDEO_OV5675
 VIDEO_OV8856
 VIDEO_OV7251
@@ -156,7 +161,6 @@ VIDEO_ADV7180
 VIDEO_ET8EK8
 VIDEO_OV2640
 VIDEO_OV5645
-VIDEO_IMX274
 IR_GPIO_TX
 IR_GPIO_CIR
 VIDEO_OV5695
@@ -174,6 +178,8 @@ VIDEO_AD5820
 VIDEO_VIMC
 # needs bpf.h
 BPF_LIRC_MODE2
+# needs ktime_to_timespec64
+DVB_VIDTV
 
 [3.15.0]
 # needs reset_control_get_optional
