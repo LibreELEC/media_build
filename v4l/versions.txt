@@ -181,6 +181,8 @@ VIDEO_AD5820
 VIDEO_VIMC
 # needs bpf.h
 BPF_LIRC_MODE2
+# needs ktime_to_timespec64
+DVB_VIDTV
 
 [3.15.0]
 # needs reset_control_get_optional
