@@ -130,10 +130,6 @@ CEC_SECO
 # needs led_trigger_remove
 V4L2_FLASH_LED_CLASS
 
-[4.0.0]
-# needs of_property_read_u64_array
-VIDEO_SMIAPP
-
 [3.19.0]
 # needs of_property_read_u64_array
 VIDEO_MT9V032
@@ -201,6 +197,7 @@ VIDEO_CADENCE_CSI2RX
 [3.13.0]
 # needs gpio/consumer.h
 RADIO_SI4713
+VIDEO_CCS
 
 [3.12.0]
 # BIN_ATTR_RW was changed
