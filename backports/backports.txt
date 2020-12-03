@@ -25,6 +25,7 @@ add api_version.patch
 add pr_fmt.patch
 add debug.patch
 add drx39xxj.patch
+add ccs.patch
 
 [5.9.255]
 add v5.9_tasklet.patch
@@ -62,7 +63,7 @@ add v4.20_access_ok.patch
 
 [4.18.255]
 add v4.18_fwnode_args_args.patch
-add v4.18_smiapp_bitops.patch
+add v4.18_ccs_bitops.patch
 
 [4.17.255]
 add v4.17_i2c_check_num_msgs.patch
