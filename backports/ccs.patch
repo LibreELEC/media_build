@@ -1,0 +1,13 @@
+diff --git a/drivers/media/i2c/ccs/ccs.h b/drivers/media/i2c/ccs/ccs.h
+index bfe39e02f5e9..970214cdda04 100644
+--- a/drivers/media/i2c/ccs/ccs.h
++++ b/drivers/media/i2c/ccs/ccs.h
+@@ -19,7 +19,7 @@
+ #include "ccs-quirk.h"
+ #include "ccs-regs.h"
+ #include "ccs-reg-access.h"
+-#include "../smiapp-pll.h"
++#include "smiapp-pll.h"
+ #include "smiapp-reg-defs.h"
+ 
+ /*

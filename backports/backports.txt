@@ -25,6 +25,7 @@ add api_version.patch
 add pr_fmt.patch
 add debug.patch
 add drx39xxj.patch
+add ccs.patch
 
 [5.9.255]
 add v5.9_tasklet.patch
