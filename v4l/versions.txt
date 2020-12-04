@@ -44,6 +44,8 @@ VIDEO_OV2740
 [4.16.0]
 # Needs disable_locking in struct regmap_config
 CEC_CH7322
+# Needs device_get_match_data
+VIDEO_CCS
 
 [4.15.0]
 # Needs idle_bias_on and other flags in struct snd_soc_component_driver
@@ -197,7 +199,6 @@ VIDEO_CADENCE_CSI2RX
 [3.13.0]
 # needs gpio/consumer.h
 RADIO_SI4713
-VIDEO_CCS
 
 [3.12.0]
 # BIN_ATTR_RW was changed
