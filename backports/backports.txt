@@ -81,6 +81,7 @@ add v4.20_access_ok.patch
 add v4.18_fwnode_args_args.patch
 add v4.18_ccs_bitops.patch
 add v4.18_dma_buf.patch
+add v4.18_vb2_map_atomic.patch
 
 [4.17.255]
 add v4.17_i2c_check_num_msgs.patch
