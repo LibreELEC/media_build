@@ -180,3 +180,5 @@ add v3.11_vidtv.patch
 add v3.10_fw_driver_probe.patch
 add v3.10_ir_hix5hd2.patch
 add v3.10_const_snd_pcm_ops.patch
+
+[3.9.255]
