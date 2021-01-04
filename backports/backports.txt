@@ -124,6 +124,7 @@ add v4.5_gpiochip_data_pointer.patch
 add v4.5_get_user_pages.patch
 add v4.5_uvc_super_plus.patch
 add v4.5_copy_to_user_warning.patch
+add v4.5_vb2_cpu_access.patch
 
 [4.4.255]
 add v4.4_gpio_chip_parent.patch
