@@ -29,6 +29,7 @@ add ccs.patch
 
 [5.9.255]
 add v5.9_tasklet.patch
+add v5.9_netup_unidvb_devm_revert.patch
 
 [5.7.255]
 add v5.7_mmap_read_lock.patch
