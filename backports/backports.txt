@@ -29,6 +29,7 @@ add ccs.patch
 
 [5.10.255]
 add v5.10_dma_buf.patch
+add v5.10_vb2_dma_buf_map.patch
 
 [5.9.255]
 add v5.9_tasklet.patch
