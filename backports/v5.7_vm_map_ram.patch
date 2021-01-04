@@ -1,19 +1,19 @@
 diff --git a/drivers/media/common/videobuf2/videobuf2-dma-sg.c b/drivers/media/common/videobuf2/videobuf2-dma-sg.c
-index 030e48218687..621d5d696af1 100644
+index 748131151c49..f6db8bfb6573 100644
 --- a/drivers/media/common/videobuf2/videobuf2-dma-sg.c
 +++ b/drivers/media/common/videobuf2/videobuf2-dma-sg.c
-@@ -305,7 +305,8 @@ static void *vb2_dma_sg_vaddr(void *buf_priv)
- 			ret = dma_buf_vmap(buf->db_attach->dmabuf, &map);
- 			buf->vaddr = ret ? NULL : map.vaddr;
- 		} else {
+@@ -302,7 +302,8 @@ static void *vb2_dma_sg_vaddr(void *buf_priv)
+ 		if (buf->db_attach)
+ 			buf->vaddr = dma_buf_vmap(buf->db_attach->dmabuf);
+ 		else
 -			buf->vaddr = vm_map_ram(buf->pages, buf->num_pages, -1);
 +			buf->vaddr = vm_map_ram(buf->pages,
 +					buf->num_pages, -1, PAGE_KERNEL);
- 		}
  	}
  
+ 	/* add offset in case userptr is not page-aligned */
 diff --git a/drivers/media/common/videobuf2/videobuf2-vmalloc.c b/drivers/media/common/videobuf2/videobuf2-vmalloc.c
-index 83f95258ec8c..a4ebffc97e12 100644
+index bf5ac63a5742..66276a8d50b5 100644
 --- a/drivers/media/common/videobuf2/videobuf2-vmalloc.c
 +++ b/drivers/media/common/videobuf2/videobuf2-vmalloc.c
 @@ -107,7 +107,8 @@ static void *vb2_vmalloc_get_userptr(struct device *dev, unsigned long vaddr,
