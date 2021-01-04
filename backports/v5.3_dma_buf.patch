@@ -1,0 +1,24 @@
+--- linux-5.4.69/include/linux/dma-buf.h	2020-10-01 13:19:27.000000000 +0200
++++ linux-5.3.18/include/linux/dma-buf.h	2019-12-18 16:06:00.000000000 +0100
+@@ -303,11 +303,10 @@
+ 	void *vmap_ptr;
+ 	const char *exp_name;
+ 	const char *name;
+-	spinlock_t name_lock; /* spinlock to protect name access */
+ 	struct module *owner;
+ 	struct list_head list_node;
+ 	void *priv;
+-	struct dma_resv *resv;
++	struct reservation_object *resv;
+ 
+ 	/* poll support */
+ 	wait_queue_head_t poll;
+@@ -366,7 +365,7 @@
+ 	const struct dma_buf_ops *ops;
+ 	size_t size;
+ 	int flags;
+-	struct dma_resv *resv;
++	struct reservation_object *resv;
+ 	void *priv;
+ };
+ 

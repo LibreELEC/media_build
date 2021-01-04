@@ -1,0 +1,9 @@
+--- linux-4.8.17/include/linux/dma-buf.h	2017-01-09 08:22:35.000000000 +0100
++++ linux-4.7.10/include/linux/dma-buf.h	2016-10-22 12:07:05.000000000 +0200
+@@ -242,4 +242,6 @@
+ 		 unsigned long);
+ void *dma_buf_vmap(struct dma_buf *);
+ void dma_buf_vunmap(struct dma_buf *, void *vaddr);
++int dma_buf_debugfs_create_file(const char *name,
++				int (*write)(struct seq_file *));
+ #endif /* __DMA_BUF_H__ */

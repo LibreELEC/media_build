@@ -1,0 +1,64 @@
+--- linux-5.11-rc1/include/linux/dma-buf.h	2020-12-28 00:30:22.000000000 +0100
++++ linux-5.10.1/include/linux/dma-buf.h	2020-12-14 19:33:01.000000000 +0100
+@@ -13,7 +13,6 @@
+ #ifndef __DMA_BUF_H__
+ #define __DMA_BUF_H__
+ 
+-#include <linux/dma-buf-map.h>
+ #include <linux/file.h>
+ #include <linux/err.h>
+ #include <linux/scatterlist.h>
+@@ -146,8 +145,7 @@
+ 	 *
+ 	 * A &sg_table scatter list of or the backing storage of the DMA buffer,
+ 	 * already mapped into the device address space of the &device attached
+-	 * with the provided &dma_buf_attachment. The addresses and lengths in
+-	 * the scatter list are PAGE_SIZE aligned.
++	 * with the provided &dma_buf_attachment.
+ 	 *
+ 	 * On failure, returns a negative error value wrapped into a pointer.
+ 	 * May also return -EINTR when a signal was received while being
+@@ -267,13 +265,13 @@
+ 	 */
+ 	int (*mmap)(struct dma_buf *, struct vm_area_struct *vma);
+ 
+-	int (*vmap)(struct dma_buf *dmabuf, struct dma_buf_map *map);
+-	void (*vunmap)(struct dma_buf *dmabuf, struct dma_buf_map *map);
++	void *(*vmap)(struct dma_buf *);
++	void (*vunmap)(struct dma_buf *, void *vaddr);
+ };
+ 
+ /**
+  * struct dma_buf - shared buffer object
+- * @size: size of the buffer; invariant over the lifetime of the buffer.
++ * @size: size of the buffer
+  * @file: file pointer used for sharing buffers across, and for refcounting.
+  * @attachments: list of dma_buf_attachment that denotes all devices attached,
+  *               protected by dma_resv lock.
+@@ -311,7 +309,7 @@
+ 	const struct dma_buf_ops *ops;
+ 	struct mutex lock;
+ 	unsigned vmapping_counter;
+-	struct dma_buf_map vmap_ptr;
++	void *vmap_ptr;
+ 	const char *exp_name;
+ 	const char *name;
+ 	spinlock_t name_lock;
+@@ -405,7 +403,7 @@
+  * @exp_name:	name of the exporter - useful for debugging.
+  * @owner:	pointer to exporter module - used for refcounting kernel module
+  * @ops:	Attach allocator-defined dma buf ops to the new buffer
+- * @size:	Size of the buffer - invariant over the lifetime of the buffer
++ * @size:	Size of the buffer
+  * @flags:	mode flags for the file
+  * @resv:	reservation-object, NULL to allocate default one
+  * @priv:	Attach private data of allocator to this buffer
+@@ -504,6 +502,6 @@
+ 
+ int dma_buf_mmap(struct dma_buf *, struct vm_area_struct *,
+ 		 unsigned long);
+-int dma_buf_vmap(struct dma_buf *dmabuf, struct dma_buf_map *map);
+-void dma_buf_vunmap(struct dma_buf *dmabuf, struct dma_buf_map *map);
++void *dma_buf_vmap(struct dma_buf *);
++void dma_buf_vunmap(struct dma_buf *, void *vaddr);
+ #endif /* __DMA_BUF_H__ */

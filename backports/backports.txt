@@ -27,33 +27,47 @@ add debug.patch
 add drx39xxj.patch
 add ccs.patch
 
+[5.10.255]
+add v5.10_dma_buf.patch
+
 [5.9.255]
 add v5.9_tasklet.patch
 add v5.9_netup_unidvb_devm_revert.patch
+add v5.9_dma_buf.patch
 
 [5.7.255]
 add v5.7_mmap_read_lock.patch
 add v5.7_vm_map_ram.patch
 add v5.7_pin_user_pages.patch
 add v5.7_define_seq_attribute.patch
+add v5.7_dma_buf.patch
 
 [5.6.255]
 add v5.6_pin_user_pages.patch
 add v5.6_const_fb_ops.patch
 add v5.6_pm_runtime_get_if_active.patch
+add v5.6_dma_buf.patch
 
 [5.5.255]
 add v5.5_alsa_pcm_api_updates.patch
 add v5.5_memtype_h.patch
 add v5.5_dev_printk_h.patch
+add v5.5_dma_buf.patch
 
 [5.4.255]
 add v5.4_revert_spi_transfer.patch
 add v5.4_dma_buf.patch
 
+[5.3.255]
+add v5.3_dma_buf.patch
+
+[5.2.255]
+add v5.2_dma_buf.patch
+
 [5.1.255]
 add v5.1_vm_map_pages.patch
 add v5.1_devm_i2c_new_dummy_device.patch
+add v5.1_dma_buf.patch
 
 [5.0.255]
 add v5.0_ipu3-cio2.patch
@@ -65,12 +79,14 @@ add v4.20_access_ok.patch
 [4.18.255]
 add v4.18_fwnode_args_args.patch
 add v4.18_ccs_bitops.patch
+add v4.18_dma_buf.patch
 
 [4.17.255]
 add v4.17_i2c_check_num_msgs.patch
 
 [4.15.255]
 add v4.15_pmdown_time.patch
+add v4.15_dma_buf.patch
 
 [4.14.255]
 add v4.14_saa7146_timer_cast.patch
@@ -88,16 +104,19 @@ add v4.12_revert_solo6x10_copykerneluser.patch
 
 [4.11.255]
 add v4.11_drop_drm_file.patch
+add v4.11_dma_buf.patch
 
 [4.10.255]
 add v4.10_sched_signal.patch
 add v4.10_fault_page.patch
 add v4.10_refcount.patch
+add v4.10_dma_buf.patch
 
 [4.9.255]
 add v4.9_mm_address.patch
 add v4.9_dvb_net_max_mtu.patch
 add v4.9_probe_new.patch
+add v4.9_dma_buf.patch
 
 [4.8.255]
 add v4.8_user_pages_flag.patch
@@ -110,15 +129,18 @@ add v4.7_dma_attrs.patch
 add v4.7_pci_alloc_irq_vectors.patch
 add v4.7_copy_to_user_warning.patch
 add v4.7_objtool_warning.patch
+add v4.7_dma_buf.patch
 
 [4.6.255]
 add v4.6_i2c_mux.patch
+add v4.6_dma_buf.patch
 
 [4.5.255]
 add v4.5_gpiochip_data_pointer.patch
 add v4.5_get_user_pages.patch
 add v4.5_uvc_super_plus.patch
 add v4.5_copy_to_user_warning.patch
+add v4.5_dma_buf.patch
 
 [4.4.255]
 add v4.4_gpio_chip_parent.patch
@@ -135,11 +157,13 @@ add v4.2_frame_vector.patch
 [4.1.255]
 add v4.1_pat_enabled.patch
 add v4.1_drop_fwnode.patch
+add v4.1_dma_buf.patch
 
 [4.0.255]
 add v4.0_dma_buf_export.patch
 add v4.0_drop_trace.patch
 add v4.0_fwnode.patch
+add v4.0_dma_buf.patch
 
 [3.19.255]
 add v3.19_get_user_pages_unlocked.patch
@@ -158,9 +182,11 @@ add v3.16_netdev.patch
 add v3.16_wait_on_bit.patch
 add v3.16_void_gpiochip_remove.patch
 add v3.16_drop_pointing_stick.patch
+add v3.16_dma_buf.patch
 
 [3.13.255]
 add v3.13_ddbridge_pcimsi.patch
+add v3.13_dma_buf.patch
 
 [3.12.255]
 add v3.12_kfifo_in.patch

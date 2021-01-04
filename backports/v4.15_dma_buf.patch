@@ -1,0 +1,11 @@
+--- linux-4.16.18/include/linux/dma-buf.h	2018-06-26 01:54:07.000000000 +0200
++++ linux-4.15.18/include/linux/dma-buf.h	2018-04-19 08:55:13.000000000 +0200
+@@ -301,7 +301,7 @@
+ 		struct dma_fence_cb cb;
+ 		wait_queue_head_t *poll;
+ 
+-		__poll_t active;
++		unsigned long active;
+ 	} cb_excl, cb_shared;
+ };
+ 

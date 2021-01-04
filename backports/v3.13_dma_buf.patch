@@ -1,0 +1,11 @@
+--- linux-3.14.79/include/linux/dma-buf.h	2016-09-11 10:00:18.000000000 +0200
++++ linux-3.13.11/include/linux/dma-buf.h	2014-04-23 01:49:33.000000000 +0200
+@@ -171,7 +171,7 @@
+ 			       size_t size, int flags, const char *);
+ 
+ #define dma_buf_export(priv, ops, size, flags)	\
+-	dma_buf_export_named(priv, ops, size, flags, KBUILD_MODNAME)
++	dma_buf_export_named(priv, ops, size, flags, __FILE__)
+ 
+ int dma_buf_fd(struct dma_buf *dmabuf, int flags);
+ struct dma_buf *dma_buf_get(int fd);
