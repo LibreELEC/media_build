@@ -24,6 +24,7 @@ TARFILES += include/uapi/linux/usb/video.h
 TARFILES += include/linux/via-core.h
 TARFILES += include/linux/ti_wilink_st.h
 TARFILES += include/linux/dma-buf.h
+TARFILES += include/linux/dma-buf-map.h
 TARFILES += include/linux/dma-fence.h
 TARFILES += include/linux/of_graph.h
 TARFILES += include/linux/kconfig.h
