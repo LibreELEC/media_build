@@ -94,6 +94,7 @@ add v4.12_revert_solo6x10_copykerneluser.patch
 [4.11.255]
 add v4.11_drop_drm_file.patch
 add v4.11_vb2_kmap.patch
+add v4.11_pwc.patch
 
 [4.10.255]
 add v4.10_sched_signal.patch
