@@ -53,6 +53,7 @@ add v5.5_vb2_kmap.patch
 
 [5.4.255]
 add v5.4_revert_spi_transfer.patch
+add v5.4_async.patch
 
 [5.1.255]
 add v5.1_vm_map_pages.patch
