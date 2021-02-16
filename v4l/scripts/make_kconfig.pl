@@ -630,6 +630,8 @@ disable_config('DVB_AV7110_FIRMWARE');
 disable_config('DVB_CINERGYT2_TUNING');
 disable_config('VIDEO_HELPER_CHIPS_AUTO');
 disable_config('VIDEO_FIXED_MINOR_RANGES');
+disable_config('VIDEO_OV9650');
+disable_config('VIDEO_OV772X');
 disable_config('STAGING') if (!$enable_staging);
 disable_config('STAGING_BROKEN');
 $config{'COMPILE_TEST'} = 0;
