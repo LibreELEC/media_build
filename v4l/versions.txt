@@ -3,6 +3,33 @@
 VIDEO_IPU3_IMGU
 INTEL_ATOMISP
 
+# CEC support
+CEC_CORE
+CEC_NOTIFIER
+CEC_PIN
+MEDIA_CEC_RC
+MEDIA_CEC_SUPPORT
+
+# rc support
+LIRC
+RC_CORE
+
+# radio support
+MEDIA_RADIO_SUPPORT
+
+# camera support
+MEDIA_CAMERA_SUPPORT
+SOC_CAMERA
+
+# old analog devices support
+MEDIA_ANALOG_TV_SUPPORT
+
+# broken modules
+DVB_MXL5XX
+VIDEO_CX25840
+DVB_STID135
+DVB_MXL58X
+
 [5.5]
 # lots of kAPI changes in 5.6, so disable for older kernels
 SND_BT87X
