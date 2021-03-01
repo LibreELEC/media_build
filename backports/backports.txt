@@ -27,6 +27,9 @@ add debug.patch
 add drx39xxj.patch
 add ccs.patch
 
+[5.11.255]
+add v5.11_isa.patch
+
 [5.10.255]
 add v5.10_vb2_dma_buf_map.patch
 
