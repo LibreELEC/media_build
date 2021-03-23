@@ -78,6 +78,9 @@ add v4.18_vb2_map_atomic.patch
 [4.17.1023]
 add v4.17_i2c_check_num_msgs.patch
 
+[4.16.1023]
+add v4.16_poll_requested_events.patch
+
 [4.15.1023]
 add v4.15_pmdown_time.patch
 add v4.15_async.patch
