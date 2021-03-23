@@ -36,6 +36,8 @@ VIDEO_MAX9286
 [4.18.0]
 # Needs proc_create_single
 VIDEO_ZORAN
+# Needs dev_pm_domain_attach_by_id
+VIDEO_IMX8_JPEG
 
 [4.17.0]
 # Needs devm_nvmem_register
